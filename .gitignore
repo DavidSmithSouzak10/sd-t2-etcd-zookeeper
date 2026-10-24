@@ -1,0 +1,9 @@
+# dados dos contêineres / temporários
+**/dados/
+**/data/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+# vídeos grandes do seminário (guardar fora do git ou via LFS)
+seminario/videos/*.mp4

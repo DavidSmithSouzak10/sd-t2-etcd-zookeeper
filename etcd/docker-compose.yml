@@ -1,0 +1,82 @@
+# Tema 5 - etcd (Raft) com 3 membros
+# rede interna (172.30.0.0/24): tráfego Raft entre pares, porta 2380
+# rede clientes (172.31.0.0/24): clientes, porta 2379
+name: t5-etcd
+
+x-etcd: &etcd
+  image: quay.io/coreos/etcd:v3.5.17
+  mem_limit: 256m
+  restart: "no"
+  healthcheck:
+    test: ["CMD", "etcdctl", "--endpoints=http://127.0.0.1:2379", "--command-timeout=2s", "endpoint", "health"]
+    interval: 5s
+    timeout: 3s
+    retries: 10
+
+
+services:
+  etcd1:
+    <<: *etcd
+    container_name: etcd1
+    hostname: etcd1
+    command:
+      - etcd
+      - --name=etcd1
+      - --data-dir=/etcd-data
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://172.30.0.31:2380
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://172.31.0.31:2379
+      - --initial-cluster=etcd1=http://172.30.0.31:2380,etcd2=http://172.30.0.32:2380,etcd3=http://172.30.0.33:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=sd-t2
+      - --snapshot-count=${SNAPSHOT_COUNT:-100000}
+    networks:
+      interna: {ipv4_address: 172.30.0.31}
+      clientes: {ipv4_address: 172.31.0.31}
+
+  etcd2:
+    <<: *etcd
+    container_name: etcd2
+    hostname: etcd2
+    command:
+      - etcd
+      - --name=etcd2
+      - --data-dir=/etcd-data
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://172.30.0.32:2380
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://172.31.0.32:2379
+      - --initial-cluster=etcd1=http://172.30.0.31:2380,etcd2=http://172.30.0.32:2380,etcd3=http://172.30.0.33:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=sd-t2
+      - --snapshot-count=${SNAPSHOT_COUNT:-100000}
+    networks:
+      interna: {ipv4_address: 172.30.0.32}
+      clientes: {ipv4_address: 172.31.0.32}
+
+  etcd3:
+    <<: *etcd
+    container_name: etcd3
+    hostname: etcd3
+    command:
+      - etcd
+      - --name=etcd3
+      - --data-dir=/etcd-data
+      - --listen-peer-urls=http://0.0.0.0:2380
+      - --initial-advertise-peer-urls=http://172.30.0.33:2380
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --advertise-client-urls=http://172.31.0.33:2379
+      - --initial-cluster=etcd1=http://172.30.0.31:2380,etcd2=http://172.30.0.32:2380,etcd3=http://172.30.0.33:2380
+      - --initial-cluster-state=new
+      - --initial-cluster-token=sd-t2
+      - --snapshot-count=${SNAPSHOT_COUNT:-100000}
+    networks:
+      interna: {ipv4_address: 172.30.0.33}
+      clientes: {ipv4_address: 172.31.0.33}
+
+networks:
+  interna:
+    ipam: {config: [{subnet: 172.30.0.0/24}]}
+  clientes:
+    ipam: {config: [{subnet: 172.31.0.0/24}]}

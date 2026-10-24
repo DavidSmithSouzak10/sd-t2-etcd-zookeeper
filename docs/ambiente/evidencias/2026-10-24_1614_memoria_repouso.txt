@@ -1,0 +1,12 @@
+# data: 2026-10-24T16:14:04.693
+# comando: docker stats --no-stream --format table {{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}} etcd1 etcd2 etcd3 zk1 zk2 zk3 zk-cliente
+# ---
+NAME         MEM USAGE / LIMIT   CPU %
+etcd1        23.68MiB / 256MiB   1.10%
+etcd2        29.71MiB / 256MiB   8.65%
+etcd3        27.55MiB / 256MiB   6.63%
+zk1          49.9MiB / 256MiB    0.16%
+zk2          55.65MiB / 256MiB   0.21%
+zk3          46.79MiB / 256MiB   0.18%
+zk-cliente   3.949MiB / 128MiB   0.00%
+# exit=0

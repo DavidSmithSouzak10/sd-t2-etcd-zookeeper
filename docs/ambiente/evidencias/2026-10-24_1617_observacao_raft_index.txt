@@ -1,0 +1,16 @@
+# data: 2026-10-24T16:17:15.174
+# comando: bash -c 
+export MSYS_NO_PATHCONV=1
+idx(){ docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379 endpoint status -w simple | awk -F", " "{print \$8}"; }
+a=$(idx); sleep 10; b=$(idx); echo "repouso 10s (healthcheck do compose a cada 5s x 3 membros): $a -> $b (+$((b-a)))"
+for op in "endpoint health" "get /x" "get /x --consistency=s" "alarm list"; do
+  a=$(idx); for i in $(seq 10); do docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379 $op >/dev/null; done; b=$(idx)
+  echo "10x \"$op\": $a -> $b (+$((b-a)))"
+done
+# ---
+repouso 10s (healthcheck do compose a cada 5s x 3 membros): 503 -> 509 (+6)
+10x "endpoint health": 509 -> 519 (+10)
+10x "get /x": 519 -> 522 (+3)
+10x "get /x --consistency=s": 522 -> 522 (+0)
+10x "alarm list": 522 -> 535 (+13)
+# exit=0

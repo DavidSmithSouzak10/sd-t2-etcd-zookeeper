@@ -1,0 +1,60 @@
+# Tema 5 / Ênfase D - ZooKeeper (ZAB) com 3 servidores + cliente Python (kazoo)
+# sub-redes diferentes do etcd para os dois laboratórios coexistirem
+# rede interna (172.32.0.0/24): quorum 2888, eleição 3888
+# rede clientes (172.33.0.0/24): clientes, porta 2181
+name: t5-zk
+
+x-zk: &zk
+  image: zookeeper:3.9.6
+  mem_limit: 256m
+  restart: "no"
+
+x-zk-env: &zkenv
+  ZOO_SERVERS: "server.1=172.32.0.51:2888:3888;2181 server.2=172.32.0.52:2888:3888;2181 server.3=172.32.0.53:2888:3888;2181"
+  ZOO_4LW_COMMANDS_WHITELIST: "srvr,stat,mntr,ruok,conf,cons"
+  ZOO_STANDALONE_ENABLED: "false"
+  ZOO_ADMINSERVER_ENABLED: "false"
+  JVMFLAGS: "-Xmx128m"
+
+services:
+  zk1:
+    <<: *zk
+    container_name: zk1
+    hostname: zk1
+    environment: {<<: *zkenv, ZOO_MY_ID: "1"}
+    networks:
+      interna: {ipv4_address: 172.32.0.51}
+      clientes: {ipv4_address: 172.33.0.51}
+
+  zk2:
+    <<: *zk
+    container_name: zk2
+    hostname: zk2
+    environment: {<<: *zkenv, ZOO_MY_ID: "2"}
+    networks:
+      interna: {ipv4_address: 172.32.0.52}
+      clientes: {ipv4_address: 172.33.0.52}
+
+  zk3:
+    <<: *zk
+    container_name: zk3
+    hostname: zk3
+    environment: {<<: *zkenv, ZOO_MY_ID: "3"}
+    networks:
+      interna: {ipv4_address: 172.32.0.53}
+      clientes: {ipv4_address: 172.33.0.53}
+
+  zk-cliente:
+    image: python:3.12-alpine
+    container_name: zk-cliente
+    mem_limit: 128m
+    command: sh -c "pip install -q --root-user-action=ignore kazoo==2.10.0 && sleep infinity"
+    volumes: ["./cliente:/app:ro"]
+    networks:
+      clientes: {ipv4_address: 172.33.0.100}
+
+networks:
+  interna:
+    ipam: {config: [{subnet: 172.32.0.0/24}]}
+  clientes:
+    ipam: {config: [{subnet: 172.33.0.0/24}]}

@@ -1,0 +1,11 @@
+# Achados para o relatório
+
+Observações que ajudam a responder Q1–Q14 e S1–S4. Cada achado precisa de evidência bruta.
+Um achado **exploratório**, observado fora de um experimento com previsão, só entra no relatório depois de **formalizado** num experimento (com previsão escrita antes) ou com a ressalva explícita de "observação exploratória".
+
+| # | Achado | Evidência | Serve para | Situação |
+|---|---|---|---|---|
+| A1 | Com o cluster em repouso, o RAFT INDEX do etcd **não fica parado**: sobe cerca de 0,6 entrada/s. Medições: `endpoint health` +10 e `alarm list` +13 a cada 10 chamadas; `get` serializável +0; `get` linearizável +3, valor compatível com o ruído de fundo do healthcheck no mesmo intervalo. **Hipótese:** o health check consulta alarmes por meio de uma requisição que passa pelo log do Raft, enquanto a leitura linearizável usa ReadIndex e não grava no log | `docs/ambiente/evidencias/2026-10-24_1617_observacao_raft_index.txt` | **S3** (linearizável sem gravar no log), Q5, Q9, limitações (seção 9) | exploratório. Formalizar no **E4** desligando o healthcheck (`docker compose ... up --no-healthcheck` ou um override) e repetindo ≥ 5×; confirmar na fonte do etcd/documentação |
+| A2 | Logo após a eleição do ZooKeeper, um seguidor reporta `zxid=0x0` enquanto o líder e o outro seguidor reportam `0x100000000` (época 1, contador 0). Tudo se iguala após a 1ª escrita | saída do `validar.sh zk` (sessão de 24/10, não salva); repetir e salvar no E9-E5 | Q9 (zxid = época << 32 + contador), Z5 | exploratório. Reproduzir ao recriar o ensemble |
+| A3 | `docker exec` acrescenta cerca de 250 ms a cada operação medida no host (256,6 ± 37,2 ms para um `get`, n = 5) | descrito no diário de 24/10 (CSV de teste descartado) | ameaça à validade (E3, R7), seção 9 | definir o método de medição antes do E3 |
+| A4 | O zkCli registra "SASL ... (unknown error)" em toda conexão, mesmo nas bem-sucedidas: não é falha. O código de saída 1 indica o erro real | diário de 24/10 | armadilha prática (seção 9 / README) | ok |
