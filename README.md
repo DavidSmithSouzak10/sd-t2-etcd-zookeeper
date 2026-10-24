@@ -36,6 +36,12 @@ Os dois laboratórios usam sub-redes diferentes e por isso podem rodar ao mesmo 
 
 ## 3. Subir do zero
 
+```bash
+git clone https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper.git
+cd sd-t2-etcd-zookeeper
+```
+
+
 Todos os comandos partem da raiz do repositório, num terminal bash.
 
 ```bash

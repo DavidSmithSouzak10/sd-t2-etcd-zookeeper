@@ -11,6 +11,12 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-24 (sábado), sessão 2: repositório remoto (David + Claude Code)
+- Repositório privado criado por David: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper. Visibilidade privada confirmada (a API anônima responde 404).
+- Remoto `origin` ligado e push da `main` (commit inicial `7ff3319`).
+- GitHub CLI 2.103.2 instalado (winget); `gh auth login` ainda não feito, porque o push usou as credenciais do Git Credential Manager.
+- **Próximo:** convidar o Samuel como colaborador; ele clona o repositório e testa a subida do zero só com o README (critério R1).
+
 ## 2026-10-24 (sábado), sessão 1: montagem do ambiente (David + Claude Code)
 
 **Feito**

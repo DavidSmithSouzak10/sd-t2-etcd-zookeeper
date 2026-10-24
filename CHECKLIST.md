@@ -16,7 +16,8 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | `docs/criterios-avaliacao.md` + `scripts/revisar.py` | ✅ | D | revisar.py: 9/67 itens automáticos em 24/10 |
 | Estrutura do relatório + notas (diário, achados, prints) | ✅ | D | `relatorio/` |
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |
-| Repositório remoto (GitHub) com acesso do Samuel | ⬜ | D | |
+| Repositório remoto (GitHub) privado | ✅ | D | https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper, push inicial em 24/10/2026 |
+| Samuel com acesso de escrita ao repositório | ⬜ | D | convidar em Settings > Collaborators |
 | Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ⬜ | S | |
 
 ## Experimentos etcd (R3)

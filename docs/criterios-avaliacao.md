@@ -198,5 +198,5 @@ Cada resposta deve: (1) responder para o **etcd**; (2) quando fizer sentido, com
 | K2 | Evidência bruta nunca editada à mão; números no relatório batem com os CSVs | ⬜ |
 | K3 | Diário de bordo (`relatorio/notas/diario.md`) atualizado a cada sessão | 🟨 |
 | K4 | `docs/uso-ia.md` atualizado a cada uso de IA | 🟨 |
-| K5 | Commits pequenos e enviados ao GitHub privado; Samuel com acesso | ⬜ |
+| K5 | Commits pequenos e enviados ao GitHub privado; Samuel com acesso | 🟨 (repo criado; falta convidar o Samuel) |
 | K6 | Dúvidas enviadas ao professor e respostas registradas | ⬜ |

@@ -36,4 +36,4 @@ Diagrama: _pendente_ (`diagramas/topologia.*`).
 | Sob carga (`check perf`) | _pendente_ | _pendente_ | |
 
 ## 4.4 Como reproduzir
-Ver `README.md` na raiz (subida, validação, parada). Link do repositório: _pendente_.
+Ver `README.md` na raiz (subida, validação, parada). Repositório: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper (privado; acesso ao professor a combinar).
