@@ -17,7 +17,7 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Estrutura do relatório + notas (diário, achados, prints) | ✅ | D | `relatorio/` |
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |
 | Repositório remoto (GitHub) privado | ✅ | D | https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper, push inicial em 24/10/2026 |
-| Samuel com acesso de escrita ao repositório | ⬜ | D | convidar em Settings > Collaborators |
+| Samuel com acesso de escrita ao repositório | 🟨 | D | convidado em 24/10/2026; aguardando aceite |
 | Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ⬜ | S | |
 
 ## Experimentos etcd (R3)

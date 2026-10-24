@@ -15,7 +15,15 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 - Repositório privado criado por David: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper. Visibilidade privada confirmada (a API anônima responde 404).
 - Remoto `origin` ligado e push da `main` (commit inicial `7ff3319`).
 - GitHub CLI 2.103.2 instalado (winget); `gh auth login` ainda não feito, porque o push usou as credenciais do Git Credential Manager.
-- **Próximo:** convidar o Samuel como colaborador; ele clona o repositório e testa a subida do zero só com o README (critério R1).
+- Samuel convidado como colaborador (por David, pelo site) e instruções de clone/teste enviadas a ele.
+
+**Onde paramos / retomar daqui**
+1. Samuel aceita o convite, clona e roda `scripts/validar.sh todos`. Ele salva a evidência com `evidencia docs/ambiente validacao_samuel -- bash scripts/validar.sh todos`, faz commit e push. Isso fecha o R1.
+2. Preencher `docs/equipe.md` (divisão de papéis D/S) e a coluna "Resp." do CHECKLIST.
+3. Enviar ao professor as 6 dúvidas de `docs/duvidas-professor.md`; a mais importante é sobre o kit.
+4. Escrever a **previsão do E1** (a dupla escreve, antes de rodar). Depois o Claude cria o `executar.sh` do E1 e o diagrama de topologia.
+5. Antes do E3: decidir como medir latência sem o overhead do `docker exec` (achado A3).
+6. Formalizar o achado A1 (RAFT INDEX × leituras) no E4, com previsão.
 
 ## 2026-10-24 (sábado), sessão 1: montagem do ambiente (David + Claude Code)
 
