@@ -1,7 +1,7 @@
 """Mede a latência de set/get no ZooKeeper de dentro da rede de clientes (equivalente ao etcd/cliente/latencia.py).
 
 Uso (dentro do contêiner zk-cliente):
-  python /app/latencia.py --op set --servidor 172.33.0.52:2181 --n 20
+  python /app/latencia.py --op set --servidor 172.33.0.52:2181 --n 20 [--tamanho 102400]
   python /app/latencia.py --op get --servidor 172.33.0.53:2181 --n 20 [--sync]
 
 Conecta a UM servidor (como o endpoint único no etcd). A 1ª operação é aquecimento e não entra na medição.
@@ -23,6 +23,7 @@ def main():
     p.add_argument("--servidor", required=True, help="host:porta de UM servidor")
     p.add_argument("--n", type=int, default=5)
     p.add_argument("--caminho", default="/lat/chave")
+    p.add_argument("--tamanho", type=int, default=0, help="set: tamanho do valor em bytes (0 = valor curto)")
     p.add_argument("--sync", action="store_true", help="sync antes de cada get")
     a = p.parse_args()
 
@@ -32,7 +33,7 @@ def main():
 
     def operacao(i):
         if a.op == "set":
-            return zk.set(a.caminho, f"v{i}".encode())
+            return zk.set(a.caminho, b"x" * a.tamanho if a.tamanho else f"v{i}".encode())
         if a.sync:
             zk.sync(a.caminho)
         return zk.get(a.caminho)

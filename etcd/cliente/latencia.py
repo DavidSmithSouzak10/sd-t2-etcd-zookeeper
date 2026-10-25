@@ -1,7 +1,7 @@
 """Mede a latência de put/get no etcd de dentro da rede de clientes (sem o overhead do docker exec).
 
 Uso (dentro do contêiner etcd-cliente):
-  python /app/latencia.py --op put --endpoint 172.31.0.32:2379 --n 20
+  python /app/latencia.py --op put --endpoint 172.31.0.32:2379 --n 20 [--tamanho 102400]
   python /app/latencia.py --op get --endpoint 172.31.0.33:2379 --n 20 [--serializavel]
 
 Fala com a API HTTP/JSON do etcd (gRPC-gateway, /v3/kv/put e /v3/kv/range) por uma conexão
@@ -37,6 +37,7 @@ def main():
     p.add_argument("--n", type=int, default=5)
     p.add_argument("--chave", default="/lat/chave")
     p.add_argument("--serializavel", action="store_true", help="get serializável (local) em vez de linearizável")
+    p.add_argument("--tamanho", type=int, default=0, help="put: tamanho do valor em bytes (0 = valor curto)")
     p.add_argument("--timeout", type=float, default=5.0)
     a = p.parse_args()
 
@@ -45,7 +46,8 @@ def main():
 
     def operacao(i):
         if a.op == "put":
-            return chamar(conn, "/v3/kv/put", {"key": b64(a.chave), "value": b64(f"v{i}")})
+            valor = "x" * a.tamanho if a.tamanho else f"v{i}"
+            return chamar(conn, "/v3/kv/put", {"key": b64(a.chave), "value": b64(valor)})
         corpo = {"key": b64(a.chave)}
         if a.serializavel:
             corpo["serializable"] = True
