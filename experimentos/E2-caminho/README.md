@@ -6,7 +6,7 @@
 Percurso de uma escrita e de uma leitura: quem recebe, quem decide, quem replica, quem responde.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: _preencher_
+> Data/hora do registro: 2026-10-25 12:45 — respostas de David a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas (ver `docs/uso-ia.md`)
 >
 > **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
 > 1. Um `put` enviado a um **seguidor** é atendido por ele ou encaminhado? A quem?
@@ -15,7 +15,10 @@ Percurso de uma escrita e de uma leitura: quem recebe, quem decide, quem replica
 > 4. O `raft_term` da resposta muda com uma escrita?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
-_pendente_
+1. **Put num seguidor:** esperamos que **o próprio seguidor grave** a escrita localmente e depois avise os outros, já que todos têm a cópia completa dos dados.
+2. **Confirmação:** esperamos que o cliente receba "OK" quando **a maioria (2 de 3)** tiver gravado: o líder e mais 1 seguidor. Com maioria, qualquer maioria futura terá ao menos um nó com o dado.
+3. **Contadores:** depois de 1 `put`, esperamos que **revisão e RAFT INDEX subam +1 e tenham o mesmo valor**, porque seriam o mesmo contador com nomes diferentes.
+4. **Termo:** esperamos que **o termo não mude** com uma escrita, porque ele só muda quando há uma nova eleição.
 
 ## Procedimento
 1. Enviar um `put` para um **seguidor** (endpoint único) e mostrar que é encaminhado ao líder.
