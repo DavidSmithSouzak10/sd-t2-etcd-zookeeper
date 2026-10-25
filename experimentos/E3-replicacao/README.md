@@ -6,7 +6,7 @@
 Escrever em um nó e ler em outro; medir latência/propagação.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: _preencher_
+> Data/hora do registro: 2026-10-25 12:52 — respostas de David a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas (ver `docs/uso-ia.md`)
 >
 > **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
 > 1. Escrevendo em etcd1, um `get` em etcd3 logo em seguida já vê o valor? Por quê?
@@ -15,7 +15,10 @@ Escrever em um nó e ler em outro; medir latência/propagação.
 > 4. O `etcdctl check perf --load=s` vai passar nesta máquina (Docker no Windows)?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
-_pendente_
+1. **Ler em outro nó logo após escrever:** esperamos ver **sempre o valor novo**, porque a leitura padrão do etcd é linearizável: antes de responder, o nó confere com o líder que está atualizado.
+2. **Watch:** esperamos que o aviso chegue em **milissegundos**, porque ele é enviado (*push*) assim que a escrita é confirmada pela maioria, sem consulta periódica.
+3. **Put × get:** esperamos o **put mais lento**, porque a escrita precisa ir ao líder, ser gravada em disco e ser confirmada pela maioria, enquanto a leitura não grava nada.
+4. **check perf (carga pequena):** esperamos que **passe**, porque a máquina (i7, SSD) é bem mais forte que o necessário para a carga pequena.
 
 ## Procedimento
 1. Escrever em um membro e ler em outro (endpoints únicos). Abrir um `watch` em um terceiro membro e mostrar a notificação chegando.
