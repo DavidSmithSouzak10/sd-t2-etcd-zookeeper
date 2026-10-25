@@ -13,6 +13,8 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | `etcd/docker-compose.yml` (3 membros, mem_limit, 2 redes) | ✅ | D | `validar.sh etcd` OK em 24/10/2026; ~15–23 MB por membro em repouso |
 | `zookeeper/docker-compose.yml` (3 servidores + cliente kazoo) | ✅ | D | `validar.sh zk` OK em 24/10/2026; ~46–54 MB por servidor |
 | `scripts/validar.sh`, `medir.sh`, `estatistica.py`, `particionar.sh` | 🟨 | D | validar/medir/estatística testados; `particionar.sh isolar/religar` ainda não exercitado |
+| Medição de latência sem overhead (`latencia.sh` + `etcd-cliente`/`zk-cliente`) | ✅ | D | testado em 25/10: `docs/ambiente/evidencias/2026-10-25_1035_teste_ferramenta_latencia.txt` |
+| Divisão de papéis (`docs/equipe.md`) | 🟨 | D+S | rascunho em 25/10; falta o acordo da dupla |
 | `docs/criterios-avaliacao.md` + `scripts/revisar.py` | ✅ | D | revisar.py: 9/67 itens automáticos em 24/10 |
 | Estrutura do relatório + notas (diário, achados, prints) | ✅ | D | `relatorio/` |
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |

@@ -11,6 +11,22 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-25 (domingo), sessão 3: ferramenta de latência e papéis (David + Claude Code)
+- Docker Desktop iniciado. Os clusters voltaram com `up -d` e `validar.sh todos` deu OK. Depois do reinício, o etcd está no termo 3 (líder etcd1) e o ZK na época 3 (líder zk3): cada reinício gera uma nova eleição.
+- K5 corrigido em `docs/criterios-avaliacao.md` (Samuel convidado, aguardando aceite).
+- **Achado A3 resolvido.** Criados o serviço `etcd-cliente` (python:3.12-alpine, 172.31.0.100, 128 MB), `etcd/cliente/latencia.py` (API HTTP/JSON, conexão persistente), `zookeeper/cliente/latencia.py` (kazoo) e `scripts/latencia.sh`. Resultados do teste da ferramenta (não são experimento):
+  - etcd: put em seguidor 3,77 ± 0,47 ms; get linearizável 1,67 ± 0,25 ms; get serializável 0,86 ± 0,10 ms (n = 10 cada);
+  - ZK: set 7,15 ± 1,12 ms; get local 1,44 ± 0,22 ms; sync + get 2,73 ± 0,28 ms (n = 10);
+  - o mesmo put via `docker exec` levou 407,2 ± 35,7 ms (n = 5).
+  - Evidência: `docs/ambiente/evidencias/2026-10-25_1035_teste_ferramenta_latencia.txt`. Os CSVs de teste foram apagados de `resultados/`, para não serem contados como medição.
+- Rascunho da divisão de papéis em `docs/equipe.md`, por eixo: David com replicação e consistência (E1–E4 e E9-E3/E4); Samuel com falhas e coordenação (E5–E8 e E9-E5..E8). Falta o Samuel concordar.
+
+**Onde paramos / retomar daqui**
+1. A dupla escreve a previsão do E1 no README (o Claude orientou com a teoria) e faz commit. Depois o Claude cria o `executar.sh`, roda o E1 e faz o diagrama de topologia.
+2. O Samuel aceita o convite, roda `validar.sh todos` e confirma ou ajusta `docs/equipe.md`.
+3. Enviar as dúvidas ao professor.
+4. O A1 continua esperando formalização no E4.
+
 ## 2026-10-24 (sábado), sessão 2: repositório remoto (David + Claude Code)
 - Repositório privado criado por David: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper. Visibilidade privada confirmada (a API anônima responde 404).
 - Remoto `origin` ligado e push da `main` (commit inicial `7ff3319`).

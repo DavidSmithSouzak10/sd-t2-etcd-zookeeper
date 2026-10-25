@@ -3,6 +3,7 @@
 # Uso: scripts/medir.sh <nome> <repeticoes> -- <comando...>
 #   ex.: scripts/medir.sh e3_put_etcd2 10 -- docker exec etcd2 etcdctl --endpoints=172.31.0.32:2379 put /k v
 # CSV: rep,inicio_iso,duracao_ms,exit   (o tempo inclui o overhead do docker exec: registre isso na análise)
+# Para latência de put/get use scripts/latencia.sh, que mede dentro do contêiner cliente (achado A3).
 # Tempos de evento (eleição, recuperação) são medidos pelos executar.sh de cada experimento,
 # que gravam no mesmo formato e também passam por scripts/estatistica.py.
 source "$(dirname "$0")/lib.sh"

@@ -1,0 +1,56 @@
+# data: 2026-10-25T10:35:07.116
+# comando: bash -c 
+echo "## etcd put (etcd2 = seguidor?) e get lin/ser"; docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 endpoint status -w table
+scripts/latencia.sh etcd teste_put 10 -- --op put --endpoint 172.31.0.32:2379
+scripts/latencia.sh etcd teste_get_lin 10 -- --op get --endpoint 172.31.0.33:2379
+scripts/latencia.sh etcd teste_get_ser 10 -- --op get --endpoint 172.31.0.33:2379 --serializavel
+echo "## zk"; docker exec zk-cliente python /app/srvr.py
+scripts/latencia.sh zk teste_zk_set 10 -- --op set --servidor 172.33.0.53:2181
+scripts/latencia.sh zk teste_zk_get 10 -- --op get --servidor 172.33.0.53:2181
+scripts/latencia.sh zk teste_zk_sync_get 10 -- --op get --servidor 172.33.0.53:2181 --sync
+echo "## comparacao: mesmo put via docker exec (overhead A3)"
+scripts/medir.sh teste_put_exec 5 -- docker exec etcd2 etcdctl --endpoints=172.31.0.32:2379 put /lat/chave x
+
+# ---
+## etcd put (etcd2 = seguidor?) e get lin/ser
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   20 kB |      true |      false |         3 |       3636 |               3636 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   20 kB |     false |      false |         3 |       3636 |               3636 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   20 kB |     false |      false |         3 |       3636 |               3636 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.32:2379 x10 -> resultados/2026-10-25_1035_teste_put.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_put | 10 | 3.77 | 0.47 | 3.30 | 4.87 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.33:2379 x10 -> resultados/2026-10-25_1035_teste_get_lin.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_get_lin | 10 | 1.67 | 0.25 | 1.32 | 2.20 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.33:2379 --serializavel x10 -> resultados/2026-10-25_1035_teste_get_ser.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_get_ser | 10 | 0.86 | 0.10 | 0.72 | 1.07 | 0 |
+## zk
+172.33.0.51 modo=follower zxid=0x300000006 epoca=3 contador=6
+172.33.0.52 modo=follower zxid=0x300000006 epoca=3 contador=6
+172.33.0.53 modo=leader zxid=0x300000006 epoca=3 contador=6
+[36m[info][0m medindo em zk-cliente: latencia.py --op set --servidor 172.33.0.53:2181 x10 -> resultados/2026-10-25_1035_teste_zk_set.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_zk_set | 10 | 7.15 | 1.12 | 5.53 | 9.60 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.53:2181 x10 -> resultados/2026-10-25_1035_teste_zk_get.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_zk_get | 10 | 1.44 | 0.22 | 1.18 | 1.92 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.53:2181 --sync x10 -> resultados/2026-10-25_1035_teste_zk_sync_get.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_zk_sync_get | 10 | 2.73 | 0.28 | 2.37 | 3.26 | 0 |
+## comparacao: mesmo put via docker exec (overhead A3)
+[36m[info][0m medindo 'docker exec etcd2 etcdctl --endpoints=172.31.0.32:2379 put /lat/chave x' x5 -> resultados/2026-10-25_1035_teste_put_exec.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1035_teste_put_exec | 5 | 407.20 | 35.74 | 360.00 | 450.00 | 0 |
+# exit=0

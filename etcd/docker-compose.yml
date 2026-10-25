@@ -75,6 +75,17 @@ services:
       interna: {ipv4_address: 172.30.0.33}
       clientes: {ipv4_address: 172.31.0.33}
 
+  # cliente de medição: mede a latência dentro da rede de clientes, sem o overhead do docker exec (achado A3)
+  # usa só a biblioteca padrão do Python e fala com a API HTTP/JSON (gRPC-gateway) do etcd
+  etcd-cliente:
+    image: python:3.12-alpine
+    container_name: etcd-cliente
+    mem_limit: 128m
+    command: sleep infinity
+    volumes: ["./cliente:/app:ro"]
+    networks:
+      clientes: {ipv4_address: 172.31.0.100}
+
 networks:
   interna:
     ipam: {config: [{subnet: 172.30.0.0/24}]}

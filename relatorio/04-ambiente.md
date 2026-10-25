@@ -25,7 +25,14 @@ sem perder o acesso do cliente a ele.
 | zk1 | 172.32.0.51 | 172.33.0.51 | 2888 quorum, 3888 eleição / 2181 | 256 MB (heap 128 MB) |
 | zk2 | 172.32.0.52 | 172.33.0.52 | 2888, 3888 / 2181 | 256 MB |
 | zk3 | 172.32.0.53 | 172.33.0.53 | 2888, 3888 / 2181 | 256 MB |
+| etcd-cliente | — | 172.31.0.100 | — | 128 MB |
 | zk-cliente | — | 172.33.0.100 | — | 128 MB |
+
+**Método de medição de latência.** Os tempos de `put`/`get` (etcd) e `set`/`get` (ZooKeeper) são medidos por um cliente Python dentro da rede de clientes (`etcd-cliente` e `zk-cliente`), com `time.perf_counter`, uma conexão persistente com **um único** membro e a 1ª operação descartada como aquecimento.
+- No etcd, o cliente usa a API HTTP/JSON (gRPC-gateway).
+- No ZooKeeper, usa o kazoo 2.10.0.
+
+Cronometrar no host com `docker exec etcdctl` foi descartado. Cada chamada cria um processo e uma conexão nova, e o overhead medido (cerca de 400 ms) é aproximadamente 100 vezes maior que a própria operação (achado A3, `docs/ambiente/evidencias/2026-10-25_1035_teste_ferramenta_latencia.txt`).
 
 Diagrama: _pendente_ (`diagramas/topologia.*`).
 

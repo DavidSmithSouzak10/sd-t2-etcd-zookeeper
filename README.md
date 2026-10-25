@@ -30,6 +30,7 @@ Tudo roda em contêineres (Docker Compose), sem nenhuma VM. Cada serviço declar
 | zk1 | 172.32.0.51 | 172.33.0.51 | 2888 quorum, 3888 eleição / 2181 clientes | 256 MB (heap 128 MB) |
 | zk2 | 172.32.0.52 | 172.33.0.52 | 2888, 3888 / 2181 | 256 MB |
 | zk3 | 172.32.0.53 | 172.33.0.53 | 2888, 3888 / 2181 | 256 MB |
+| etcd-cliente | — | 172.31.0.100 | — | 128 MB (Python, só biblioteca padrão: medição de latência) |
 | zk-cliente | — | 172.33.0.100 | — | 128 MB (Python + kazoo) |
 
 Os dois laboratórios usam sub-redes diferentes e por isso podem rodar ao mesmo tempo.
@@ -72,6 +73,17 @@ scripts/particionar.sh isolar etcd1      # tira o nó da rede interna, mas ele c
 scripts/particionar.sh religar etcd1     # religa com o mesmo IP
 scripts/medir.sh <nome> <n> -- <comando> # mede n repetições e grava CSV + tabela em resultados/
 ```
+
+**Medir latência de operações (put/get).** Use `scripts/latencia.sh`, não o `medir.sh`. O `medir.sh` cronometra no host, e cada `docker exec` soma cerca de 250 a 400 ms de overhead. O `latencia.sh` roda o laço dentro do contêiner cliente (`etcd-cliente` ou `zk-cliente`), na rede de clientes, com uma conexão persistente.
+
+```bash
+scripts/latencia.sh etcd e3_put_etcd2 20 -- --op put --endpoint 172.31.0.32:2379
+scripts/latencia.sh etcd e4_get_ser 20 -- --op get --endpoint 172.31.0.33:2379 --serializavel   # sem a flag: linearizável
+scripts/latencia.sh zk e9_set_zk2 20 -- --op set --servidor 172.33.0.52:2181
+scripts/latencia.sh zk e9_get_sync 20 -- --op get --servidor 172.33.0.52:2181 --sync               # sync + get
+```
+
+O `medir.sh` continua sendo a ferramenta para comandos que não são operações de cliente, por exemplo `etcdctl check perf`. Tempos de evento, como eleição e recuperação, são medidos pelo `executar.sh` de cada experimento.
 
 > **Git Bash no Windows:** `scripts/lib.sh` já exporta `MSYS_NO_PATHCONV=1`. Quando você digitar comandos `docker exec` soltos que usam chaves como `/config/x`, rode `export MSYS_NO_PATHCONV=1` antes. Sem isso, o Git Bash troca `/config/x` por `C:/Program Files/Git/config/x`.
 
