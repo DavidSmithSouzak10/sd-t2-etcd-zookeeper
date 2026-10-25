@@ -1,0 +1,11 @@
+# data: 2026-10-25T13:11:21.466
+# comando: bash /c/Documentos/Faculdade/8-semestre/Sistemas_Distribuidos/scripts/validar.sh etcd
+# ---
+[36m[info][0m etcd: verificando etcd1 etcd2 etcd3
+[32m[ ok ][0m etcd1 saudável  líder=false termo=3 raft_index=9598
+[32m[ ok ][0m etcd2 saudável  líder=false termo=3 raft_index=9600
+[32m[ ok ][0m etcd3 saudável  líder=true termo=3 raft_index=9601
+[32m[ ok ][0m RAFT INDEX igual nos 3 membros (9601)
+[32m[ ok ][0m escrita de teste aceita
+[32m[ ok ][0m VALIDAÇÃO OK (etcd)
+# exit=0

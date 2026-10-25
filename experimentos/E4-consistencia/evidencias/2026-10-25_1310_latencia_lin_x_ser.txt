@@ -1,0 +1,9 @@
+[36m[info][0m líder=etcd3 seguidor=etcd1
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.31:2379 --chave /e4/lat x20 -> resultados/2026-10-25_1310_e4_get_lin_etcd1.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1310_e4_get_lin_etcd1 | 20 | 1.82 | 0.30 | 1.25 | 2.69 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.31:2379 --chave /e4/lat --serializavel x20 -> resultados/2026-10-25_1310_e4_get_ser_etcd1.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1310_e4_get_ser_etcd1 | 20 | 0.65 | 0.15 | 0.42 | 0.93 | 0 |

@@ -1,0 +1,37 @@
+# data: 2026-10-25T13:10:47.994
+# comando: isolamento
+# ---
+2026-10-25T13:10:48.060 valor inicial gravado: OK
+2026-10-25T13:10:49.436 etcd1 lê (serializável) antes do isolamento: ANTIGO
+[32m[ ok ][0m 2026-10-25T13:10:50.637 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+2026-10-25T13:10:51.696 escrita do lado majoritário (etcd3): OK
+2026-10-25T13:10:55.211 [1] etcd1 get LINEARIZÁVEL -> Error: context deadline exceeded
+2026-10-25T13:10:55.472 [1] etcd1 get SERIALIZÁVEL -> ANTIGO
+2026-10-25T13:10:55.493 [1] etcd3 (maioria) get linearizável -> NOVO
+2026-10-25T13:10:59.009 [2] etcd1 get LINEARIZÁVEL -> Error: context deadline exceeded
+2026-10-25T13:10:59.247 [2] etcd1 get SERIALIZÁVEL -> ANTIGO
+2026-10-25T13:10:59.266 [2] etcd3 (maioria) get linearizável -> NOVO
+2026-10-25T13:11:02.766 [3] etcd1 get LINEARIZÁVEL -> Error: context deadline exceeded
+2026-10-25T13:11:02.997 [3] etcd1 get SERIALIZÁVEL -> ANTIGO
+2026-10-25T13:11:03.016 [3] etcd3 (maioria) get linearizável -> NOVO
+2026-10-25T13:11:06.482 [4] etcd1 get LINEARIZÁVEL -> Error: context deadline exceeded
+2026-10-25T13:11:06.724 [4] etcd1 get SERIALIZÁVEL -> ANTIGO
+2026-10-25T13:11:06.744 [4] etcd3 (maioria) get linearizável -> NOVO
+2026-10-25T13:11:10.198 [5] etcd1 get LINEARIZÁVEL -> Error: context deadline exceeded
+2026-10-25T13:11:10.443 [5] etcd1 get SERIALIZÁVEL -> ANTIGO
+2026-10-25T13:11:10.464 [5] etcd3 (maioria) get linearizável -> NOVO
+--- status durante o isolamento (endpoint único de cada membro)
+etcd1: 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 22 MB, false, false, 3, 9582, 9582, etcdserver: no leader
+etcd2: 127.0.0.1:2379, 729febf16625624c, 3.5.17, 22 MB, false, false, 3, 9592, 9592, 
+etcd3: 127.0.0.1:2379, a740cd75718ef0d5, 3.5.17, 22 MB, true, false, 3, 9592, 9592, 
+[32m[ ok ][0m 2026-10-25T13:11:12.004 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+2026-10-25T13:11:19.057 etcd1 depois de religar (serializável): NOVO  (em 7051 ms)
+--- status depois de religar
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   22 MB |     false |      false |         3 |       9597 |               9597 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   22 MB |     false |      false |         3 |       9597 |               9597 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   22 MB |      true |      false |         3 |       9597 |               9597 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0
