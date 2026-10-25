@@ -1,0 +1,9 @@
+[36m[info][0m líder agora: etcd3; seguidor: etcd1
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.31:2379 --chave /e2/lat x20 -> resultados/2026-10-25_1305_e2_put_seguidor_etcd1.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1305_e2_put_seguidor_etcd1 | 20 | 8.25 | 2.83 | 6.12 | 17.89 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.33:2379 --chave /e2/lat x20 -> resultados/2026-10-25_1306_e2_put_lider_etcd3.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1306_e2_put_lider_etcd3 | 20 | 6.91 | 2.36 | 5.53 | 15.68 | 0 |

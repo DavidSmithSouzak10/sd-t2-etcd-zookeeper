@@ -1,0 +1,12 @@
+# data: 2026-10-25T13:05:43.001
+# comando: docker exec -i etcd-cliente python - 172.31.0.31
+# ---
+put de 102400 bytes enviado ao endpoint 172.31.0.31; resposta: {'cluster_id': '6775757553465404157', 'member_id': '17854010693036946057', 'revision': '64', 'raft_term': '2'}
+bytes enviados entre pares durante o put (inclui heartbeats de ~1 s):
+  etcd1 -> etcd2:     103273 bytes
+  etcd1 -> etcd3:         60 bytes
+  etcd2 -> etcd1:     103268 bytes
+  etcd2 -> etcd3:     103268 bytes
+  etcd3 -> etcd1:         60 bytes
+  etcd3 -> etcd2:        779 bytes
+# exit=0

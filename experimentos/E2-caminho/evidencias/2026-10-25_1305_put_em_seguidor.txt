@@ -1,0 +1,36 @@
+# data: 2026-10-25T13:05:32.929
+# comando: bash -c 
+  echo "lider=etcd2 seguidor=etcd1"
+  echo '--- antes (endpoint status dos 3 numa só chamada)'
+  docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 endpoint status -w table
+  echo '--- put no seguidor etcd1 (172.31.0.31), -w json'
+  docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379 put /e2/chave valor1 -w json
+  echo
+  echo '--- depois'
+  docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 endpoint status -w table
+  echo '--- get no outro seguidor etcd3 (-w json: revisão de criação/modificação)'
+  docker exec etcd1 etcdctl --endpoints=172.31.0.33:2379 get /e2/chave -w json
+# ---
+lider=etcd2 seguidor=etcd1
+--- antes (endpoint status dos 3 numa só chamada)
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |  250 kB |     false |      false |         2 |        247 |                247 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |  250 kB |      true |      false |         2 |        247 |                247 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |  250 kB |     false |      false |         2 |        247 |                247 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+--- put no seguidor etcd1 (172.31.0.31), -w json
+{"header":{"cluster_id":6775757553465404157,"member_id":17854010693036946057,"revision":58,"raft_term":2}}
+
+--- depois
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |  250 kB |     false |      false |         2 |        248 |                248 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |  250 kB |      true |      false |         2 |        248 |                248 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |  250 kB |     false |      false |         2 |        248 |                248 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+--- get no outro seguidor etcd3 (-w json: revisão de criação/modificação)
+{"header":{"cluster_id":6775757553465404157,"member_id":12051858507143508181,"revision":58,"raft_term":2},"kvs":[{"key":"L2UyL2NoYXZl","create_revision":4,"mod_revision":58,"version":7,"value":"dmFsb3Ix"}],"count":1}
+# exit=0

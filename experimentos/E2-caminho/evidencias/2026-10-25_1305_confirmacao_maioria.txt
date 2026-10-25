@@ -1,0 +1,24 @@
+# data: 2026-10-25T13:05:44.754
+# comando: bash -c 
+  echo '--- pausando 1 seguidor (etcd3): restam líder etcd2 + seguidor etcd1 (2 de 3)'
+  docker pause etcd3 >/dev/null
+  docker exec etcd2 etcdctl --endpoints=127.0.0.1:2379 --command-timeout=5s put /e2/maioria com_2_de_3; echo "exit=$?"
+  echo '--- pausando também etcd1: só o líder etcd2 (1 de 3)'
+  docker pause etcd1 >/dev/null
+  docker exec etcd2 etcdctl --endpoints=127.0.0.1:2379 --command-timeout=5s put /e2/maioria so_o_lider; echo "exit=$?"
+  docker unpause etcd1 etcd3 >/dev/null
+  sleep 3
+  echo '--- depois de despausar: valor final da chave'
+  docker exec etcd2 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 get /e2/maioria
+# ---
+--- pausando 1 seguidor (etcd3): restam líder etcd2 + seguidor etcd1 (2 de 3)
+OK
+exit=0
+--- pausando também etcd1: só o líder etcd2 (1 de 3)
+{"level":"warn","ts":"2026-10-25T16:05:52.228512Z","logger":"etcd-client","caller":"v3@v3.5.17/retry_interceptor.go:63","msg":"retrying of unary invoker failed","target":"etcd-endpoints://0xc00001e000/127.0.0.1:2379","attempt":0,"error":"rpc error: code = Unavailable desc = etcdserver: request timed out"}
+Error: etcdserver: request timed out
+exit=1
+--- depois de despausar: valor final da chave
+/e2/maioria
+so_o_lider
+# exit=0

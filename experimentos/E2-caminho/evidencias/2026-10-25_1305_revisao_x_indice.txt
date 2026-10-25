@@ -1,0 +1,9 @@
+# data: 2026-10-25T13:05:34.462
+# comando: revisao_x_indice
+# ---
+put 1: revisao 58 -> 59 | raft_index 249 -> 250 | termo 2 -> 2 | resposta: revision 59 raft_term 2
+put 2: revisao 59 -> 60 | raft_index 250 -> 253 | termo 2 -> 2 | resposta: revision 60 raft_term 2
+put 3: revisao 60 -> 61 | raft_index 253 -> 254 | termo 2 -> 2 | resposta: revision 61 raft_term 2
+put 4: revisao 61 -> 62 | raft_index 255 -> 256 | termo 2 -> 2 | resposta: revision 62 raft_term 2
+put 5: revisao 62 -> 63 | raft_index 256 -> 257 | termo 2 -> 2 | resposta: revision 63 raft_term 2
+# exit=0

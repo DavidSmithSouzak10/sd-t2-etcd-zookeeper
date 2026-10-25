@@ -1,0 +1,60 @@
+# data: 2026-10-25T13:06:25.295
+# comando: bash -c docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 endpoint status -w table; for m in etcd1 etcd2 etcd3; do echo "=== $m"; docker logs --since 2026-10-25T16:05:40Z --until 2026-10-25T16:06:10Z $m 2>&1 | grep -E "became|elected|lost leader|step|term|campaign|leader changed|lead" | sed -E "s/.*\"ts\":\"([^\"]+)\".*\"msg\":\"([^\"]+)\".*/\1 \2/" | head -20; done
+# ---
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |  463 kB |     false |      false |         3 |        330 |                330 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |  463 kB |     false |      false |         3 |        330 |                330 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |  463 kB |      true |      false |         3 |        330 |                330 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+=== etcd1
+2026-10-25T16:05:52.646677Z f7c63021767e3289 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 10)
+2026-10-25T16:05:52.646794Z f7c63021767e3289 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 10)
+2026-10-25T16:05:52.996109Z f7c63021767e3289 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 7)
+2026-10-25T16:05:53.973132Z f7c63021767e3289 [logterm: 2, index: 263, vote: 729febf16625624c] cast MsgPreVote for a740cd75718ef0d5 [logterm: 2, index: 263] at term 2
+2026-10-25T16:05:53.976116Z f7c63021767e3289 [term: 2] received a MsgVote message with higher term from a740cd75718ef0d5 [term: 3]
+2026-10-25T16:05:53.976234Z f7c63021767e3289 became follower at term 3
+2026-10-25T16:05:53.976259Z f7c63021767e3289 [logterm: 2, index: 263, vote: 0] cast MsgVote for a740cd75718ef0d5 [logterm: 2, index: 263] at term 3
+2026-10-25T16:05:53.976277Z raft.node: f7c63021767e3289 lost leader 729febf16625624c at term 3
+2026-10-25T16:05:53.979339Z raft.node: f7c63021767e3289 elected leader a740cd75718ef0d5 at term 3
+=== etcd2
+2026-10-25T16:05:48.196464Z 729febf16625624c stepped down to follower since quorum is not active
+2026-10-25T16:05:48.196672Z 729febf16625624c became follower at term 2
+2026-10-25T16:05:48.196694Z raft.node: 729febf16625624c lost leader 729febf16625624c at term 2
+2026-10-25T16:05:49.499557Z 729febf16625624c no leader at term 2; dropping index reading msg
+2026-10-25T16:05:49.797210Z 729febf16625624c is starting a new election at term 2
+2026-10-25T16:05:49.797344Z 729febf16625624c became pre-candidate at term 2
+2026-10-25T16:05:49.797443Z 729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 2
+2026-10-25T16:05:49.797485Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to a740cd75718ef0d5 at term 2
+2026-10-25T16:05:49.797500Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to f7c63021767e3289 at term 2
+2026-10-25T16:05:51.394743Z 729febf16625624c is starting a new election at term 2
+2026-10-25T16:05:51.394861Z 729febf16625624c became pre-candidate at term 2
+2026-10-25T16:05:51.394891Z 729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 2
+2026-10-25T16:05:51.395003Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to a740cd75718ef0d5 at term 2
+2026-10-25T16:05:51.395038Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to f7c63021767e3289 at term 2
+2026-10-25T16:05:51.497193Z trace[2127981192] range
+2026-10-25T16:05:52.994843Z 729febf16625624c is starting a new election at term 2
+2026-10-25T16:05:52.995181Z 729febf16625624c became pre-candidate at term 2
+2026-10-25T16:05:52.995224Z 729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 2
+2026-10-25T16:05:52.995254Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to a740cd75718ef0d5 at term 2
+2026-10-25T16:05:52.995279Z 729febf16625624c [logterm: 2, index: 263] sent MsgPreVote request to f7c63021767e3289 at term 2
+=== etcd3
+2026-10-25T16:05:52.650762Z a740cd75718ef0d5 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 10)
+2026-10-25T16:05:52.652346Z a740cd75718ef0d5 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 10)
+2026-10-25T16:05:52.996102Z a740cd75718ef0d5 [logterm: 2, index: 263, vote: 729febf16625624c] ignored MsgPreVote from 729febf16625624c [logterm: 2, index: 263] at term 2: lease is not expired (remaining ticks: 6)
+2026-10-25T16:05:53.972067Z a740cd75718ef0d5 is starting a new election at term 2
+2026-10-25T16:05:53.972177Z a740cd75718ef0d5 became pre-candidate at term 2
+2026-10-25T16:05:53.972210Z a740cd75718ef0d5 received MsgPreVoteResp from a740cd75718ef0d5 at term 2
+2026-10-25T16:05:53.972242Z a740cd75718ef0d5 [logterm: 2, index: 263] sent MsgPreVote request to 729febf16625624c at term 2
+2026-10-25T16:05:53.972256Z a740cd75718ef0d5 [logterm: 2, index: 263] sent MsgPreVote request to f7c63021767e3289 at term 2
+2026-10-25T16:05:53.972271Z raft.node: a740cd75718ef0d5 lost leader 729febf16625624c at term 2
+2026-10-25T16:05:53.973266Z a740cd75718ef0d5 received MsgPreVoteResp from 729febf16625624c at term 2
+2026-10-25T16:05:53.973398Z a740cd75718ef0d5 became candidate at term 3
+2026-10-25T16:05:53.973409Z a740cd75718ef0d5 received MsgVoteResp from a740cd75718ef0d5 at term 3
+2026-10-25T16:05:53.973425Z a740cd75718ef0d5 [logterm: 2, index: 263] sent MsgVote request to 729febf16625624c at term 3
+2026-10-25T16:05:53.973458Z a740cd75718ef0d5 [logterm: 2, index: 263] sent MsgVote request to f7c63021767e3289 at term 3
+2026-10-25T16:05:53.978807Z a740cd75718ef0d5 received MsgVoteResp from 729febf16625624c at term 3
+2026-10-25T16:05:53.978925Z a740cd75718ef0d5 became leader at term 3
+2026-10-25T16:05:53.978942Z raft.node: a740cd75718ef0d5 elected leader a740cd75718ef0d5 at term 3
+# exit=0
