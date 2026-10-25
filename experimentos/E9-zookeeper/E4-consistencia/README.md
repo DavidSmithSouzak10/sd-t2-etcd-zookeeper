@@ -7,6 +7,11 @@ Repetir o E4 da bateria comum no ensemble ZooKeeper. Comparar com E4 do etcd (se
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Uma leitura local num seguidor pode devolver valor antigo? Em que situação?
+> 2. O `sync` antes da leitura resolve? Quanto custa a mais?
+> 3. Um servidor isolado do ensemble ainda responde leituras? E escritas? (`readonlymode` está desligado)
 
 _pendente_
 

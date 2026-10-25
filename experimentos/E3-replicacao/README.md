@@ -7,6 +7,12 @@ Escrever em um nó e ler em outro; medir latência/propagação.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Escrevendo em etcd1, um `get` em etcd3 logo em seguida já vê o valor? Por quê?
+> 2. Um `watch` em etcd2 recebe a notificação em quanto tempo (ordem de grandeza)?
+> 3. Qual é mais lento, `put` ou `get` linearizável? Por quê?
+> 4. O `etcdctl check perf --load=s` vai passar nesta máquina (Docker no Windows)?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

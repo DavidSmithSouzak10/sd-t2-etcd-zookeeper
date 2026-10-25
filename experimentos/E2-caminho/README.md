@@ -7,6 +7,12 @@ Percurso de uma escrita e de uma leitura: quem recebe, quem decide, quem replica
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Um `put` enviado a um **seguidor** é atendido por ele ou encaminhado? A quem?
+> 2. Quantas confirmações o líder precisa antes de responder ao cliente com 3 membros?
+> 3. Depois de 1 `put`, quanto sobem a `revision` (MVCC) e o RAFT INDEX? São a mesma coisa?
+> 4. O `raft_term` da resposta muda com uma escrita?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

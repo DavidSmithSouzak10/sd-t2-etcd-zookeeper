@@ -15,9 +15,9 @@
 | Sistema principal (E1–E8) | **etcd v3.5.17** (Raft) — `quay.io/coreos/etcd:v3.5.17` |
 | Ênfase (E9) | **D — ZooKeeper (ZAB)**: executar E3 a E8 em ensemble ZooKeeper de 3 nós e comparar com o etcd |
 | Sistema da ênfase | **Apache ZooKeeper 3.9** — imagem oficial `zookeeper:3.9.6` |
-| Equipe | **dupla: David e Samuel** (papéis em `docs/equipe.md`) |
-| Entrega 1 (relatório) | via AVA até **28/11/2026** |
-| Etapa 2 (seminário) | em aula, **28/11/2026** |
+| Equipe | **dupla: David Smith e Samuel Cesário Pereira Trizotto de Andrade** (papéis em `docs/equipe.md`) |
+| Entrega 1 (relatório) | via AVA até **28/10/2026 (quarta)**: prazo informado pela dupla em 25/10; o PDF diz 28/11 |
+| Etapa 2 (seminário) | em aula, **28/10/2026 (quarta)** |
 
 **Leitura correta da Ênfase D:** a bateria comum E1–E8 é feita no **etcd**. O E9 consiste em **repetir E3–E8 no ZooKeeper** (com znodes efêmeros e sequenciais para trava e eleição) e **comparar ZAB × Raft**: épocas × termos, leitura local × linearizável, `sync`.
 
@@ -237,4 +237,4 @@ scripts/particionar.sh religar etcd1     # = docker network connect --ip 172.30.
 - As seções 12–15 e o Anexo A do PDF estão quebradas (“Erro! Indicador não definido”): pedir **cronograma, checklist de autoavaliação e quadro de equipes**.
 - Conflito no seminário: R9 e a “Dica” falam em **vídeos já produzidos**, mas a seção 11 exige **demonstração ao vivo de no mínimo 8 min** dentro de 10 min (e o roteiro de slides reserva só 4 min de demo). Confirmar o formato esperado.
 - Confirmar que a Ênfase D = etcd em E1–E8 + ZooKeeper em E3–E8 como E9 (leitura adotada aqui).
-- Capa do PDF diz entrega do relatório "até 28/11" e seminário "em 28/11" no mesmo dia — confirmar horário limite do AVA.
+- Prazo: o PDF diz 28/11, mas a dupla informou em 25/10 que **relatório e seminário são em 28/10/2026**. Vale 28/10; confirmar o horário limite do AVA.

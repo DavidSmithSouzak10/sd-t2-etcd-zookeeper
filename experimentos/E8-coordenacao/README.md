@@ -7,6 +7,12 @@ Mostrar quem coordena e o mecanismo de versionamento/ordenação.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Com o cliente A segurando `etcdctl lock`, o cliente B fica bloqueado até quando?
+> 2. Se o processo de A morrer, quanto tempo até B pegar a trava? (TTL do lease padrão: 10 s)
+> 3. A revisão MVCC é crescente para **todas** as chaves (ordem total)? Isso lembra que relógio lógico?
+> 4. Que diferença esperam entre o `elect` do etcd e o algoritmo do Valentão (Bully)?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

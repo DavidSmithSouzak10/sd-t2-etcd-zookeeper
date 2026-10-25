@@ -54,6 +54,8 @@ Ambiente reprodutível (R1) · pesquisa com artigo e diagrama próprio (R2) · E
 
 ## 7. Plano até 28/11 (sugestão)
 
+> ⚠️ **Substituído em 25/10:** o prazo real é **28/10/2026** (relatório e seminário). O plano vigente está em `PLANO-28-10.md`.
+
 | Semana | Período | Meta |
 |---|---|---|
 | 1 | 26/10–01/11 | Samuel valida o ambiente (R1); papéis acordados; dúvidas enviadas ao professor; **E1–E4** (D) e **E5** (S); leitura do artigo do Raft |

@@ -7,6 +7,12 @@ Religar o nó e observar como ele se atualiza; medir o tempo até o cluster fica
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Religado, o antigo líder volta como líder ou seguidor? Por quê (termo)?
+> 2. Quanto tempo até o RAFT INDEX dele alcançar o dos outros?
+> 3. Com `--snapshot-count` baixo e muitas escritas enquanto ele estava fora, ele recupera pelo log ou por snapshot? Que mensagem esperam no log?
+> 4. O estado final (chaves e revisão) fica idêntico nos 3?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

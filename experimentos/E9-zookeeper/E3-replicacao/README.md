@@ -7,6 +7,11 @@ Repetir o E3 da bateria comum no ensemble ZooKeeper. Comparar com E3 do etcd (wa
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. `set` em zk1 e `get` em zk3 logo depois: o valor novo aparece sempre? Por quê?
+> 2. Um watch (`get -w`) dispara uma vez ou a cada mudança?
+> 3. A latência de escrita do ZK será maior ou menor que a do etcd? (E0 deu uma pista: e a margem de erro?)
 
 _pendente_
 

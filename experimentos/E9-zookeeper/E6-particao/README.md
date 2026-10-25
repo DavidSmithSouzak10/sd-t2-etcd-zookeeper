@@ -7,6 +7,11 @@ Repetir o E6 da bateria comum no ensemble ZooKeeper. Conclusão C × A comparada
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. O líder isolado entra em que estado (`srvr`: LOOKING?)
+> 2. O que um cliente conectado a ele recebe (erro, valor antigo, reconexão)?
+> 3. O lado majoritário elege novo líder? Em quanto tempo?
 
 _pendente_
 

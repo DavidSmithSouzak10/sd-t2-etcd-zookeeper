@@ -7,6 +7,11 @@ Repetir o E5 da bateria comum no ensemble ZooKeeper. Comparar época ZAB × term
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Parando o líder, a eleição (FLE) será mais rápida ou mais lenta que a do etcd?
+> 2. O que muda no zxid: a época (32 bits altos) sobe? O contador reinicia?
+> 3. Sem maioria: o servidor restante atende leituras? Escritas?
 
 _pendente_
 

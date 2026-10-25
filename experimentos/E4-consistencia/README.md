@@ -7,6 +7,12 @@ Evidenciar o modelo de consistência: leitura atualizada garantida ou janela de 
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Qual leitura será mais rápida: linearizável ou serializável? Por quanto, aproximadamente?
+> 2. Com um seguidor isolado da rede interna, um `get` **linearizável** nele responde, trava ou falha?
+> 3. E um `get` **serializável** nele: responde valor novo, valor antigo ou falha?
+> 4. O RAFT INDEX sobe com leituras linearizáveis? (achado A1: o que vocês acham?)
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

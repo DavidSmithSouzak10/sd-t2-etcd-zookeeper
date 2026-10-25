@@ -7,6 +7,11 @@ Repetir o E8 da bateria comum no ensemble ZooKeeper. Comparar com `etcdctl lock/
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Na trava com znodes efêmeros sequenciais, quem pega a trava depois? Por que só o próximo da fila é avisado?
+> 2. Se o cliente dono morrer, quanto tempo até a trava liberar? (session timeout × lease TTL do etcd)
+> 3. Época ZAB × termo Raft: qual a semelhança e a diferença?
 
 _pendente_
 

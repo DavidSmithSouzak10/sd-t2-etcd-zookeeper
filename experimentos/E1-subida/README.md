@@ -7,6 +7,13 @@ Cluster com 3 membros no ar; papéis de cada nó identificados.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Quantos membros aparecem no `member list`? Algum é *learner*?
+> 2. Quantos líderes? Por que o Raft garante isso (um voto por termo + maioria)?
+> 3. Termo e RAFT INDEX serão iguais nos 3? Em que termo o cluster recém-criado deve estar?
+> 4. Dá para prever qual membro será o líder? (timeout aleatório)
+> 5. O RAFT INDEX fica parado em repouso? (healthcheck a cada 5 s)
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_

@@ -7,6 +7,10 @@ Repetir o E7 da bateria comum no ensemble ZooKeeper. Comparar com catch-up por l
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Religado, o servidor sincroniza por DIFF, SNAP ou TRUNC? Do que isso depende?
+> 2. Quanto tempo até o zxid dele igualar o dos outros?
 
 _pendente_
 

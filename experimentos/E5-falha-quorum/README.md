@@ -7,6 +7,12 @@ Derrubar 1 nó (minoria) e depois 2 (maioria); observar o que continua funcionan
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
 > Data/hora do registro: _preencher_
+>
+> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
+> 1. Parando o líder, quanto tempo até haver novo líder? (heartbeat padrão 100 ms, election timeout 1000 ms)
+> 2. O termo sobe quanto? Sempre exatamente +1?
+> 3. Com 2 membros parados (sem maioria): `put` funciona? `get` linearizável? `get` serializável?
+> 4. O membro restante ainda se considera líder ou seguidor?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
 _pendente_
