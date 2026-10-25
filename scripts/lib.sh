@@ -56,3 +56,15 @@ evidencia() {
   info "evidência salva em ${arq#$RAIZ/}"
   return "$rc"
 }
+
+# nome do líder atual do etcd (etcd1/etcd2/etcd3), consultando os 3 numa só chamada
+etcd_lider() {
+  docker exec etcd1 etcdctl --endpoints="$EP" --command-timeout=3s endpoint status -w simple 2>/dev/null \
+    | awk -F', ' '$5=="true"{print $1}' | sed 's/172.31.0.31:2379/etcd1/;s/172.31.0.32:2379/etcd2/;s/172.31.0.33:2379/etcd3/'
+}
+# RAFT INDEX e revisão de um membro: "indice revisao termo"
+etcd_indice_revisao() {
+  local ip="${ETCD_IP_CLIENTE[$1]}"
+  docker exec etcd1 etcdctl --endpoints="$ip:2379" endpoint status -w json 2>/dev/null \
+    | "$PY" -c "import json,sys; s=json.load(sys.stdin)[0]['Status']; print(s['raftIndex'], s['header']['revision'], s['raftTerm'])"
+}

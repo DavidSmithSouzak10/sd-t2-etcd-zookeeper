@@ -1,0 +1,36 @@
+%% Topologia dos dois laboratórios (diagrama próprio da dupla). Renderizar: diagramas/renderizar.sh
+flowchart LR
+  subgraph HOST["Host: Windows 11 + Docker Desktop (WSL 2, 8 GB)"]
+    direction LR
+    subgraph ETCD["Projeto t5-etcd — etcd v3.5.17 (Raft)"]
+      direction TB
+      EC["etcd-cliente<br/>172.31.0.100<br/>Python (latência)<br/>128 MB"]
+      subgraph EN_CLI["rede clientes 172.31.0.0/24 — porta 2379"]
+        direction LR
+        E1["etcd1<br/>cli 172.31.0.31<br/>int 172.30.0.31<br/>256 MB"]
+        E2["etcd2<br/>cli 172.31.0.32<br/>int 172.30.0.32<br/>256 MB"]
+        E3["etcd3<br/>cli 172.31.0.33<br/>int 172.30.0.33<br/>256 MB"]
+      end
+      EC -- "gRPC/HTTP :2379" --> E1 & E2 & E3
+      E1 <-. "rede interna 172.30.0.0/24<br/>Raft :2380" .-> E2
+      E2 <-. "Raft :2380" .-> E3
+      E1 <-. "Raft :2380" .-> E3
+    end
+    subgraph ZK["Projeto t5-zk — ZooKeeper 3.9.6 (ZAB)"]
+      direction TB
+      ZC["zk-cliente<br/>172.33.0.100<br/>Python + kazoo<br/>128 MB"]
+      subgraph ZN_CLI["rede clientes 172.33.0.0/24 — porta 2181"]
+        direction LR
+        Z1["zk1<br/>cli 172.33.0.51<br/>int 172.32.0.51<br/>256 MB"]
+        Z2["zk2<br/>cli 172.33.0.52<br/>int 172.32.0.52<br/>256 MB"]
+        Z3["zk3<br/>cli 172.33.0.53<br/>int 172.32.0.53<br/>256 MB"]
+      end
+      ZC -- "TCP :2181" --> Z1 & Z2 & Z3
+      Z1 <-. "rede interna 172.32.0.0/24<br/>quorum :2888 / eleição :3888" .-> Z2
+      Z2 <-. ":2888/:3888" .-> Z3
+      Z1 <-. ":2888/:3888" .-> Z3
+    end
+  end
+  classDef lider fill:#ffe9a8,stroke:#b8860b,stroke-width:2px;
+  classDef cliente fill:#e3f0ff,stroke:#3b6ea5;
+  class EC,ZC cliente;

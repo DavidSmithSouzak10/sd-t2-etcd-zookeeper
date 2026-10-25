@@ -1,0 +1,9 @@
+# data: 2026-10-25T13:00:51.587
+# comando: bash -c for m in etcd1 etcd2 etcd3 etcd-cliente; do
+  echo "$m: $(docker inspect -f "{{range \$k,\$v := .NetworkSettings.Networks}}{{\$k}}={{\$v.IPAddress}} {{end}}" $m)  mem_limit=$(docker inspect -f "{{.HostConfig.Memory}}" $m)"; done
+# ---
+etcd1: t5-etcd_clientes=172.31.0.31 t5-etcd_interna=172.30.0.31   mem_limit=268435456
+etcd2: t5-etcd_clientes=172.31.0.32 t5-etcd_interna=172.30.0.32   mem_limit=268435456
+etcd3: t5-etcd_clientes=172.31.0.33 t5-etcd_interna=172.30.0.33   mem_limit=268435456
+etcd-cliente: t5-etcd_clientes=172.31.0.100   mem_limit=134217728
+# exit=0

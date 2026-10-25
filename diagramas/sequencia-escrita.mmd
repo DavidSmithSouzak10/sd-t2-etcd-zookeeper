@@ -1,0 +1,21 @@
+%% E2: caminho de uma escrita no etcd (diagrama próprio da dupla). Renderizar: diagramas/renderizar.sh
+sequenceDiagram
+  autonumber
+  participant C as Cliente
+  participant S as Seguidor (endpoint único)
+  participant L as Líder
+  participant F as Outro seguidor
+  C->>S: Put(/k, v)  [gRPC :2379]
+  S->>L: encaminha a proposta  [rafthttp :2380]
+  L->>L: anexa ao log (índice i, termo t) + fsync
+  par replicação
+    L->>S: AppendEntries(i, t)
+    L->>F: AppendEntries(i, t)
+  end
+  S-->>L: ok (gravou i)
+  Note over L: maioria = 2 de 3 (líder + 1)<br/>→ entrada i comprometida (commit)
+  F-->>L: ok (pode chegar depois)
+  L->>L: aplica ao MVCC → revisão r+1
+  L-->>S: resultado (revision, raft_term)
+  S-->>C: PutResponse{header.revision, raft_term}
+  Note over L,F: próximo heartbeat/AppendEntries informa o commitIndex<br/>e os seguidores aplicam a entrada

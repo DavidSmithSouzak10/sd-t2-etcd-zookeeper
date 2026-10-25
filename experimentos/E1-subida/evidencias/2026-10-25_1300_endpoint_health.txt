@@ -1,0 +1,7 @@
+# data: 2026-10-25T13:00:51.161
+# comando: docker exec etcd1 etcdctl --endpoints=172.31.0.31:2379,172.31.0.32:2379,172.31.0.33:2379 endpoint health
+# ---
+172.31.0.31:2379 is healthy: successfully committed proposal: took = 3.271387ms
+172.31.0.32:2379 is healthy: successfully committed proposal: took = 4.204233ms
+172.31.0.33:2379 is healthy: successfully committed proposal: took = 3.465654ms
+# exit=0
