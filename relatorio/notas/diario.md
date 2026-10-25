@@ -11,8 +11,12 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-25 (domingo), sessão 5: prazo real e histórico do Git (David + Claude Code)
+- Prazo real informado pelo David: **relatório e seminário em 28/10/2026** (o PDF diz 28/11). Plano de emergência em `PLANO-28-10.md`; perguntas-guia inseridas na previsão de todos os experimentos.
+- Histórico do Git reescrito a pedido do David, para remover a linha `Co-Authored-By: Claude` dos 9 commits. O conteúdo e as datas não mudaram (`git diff` entre o histórico antigo e o novo: vazio); só os hashes mudaram. As referências foram atualizadas: a previsão do E0 agora é o commit `efcd7c5` (11:58), e o commit inicial é `57fe090`. O uso de IA continua declarado em `docs/uso-ia.md`.
+
 ## 2026-10-25 (domingo), sessão 4: ensaio E0 e guia do trabalho (David + Claude Code)
-- A pedido do David, o ciclo completo foi simulado num **E0 (ensaio fora da bateria)**, para não contaminar a previsão do E1. O tema foi o limite de tamanho de requisição e a latência em função do tamanho. A previsão foi escrita pelo assistente e registrada no commit `e260525` (11:58), antes da execução (11:59).
+- A pedido do David, o ciclo completo foi simulado num **E0 (ensaio fora da bateria)**, para não contaminar a previsão do E1. O tema foi o limite de tamanho de requisição e a latência em função do tamanho. A previsão foi escrita pelo assistente e registrada no commit `efcd7c5` (11:58), antes da execução (11:59).
 - Resultados: P1 e P2 (limites) confirmados; P3 parcialmente errada (1 KiB no etcd deu 10,7 ms, não os 4 previstos; o ZK não foi mais lento). Houve um valor atípico no ZK, 149 ms, mantido na tabela. Detalhes em `experimentos/E0-ensaio/README.md`; gerou o achado A5 (Q14).
 - Criado `docs/guia-do-trabalho.md`: visão geral, Raft × ZAB, ciclo do experimento e plano semanal até 28/11.
 - `relatorio/09-limitacoes.md` atualizado: overhead do docker exec mitigado; CSVs com timestamp em UTC.
@@ -35,7 +39,7 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ## 2026-10-24 (sábado), sessão 2: repositório remoto (David + Claude Code)
 - Repositório privado criado por David: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper. Visibilidade privada confirmada (a API anônima responde 404).
-- Remoto `origin` ligado e push da `main` (commit inicial `7ff3319`).
+- Remoto `origin` ligado e push da `main` (commit inicial `57fe090`).
 - GitHub CLI 2.103.2 instalado (winget); `gh auth login` ainda não feito, porque o push usou as credenciais do Git Credential Manager.
 - Samuel convidado como colaborador (por David, pelo site) e instruções de clone/teste enviadas a ele.
 

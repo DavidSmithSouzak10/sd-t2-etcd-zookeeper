@@ -40,7 +40,7 @@ Script reproduzível: [`executar.sh`](executar.sh), rodado a partir da raiz do r
 5. Roda `scripts/validar.sh todos` de novo: o cluster precisa continuar saudável.
 
 ## Evidências
-Executado em 25/10/2026 às 11:59, depois do commit da previsão (`e260525`, 11:58).
+Executado em 25/10/2026 às 11:59, depois do commit da previsão (`efcd7c5`, 11:58).
 
 | Arquivo | O que mostra |
 |---|---|
