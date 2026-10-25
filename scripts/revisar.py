@@ -80,7 +80,8 @@ def checar_experimentos():
 
 
 def checar_medicoes():
-    csvs = sorted((RAIZ / "resultados").glob("*.csv"))
+    # o E0 é ensaio fora da bateria avaliada: não conta como medição
+    csvs = sorted(c for c in (RAIZ / "resultados").glob("*.csv") if "_e0_" not in c.name)
     if not csvs:
         registrar("R7", "medições em resultados/", False, "nenhum CSV ainda")
         return
