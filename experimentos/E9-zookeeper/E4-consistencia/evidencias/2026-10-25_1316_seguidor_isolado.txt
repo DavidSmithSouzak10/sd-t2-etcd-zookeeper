@@ -1,0 +1,22 @@
+# data: 2026-10-25T13:16:25.847
+# comando: isolamento
+# ---
+16:16:26.872 [sessão do cliente no alvo] estado -> CONNECTED
+16:16:27.373 início: alvo=172.33.0.51:2181 maioria=172.33.0.53:2181; valor inicial ANTIGO
+16:16:27.398 alvo: get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+16:16:27.921 alvo: get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+16:16:28.452 alvo: get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+16:16:28.975 alvo: get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+16:16:29.497 alvo: get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+[32m[ ok ][0m 2026-10-25T13:16:30.189 zk1 desconectado de t5-zk_interna (segue na rede de clientes)
+16:16:33.517 [sessão do cliente no alvo] estado -> SUSPENDED
+--- srvr durante o isolamento
+172.33.0.51 modo=sem-servico zxid=- epoca=- contador=-
+172.33.0.52 modo=follower zxid=0x300000175 epoca=3 contador=373
+172.33.0.53 modo=leader zxid=0x300000175 epoca=3 contador=373
+[32m[ ok ][0m 2026-10-25T13:23:14.470 zk1 religado a t5-zk_interna com IP 172.32.0.51
+2026-10-25T13:23:16.384 zk1 de volta como seguidor (após ~1 s)
+172.33.0.51 modo=follower zxid=0x300000178 epoca=3 contador=376
+172.33.0.52 modo=follower zxid=0x300000178 epoca=3 contador=376
+172.33.0.53 modo=leader zxid=0x300000178 epoca=3 contador=376
+# exit=0

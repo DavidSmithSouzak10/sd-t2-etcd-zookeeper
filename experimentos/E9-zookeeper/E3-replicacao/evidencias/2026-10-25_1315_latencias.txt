@@ -1,0 +1,16 @@
+[36m[info][0m papéis: líder=zk3 seguidores=zk1 zk2
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1315_e9e3_atraso_watch_zk3 | 20 | 5.93 | 0.82 | 4.68 | 7.14 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op set --servidor 172.33.0.52:2181 --caminho /e9/lat x20 -> resultados/2026-10-25_1315_e9e3_set_zk2.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1315_e9e3_set_zk2 | 20 | 7.00 | 0.97 | 5.94 | 9.88 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.52:2181 --caminho /e9/lat x20 -> resultados/2026-10-25_1315_e9e3_get_local_zk2.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1315_e9e3_get_local_zk2 | 20 | 1.53 | 0.26 | 1.17 | 2.07 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.52:2181 --caminho /e9/lat --sync x20 -> resultados/2026-10-25_1315_e9e3_get_sync_zk2.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1315_e9e3_get_sync_zk2 | 20 | 3.89 | 0.52 | 3.26 | 5.22 | 0 |

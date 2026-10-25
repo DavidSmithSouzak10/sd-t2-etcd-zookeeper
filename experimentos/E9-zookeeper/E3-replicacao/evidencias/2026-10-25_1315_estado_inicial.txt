@@ -1,0 +1,7 @@
+# data: 2026-10-25T13:15:50.907
+# comando: docker exec zk-cliente python /app/srvr.py
+# ---
+172.33.0.51 modo=follower zxid=0x300000110 epoca=3 contador=272
+172.33.0.52 modo=follower zxid=0x300000110 epoca=3 contador=272
+172.33.0.53 modo=leader zxid=0x300000110 epoca=3 contador=272
+# exit=0

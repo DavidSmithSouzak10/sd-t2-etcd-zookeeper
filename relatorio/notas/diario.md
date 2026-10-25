@@ -11,6 +11,42 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-25 (domingo), sessão 6: execução de E1–E4 e E9-E3/E4 (David + Claude Code)
+
+**Feito:** E1, E2, E3, E4 (etcd) e E9-E3, E9-E4 (ZooKeeper) executados com as previsões já commitadas. O README de cada um traz a previsão × resultado. Placar das previsões da dupla:
+
+| Experimento | Confirmadas | Erradas | Observação |
+|---|---|---|---|
+| E1 | 3 | 1 | |
+| E2 | 2 | 2 | |
+| E3 | 4 | 0 | |
+| E4 | 3 | 1 | a previsão 4 errou |
+| E9-E3 | 1 | 0 | 1 não observada (leitura antiga) |
+| E9-E4 | 1 | 1 | servidor isolado não serve leitura |
+
+**Resultados principais:**
+- etcd: watch 6,4 ms; put no líder 3,3 ms; get linearizável 1,5–1,8 ms × serializável 0,7 ms.
+- ZK: watch 5,9 ms; set no seguidor 7,0 ms; get local 1,0–1,5 ms × sync+get 3,3–3,9 ms; memória 83–133 MiB.
+- Detalhes em `experimentos/*/README.md` e em `relatorio/notas/achados.md` (A5–A11).
+
+**Problemas e soluções:**
+- E1: `MSYS_NO_PATHCONV` quebrava os caminhos do compose → `caminho_host`; a execução inválida foi apagada e documentada.
+- E2: o `etcdctl` rodava dentro do membro pausado → passou a rodar no líder; o E2 foi refeito.
+- E9-E3: rótulos fixos no script → corrigidos; a execução foi refeita.
+- E9-E4: o cliente kazoo travou sem prazo e o zk1 ficou isolado por cerca de 7 min → prazo por chamada e garantia de religar; a 1ª execução foi mantida como evidência (A9).
+
+**Prints sugeridos:**
+- linha do tempo do zk1 isolado (`E9-zookeeper/E4-consistencia/evidencias/2026-10-25_1323_seguidor_isolado.txt`);
+- tabela de latência linearizável × serializável (E4).
+
+**Próximo:**
+- previsões de E5–E8 e E9-E5..E8 (questionário do Samuel);
+- depois, os scripts e as execuções;
+- diagramas PNG;
+- quadro comparativo.
+
+---
+
 ## 2026-10-25 (domingo), sessão 5: prazo real e histórico do Git (David + Claude Code)
 - Prazo real informado pelo David: **relatório e seminário em 28/10/2026** (o PDF diz 28/11). Plano de emergência em `PLANO-28-10.md`; perguntas-guia inseridas na previsão de todos os experimentos.
 - Histórico do Git reescrito a pedido do David, para remover a linha `Co-Authored-By: Claude` dos 9 commits. O conteúdo e as datas não mudaram (`git diff` entre o histórico antigo e o novo: vazio); só os hashes mudaram. As referências foram atualizadas: a previsão do E0 agora é o commit `efcd7c5` (11:58), e o commit inicial é `57fe090`. O uso de IA continua declarado em `docs/uso-ia.md`.

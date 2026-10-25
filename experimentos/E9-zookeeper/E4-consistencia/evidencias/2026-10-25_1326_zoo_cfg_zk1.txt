@@ -1,0 +1,18 @@
+# data: 2026-10-25T13:26:33.355
+# comando: docker exec zk1 cat /conf/zoo.cfg
+# ---
+dataDir=/data
+dataLogDir=/datalog
+tickTime=2000
+initLimit=5
+syncLimit=2
+autopurge.snapRetainCount=3
+autopurge.purgeInterval=0
+maxClientCnxns=60
+standaloneEnabled=false
+admin.enableServer=false
+server.1=172.32.0.51:2888:3888;2181
+server.2=172.32.0.52:2888:3888;2181
+server.3=172.32.0.53:2888:3888;2181
+4lw.commands.whitelist=srvr,stat,mntr,ruok,conf,cons
+# exit=0

@@ -25,10 +25,10 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 ## Experimentos etcd (R3)
 | Exp. | Previsão registrada | Executado | Medições ≥5× | Análise | Resp. |
 |---|---|---|---|---|---|
-| E1 Subida e topologia | ⬜ | ⬜ | n/a | ⬜ | |
-| E2 Caminho de uma operação | ⬜ | ⬜ | n/a | ⬜ | |
-| E3 Replicação | ⬜ | ⬜ | ⬜ | ⬜ | |
-| E4 Consistência | ⬜ | ⬜ | ⬜ | ⬜ | |
+| E1 Subida e topologia | ✅ | ✅ | ✅ (5 subidas) | ✅ | David |
+| E2 Caminho de uma operação | ✅ | ✅ | ✅ (20×) | ✅ | David |
+| E3 Replicação | ✅ | ✅ | ✅ (20×) | ✅ | David |
+| E4 Consistência | ✅ | ✅ | ✅ (20×) | ✅ | David |
 | E5 Falha e quórum | ⬜ | ⬜ | ⬜ | ⬜ | |
 | E6 Partição | ⬜ | ⬜ | n/a | ⬜ | |
 | E7 Recuperação | ⬜ | ⬜ | ⬜ | ⬜ | |
@@ -37,8 +37,8 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 ## E9 — ZooKeeper (R4)
 | Sub | Previsão | Executado | Medições ≥5× | Análise | Resp. |
 |---|---|---|---|---|---|
-| E3 | ⬜ | ⬜ | ⬜ | ⬜ | |
-| E4 | ⬜ | ⬜ | ⬜ | ⬜ | |
+| E3 | ✅ | ✅ | ✅ (20×) | ✅ | David |
+| E4 | ✅ | ✅ | ✅ (20×) | ✅ | David |
 | E5 | ⬜ | ⬜ | ⬜ | ⬜ | |
 | E6 | ⬜ | ⬜ | n/a | ⬜ | |
 | E7 | ⬜ | ⬜ | ⬜ | ⬜ | |

@@ -1,0 +1,8 @@
+# data: 2026-10-25T13:16:00.159
+# comando: docker stats --no-stream --format {{.Name}} {{.MemUsage}} {{.CPUPerc}} zk1 zk2 zk3 zk-cliente
+# ---
+zk1 82.66MiB / 256MiB 0.13%
+zk2 132.8MiB / 256MiB 0.11%
+zk3 99.2MiB / 256MiB 0.15%
+zk-cliente 16.84MiB / 128MiB 0.00%
+# exit=0

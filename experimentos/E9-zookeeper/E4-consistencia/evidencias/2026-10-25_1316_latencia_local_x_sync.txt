@@ -1,0 +1,9 @@
+[36m[info][0m líder=zk3 seguidor=zk1
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.51:2181 --caminho /e9/lat x20 -> resultados/2026-10-25_1316_e9e4_get_local_zk1.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1316_e9e4_get_local_zk1 | 20 | 1.83 | 0.34 | 1.51 | 2.88 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op get --servidor 172.33.0.51:2181 --caminho /e9/lat --sync x20 -> resultados/2026-10-25_1316_e9e4_get_sync_zk1.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1316_e9e4_get_sync_zk1 | 20 | 6.67 | 1.03 | 5.36 | 9.90 | 0 |

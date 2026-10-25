@@ -68,3 +68,10 @@ etcd_indice_revisao() {
   docker exec etcd1 etcdctl --endpoints="$ip:2379" endpoint status -w json 2>/dev/null \
     | "$PY" -c "import json,sys; s=json.load(sys.stdin)[0]['Status']; print(s['raftIndex'], s['header']['revision'], s['raftTerm'])"
 }
+
+# papéis atuais no ZooKeeper: imprime "lider seg1 seg2" (nomes zk1..zk3)
+zk_papeis() {
+  docker exec zk-cliente python /app/srvr.py 2>/dev/null | awk '
+    {ip=$1; sub(/172.33.0.5/,"zk",ip); if ($2=="modo=leader") l=ip; else if ($2=="modo=follower") s=s" "ip}
+    END {print l s}'
+}
