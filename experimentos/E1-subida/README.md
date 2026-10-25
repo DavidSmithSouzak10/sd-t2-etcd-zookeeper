@@ -6,7 +6,7 @@
 Cluster com 3 membros no ar; papéis de cada nó identificados.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: _preencher_
+> Data/hora do registro: 2026-10-25 12:37 — respostas de David a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas (ver `docs/uso-ia.md`)
 >
 > **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
 > 1. Quantos membros aparecem no `member list`? Algum é *learner*?
@@ -16,7 +16,10 @@ Cluster com 3 membros no ar; papéis de cada nó identificados.
 > 5. O RAFT INDEX fica parado em repouso? (healthcheck a cada 5 s)
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
-_pendente_
+1. **Líderes:** esperamos **exatamente 1 líder**, porque no Raft cada nó vota uma única vez por termo e só vence quem obtém a maioria (2 de 3); dois candidatos não conseguem ter maioria no mesmo termo.
+2. **Termo e RAFT INDEX:** esperamos valores **iguais nos 3 membros**, porque o líder replica o log para todos e quem recebe uma mensagem de termo maior adota esse termo.
+3. **Quem será o líder:** **não dá para prever**. O tempo de espera (election timeout) de cada nó é sorteado, vence quem "acorda" primeiro, e isso pode mudar a cada subida.
+4. **RAFT INDEX em repouso:** esperamos que **fique parado**, porque o índice só deveria subir quando um cliente grava algo, e ninguém está gravando.
 
 ## Procedimento
 1. Registrar `member list -w table`, `endpoint status -w table` (líder, termo, índice Raft) e `endpoint health`.
