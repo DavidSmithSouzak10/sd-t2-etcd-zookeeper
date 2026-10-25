@@ -1,0 +1,16 @@
+[36m[info][0m líder: etcd3
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1308_e3_atraso_watch_etcd2 | 20 | 6.44 | 1.31 | 4.32 | 9.36 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.33:2379 --chave /e3/lat x20 -> resultados/2026-10-25_1308_e3_put_etcd3.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1308_e3_put_etcd3 | 20 | 3.28 | 0.78 | 2.58 | 5.48 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.33:2379 --chave /e3/lat x20 -> resultados/2026-10-25_1308_e3_get_lin_etcd3.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1308_e3_get_lin_etcd3 | 20 | 1.46 | 0.63 | 0.91 | 4.04 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op get --endpoint 172.31.0.33:2379 --chave /e3/lat --serializavel x20 -> resultados/2026-10-25_1308_e3_get_ser_etcd3.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1308_e3_get_ser_etcd3 | 20 | 0.76 | 0.28 | 0.42 | 1.66 | 0 |

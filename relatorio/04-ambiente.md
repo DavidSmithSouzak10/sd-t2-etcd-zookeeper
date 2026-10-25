@@ -40,7 +40,7 @@ Diagrama: _pendente_ (`diagramas/topologia.*`).
 | Situação | etcd (por membro) | ZooKeeper (por servidor) | Evidência |
 |---|---|---|---|
 | Repouso (24/10/2026) | 23,7–29,7 MB | 46,8–55,7 MB | `docs/ambiente/evidencias/2026-10-24_1614_memoria_repouso.txt` |
-| Sob carga (`check perf`) | _pendente_ | _pendente_ | |
+| Sob carga (logo após `check perf --load=s`, 25/10) | 80,2–86,9 MiB por membro | (medir no E9) | `experimentos/E3-replicacao/evidencias/2026-10-25_1309_memoria_apos_carga.txt` |
 
 ## 4.4 Como reproduzir
 Ver `README.md` na raiz (subida, validação, parada). Repositório: https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper (privado; acesso ao professor a combinar).

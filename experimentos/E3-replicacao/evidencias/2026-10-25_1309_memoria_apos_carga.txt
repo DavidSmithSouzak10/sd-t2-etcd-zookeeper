@@ -1,0 +1,8 @@
+# data: 2026-10-25T13:09:20.620
+# comando: docker stats --no-stream --format {{.Name}} {{.MemUsage}} {{.CPUPerc}} etcd1 etcd2 etcd3 etcd-cliente
+# ---
+etcd1 86.91MiB / 256MiB 7.19%
+etcd2 81.23MiB / 256MiB 1.48%
+etcd3 80.22MiB / 256MiB 1.98%
+etcd-cliente 2.324MiB / 128MiB 0.00%
+# exit=0
