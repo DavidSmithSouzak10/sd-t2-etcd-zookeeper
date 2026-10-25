@@ -1,0 +1,19 @@
+# data: 2026-10-25T11:59:15.028
+# comando: bash /c/Documentos/Faculdade/8-semestre/Sistemas_Distribuidos/scripts/validar.sh todos
+# ---
+[36m[info][0m etcd: verificando etcd1 etcd2 etcd3
+[32m[ ok ][0m etcd1 saudável  líder=true termo=3 raft_index=6165
+[32m[ ok ][0m etcd2 saudável  líder=false termo=3 raft_index=6168
+[32m[ ok ][0m etcd3 saudável  líder=false termo=3 raft_index=6169
+[32m[ ok ][0m RAFT INDEX igual nos 3 membros (6169)
+[32m[ ok ][0m escrita de teste aceita
+[36m[info][0m zookeeper: verificando zk1 zk2 zk3
+[32m[ ok ][0m escrita de teste aceita
+172.33.0.51 modo=follower zxid=0x300000043 epoca=3 contador=67
+172.33.0.52 modo=follower zxid=0x300000043 epoca=3 contador=67
+172.33.0.53 modo=leader zxid=0x300000043 epoca=3 contador=67
+[32m[ ok ][0m 1 líder
+[32m[ ok ][0m 2 seguidores
+[32m[ ok ][0m mesmo zxid nos 3
+[32m[ ok ][0m VALIDAÇÃO OK (todos)
+# exit=0

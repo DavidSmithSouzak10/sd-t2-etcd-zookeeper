@@ -1,0 +1,7 @@
+# data: 2026-10-25T11:59:05.343
+# comando: docker exec -i zk-cliente python -
+# ---
+valor=900000 bytes: ACEITO
+valor=1100000 bytes: RECUSADO ConnectionLoss 
+valor=2000000 bytes: RECUSADO ConnectionLoss 
+# exit=0

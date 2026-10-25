@@ -1,0 +1,24 @@
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.32:2379 --chave /e0/lat --tamanho 1024 x5 -> resultados/2026-10-25_1159_e0_put_etcd2_1024B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_put_etcd2_1024B | 5 | 10.73 | 3.89 | 5.62 | 14.85 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op set --servidor 172.33.0.52:2181 --caminho /e0/lat --tamanho 1024 x5 -> resultados/2026-10-25_1159_e0_set_zk2_1024B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_set_zk2_1024B | 5 | 7.47 | 1.54 | 6.02 | 9.93 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.32:2379 --chave /e0/lat --tamanho 102400 x5 -> resultados/2026-10-25_1159_e0_put_etcd2_102400B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_put_etcd2_102400B | 5 | 13.38 | 2.23 | 10.75 | 16.06 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op set --servidor 172.33.0.52:2181 --caminho /e0/lat --tamanho 102400 x5 -> resultados/2026-10-25_1159_e0_set_zk2_102400B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_set_zk2_102400B | 5 | 40.71 | 60.73 | 10.88 | 149.18 | 0 |
+[36m[info][0m medindo em etcd-cliente: latencia.py --op put --endpoint 172.31.0.32:2379 --chave /e0/lat --tamanho 524288 x5 -> resultados/2026-10-25_1159_e0_put_etcd2_524288B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_put_etcd2_524288B | 5 | 36.43 | 6.03 | 25.95 | 41.28 | 0 |
+[36m[info][0m medindo em zk-cliente: latencia.py --op set --servidor 172.33.0.52:2181 --caminho /e0/lat --tamanho 524288 x5 -> resultados/2026-10-25_1159_e0_set_zk2_524288B.csv
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-25_1159_e0_set_zk2_524288B | 5 | 25.62 | 5.33 | 17.46 | 31.76 | 0 |

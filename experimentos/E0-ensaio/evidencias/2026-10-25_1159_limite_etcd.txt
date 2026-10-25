@@ -1,0 +1,8 @@
+# data: 2026-10-25T11:59:04.592
+# comando: docker exec -i etcd-cliente python -
+# ---
+valor=1048576 bytes (1.0 MiB): HTTP 200 {"header":{"cluster_id":"6775757553465404157","member_id":"8259579663654150732","revision":"28","raft_term":"3"}}
+valor=1468006 bytes (1.4 MiB): HTTP 200 {"header":{"cluster_id":"6775757553465404157","member_id":"8259579663654150732","revision":"29","raft_term":"3"}}
+valor=1677721 bytes (1.6 MiB): HTTP 400 {"error":"etcdserver: request is too large","code":3,"message":"etcdserver: request is too large"}
+valor=2097152 bytes (2.0 MiB): HTTP 429 {"error":"grpc: received message larger than max (2097169 vs. 2097152)","code":8,"message":"grpc: received message larger than max (2097169 vs. 2097152)"}
+# exit=0
