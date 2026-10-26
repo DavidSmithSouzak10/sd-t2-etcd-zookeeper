@@ -34,7 +34,9 @@ sem perder o acesso do cliente a ele.
 
 Cronometrar no host com `docker exec etcdctl` foi descartado. Cada chamada cria um processo e uma conexão nova, e o overhead medido (cerca de 400 ms) é aproximadamente 100 vezes maior que a própria operação (achado A3, `docs/ambiente/evidencias/2026-10-25_1035_teste_ferramenta_latencia.txt`).
 
-Diagrama: _pendente_ (`diagramas/topologia.*`).
+![Figura 1: topologia dos dois laboratórios (elaborada pelos autores)](../diagramas/topologia.png)
+
+Fonte: `diagramas/topologia.mmd` (Mermaid); para gerar o PNG: `diagramas/renderizar.sh`. O caminho de uma escrita está em `diagramas/sequencia-escrita.png` (E2).
 
 ## 4.3 Memória medida
 | Situação | etcd (por membro) | ZooKeeper (por servidor) | Evidência |
