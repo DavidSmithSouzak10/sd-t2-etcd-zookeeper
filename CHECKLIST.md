@@ -19,8 +19,8 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Estrutura do relatório + notas (diário, achados, prints) | ✅ | D | `relatorio/` |
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |
 | Repositório remoto (GitHub) privado | ✅ | D | https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper, push inicial em 24/10/2026 |
-| Samuel com acesso de escrita ao repositório | 🟨 | D | convidado em 24/10/2026; aguardando aceite |
-| Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ⬜ | S | |
+| Samuel com acesso de escrita ao repositório | ✅ | D | convite aceito em 26/10/2026 |
+| Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ✅ | S | 26/10/2026, Windows 11 + Docker 28.0.1: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt` (VALIDAÇÃO OK todos) |
 
 ## Experimentos etcd (R3)
 | Exp. | Previsão registrada | Executado | Medições ≥5× | Análise | Resp. |

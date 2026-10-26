@@ -36,7 +36,7 @@ Cada critério tem um **ID**, a **origem no PDF** e **como verificar**.
 
 | ID | Critério de aceite | Como verificar | Status |
 |---|---|---|---|
-| R1 | Repositório Git com compose, configs, scripts e README. Sobe **do zero** seguindo só o README. Limites de memória declarados e respeitados | Samuel clona numa máquina limpa e roda o README; evidência do teste | 🟨 |
+| R1 | Repositório Git com compose, configs, scripts e README. Sobe **do zero** seguindo só o README. Limites de memória declarados e respeitados | Samuel clona numa máquina limpa e roda o README; evidência do teste | ✅ (26/10: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt`) |
 | R2 | Relatório cita os **artigos seminais**: Raft (Ongaro & Ousterhout 2014) e, pela ênfase, ZooKeeper (Hunt et al. 2010) e Zab (Junqueira et al. 2011). Cita também a **documentação oficial** e traz arquitetura com **diagrama próprio** | `relatorio/03-fundamentacao.md`, `diagramas/` | ⬜ |
 | R3 🤖 | Cada um dos E1 a E8 tem **previsão, procedimento, evidência e análise** | `experimentos/E1..E8/README.md` | ⬜ |
 | R4 🤖 | E9 (Ênfase D) com evidências e análise | `experimentos/E9-zookeeper/` | ⬜ |
@@ -198,5 +198,5 @@ Cada resposta deve: (1) responder para o **etcd**; (2) quando fizer sentido, com
 | K2 | Evidência bruta nunca editada à mão; números no relatório batem com os CSVs | ⬜ |
 | K3 | Diário de bordo (`relatorio/notas/diario.md`) atualizado a cada sessão | 🟨 |
 | K4 | `docs/uso-ia.md` atualizado a cada uso de IA | 🟨 |
-| K5 | Commits pequenos e enviados ao GitHub privado; Samuel com acesso | 🟨 (repo criado; Samuel convidado em 24/10, aguardando aceite) |
+| K5 | Commits pequenos e enviados ao GitHub privado; Samuel com acesso | ✅ (Samuel aceitou o convite em 26/10) |
 | K6 | Dúvidas enviadas ao professor e respostas registradas | ⬜ |

@@ -11,6 +11,20 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-26 (segunda), sessão 7: teste de reprodutibilidade R1 (Samuel + Claude Code)
+
+**Feito:** Samuel aceitou o convite, clonou o repositório numa máquina que nunca tinha rodado o projeto (Windows 11, Docker 28.0.1 / Docker Desktop, sem as imagens baixadas) e seguiu o README: `docker compose up -d` nos dois clusters e `scripts/validar.sh todos`.
+
+**Resultado:** `VALIDAÇÃO OK (todos)`. etcd com 1 líder (etcd1), termo 2 e RAFT INDEX 53 igual nos 3 membros. ZK com 1 leader (zk3), 2 followers e zxid 0x100000004 (época 1) nos 3. Evidência: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt`.
+
+**Problemas e soluções:**
+- Os comandos do README colados no **PowerShell** falham (`&&` não existe no Windows PowerShell 5.1, e `source` não é comando). Funcionou chamando o bash do Git: `& "C:\Program Files\Git\bin\bash.exe" -c '...'`. O README já diz para usar Git Bash; vale citar no relatório (seção 4/9) como ponto de atenção para o professor no Windows.
+- O cliente ZK precisa de ~20 s para instalar o kazoo; rodar o `validar.sh zk` logo depois do `up -d` pode falhar. Usamos `sleep 20` antes.
+
+**Próximo:** Samuel responde `docs/questionario-previsoes-samuel.md` (E5–E8, E9-E5..E8) para liberar a execução desses experimentos.
+
+---
+
 ## 2026-10-25 (domingo), sessão 6: execução de E1–E4 e E9-E3/E4 (David + Claude Code)
 
 **Feito:** E1, E2, E3, E4 (etcd) e E9-E3, E9-E4 (ZooKeeper) executados com as previsões já commitadas. O README de cada um traz a previsão × resultado. Placar das previsões da dupla:
