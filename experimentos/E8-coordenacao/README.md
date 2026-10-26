@@ -6,7 +6,7 @@
 Mostrar quem coordena e o mecanismo de versionamento/ordenação.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: _preencher_
+> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
 >
 > **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
 > 1. Com o cliente A segurando `etcdctl lock`, o cliente B fica bloqueado até quando?
@@ -15,7 +15,10 @@ Mostrar quem coordena e o mecanismo de versionamento/ordenação.
 > 4. Que diferença esperam entre o `elect` do etcd e o algoritmo do Valentão (Bully)?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
-_pendente_
+1. **Trava ocupada:** esperamos que o cliente B **fique esperando** até o A soltar ou morrer.
+2. **Dono morre:** esperamos que B pegue a trava em **cerca de 10 s**, só quando o lease de A expirar sem renovação.
+3. **Revisão:** esperamos que seja **crescente para todas as chaves juntas (ordem total)**, como um relógio lógico de Lamport compartilhado.
+4. **`elect` × Valentão (Bully):** esperamos que o `elect` **não dependa do maior ID**: vence quem pediu primeiro (a ordem da revisão).
 
 ## Procedimento
 1. Mostrar a sequência de termos e revisões ao longo das falhas e explicá-los como relógios lógicos (termo: época de liderança; revisão: ordem total das escritas).

@@ -6,7 +6,7 @@
 Derrubar 1 nó (minoria) e depois 2 (maioria); observar o que continua funcionando.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: _preencher_
+> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
 >
 > **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
 > 1. Parando o líder, quanto tempo até haver novo líder? (heartbeat padrão 100 ms, election timeout 1000 ms)
@@ -15,7 +15,10 @@ Derrubar 1 nó (minoria) e depois 2 (maioria); observar o que continua funcionan
 > 4. O membro restante ainda se considera líder ou seguidor?
 > O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
 
-_pendente_
+1. **Tempo de eleição:** esperamos um novo líder **entre 1 e 3 s**, porque os seguidores esperam o *election timeout* sem ouvir o líder e só então fazem a eleição.
+2. **Termo:** esperamos que suba **+1 ou mais**: se dois candidatos empatarem (*split vote*), há nova rodada com outro termo.
+3. **Put sem maioria (2 membros parados):** esperamos que **falhe** (timeout ou erro), porque sem maioria não há commit.
+4. **Leituras sem maioria:** esperamos que a **linearizável falhe e a serializável responda**: a linearizável precisa confirmar com a maioria, a serializável só lê a cópia local.
 
 ## Procedimento
 1. Parar o **líder**: medir o tempo até um novo líder ser eleito (≥ 5 repetições) e mostrar o termo incrementado. As escritas continuam?
