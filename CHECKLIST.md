@@ -67,7 +67,7 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Slides (5 blocos, 10 min) | ⬜ | |
 | Vídeos de contingência (E2, E3, E5/E6, E7, E9) | ⬜ | |
 | Ensaio cronometrado com os dois apresentando | ⬜ | D+S |
-| Roteiro de arguição Q1–Q14 / S1–S4 (`seminario/arguicao.md`) | ⬜ | D+S |
+| Roteiro de arguição Q1–Q14 / S1–S4 (`seminario/arguicao.md`) | 🟨 | rascunho em 26/10; falta o treino da dupla |
 
 ## Dúvidas com o professor
 | Item | Status |
