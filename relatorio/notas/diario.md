@@ -11,6 +11,21 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-26 (segunda), sessão 8: scripts de E5–E8 e E9-E5..E8 (David + Claude Code)
+**Feito:**
+- Diagramas renderizados: `diagramas/topologia.png` e `diagramas/sequencia-escrita.png` (`diagramas/renderizar.sh`); a seção 4 agora cita a Figura 1.
+- Scripts `executar.sh` de E5–E8 e E9-E5..E8 e ferramentas de medição escritos, **sem executar**. As previsões do Samuel entraram no commit `5196dea`, antes de qualquer execução.
+
+**Decisões de procedimento** (tomadas antes da execução):
+- Eleição medida tanto com `docker kill` (falha abrupta) quanto com `docker stop` (parada ordenada). No etcd, a parada ordenada pode transferir a liderança.
+- O t0 vem do `docker events` (kill, disconnect, connect), no mesmo relógio dos contêineres. O fim é observado de dentro da rede de clientes, a cada 10 ms.
+- No E8, cada competidor de `lock`/`elect` roda num contêiner leve próprio (64 MB), para que "parar o contêiner do detentor" seja literal.
+- No E9-E6, entra um cliente com a lista dos 3 servidores, para testar a previsão 2 do Samuel.
+
+**Pendente:** executar com o Docker Desktop ligado (cerca de 30 min no total); analisar; quadro comparativo do E9.
+
+---
+
 ## 2026-10-26 (segunda), sessão 7: teste de reprodutibilidade R1 (Samuel + Claude Code)
 
 **Feito:** Samuel aceitou o convite, clonou o repositório numa máquina que nunca tinha rodado o projeto (Windows 11, Docker 28.0.1 / Docker Desktop, sem as imagens baixadas) e seguiu o README: `docker compose up -d` nos dois clusters e `scripts/validar.sh todos`.
