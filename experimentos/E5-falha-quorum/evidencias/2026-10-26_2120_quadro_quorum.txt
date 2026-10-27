@@ -1,0 +1,40 @@
+# data: 2026-10-26T21:20:10.206
+# comando: quadro
+# ---
+=== 3 membros ativos (líder etcd2)
+2026-10-26T21:20:10.729 etcd2 escrita            -> OK
+2026-10-26T21:20:10.978 etcd2 leitura linearizável -> v-1793060410
+2026-10-26T21:20:11.225 etcd2 leitura serializável -> v-1793060410
+2026-10-26T21:20:11.249 etcd2 status: 127.0.0.1:2379, 729febf16625624c, 3.5.17, 20 kB, true, false, 12, 1920, 1920, 
+2026-10-26T21:20:11.807 etcd1 escrita            -> OK
+2026-10-26T21:20:12.075 etcd1 leitura linearizável -> v-1793060411
+2026-10-26T21:20:12.393 etcd1 leitura serializável -> v-1793060411
+2026-10-26T21:20:12.420 etcd1 status: 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 20 kB, false, false, 12, 1922, 1922, 
+2026-10-26T21:20:12.986 etcd3 escrita            -> OK
+2026-10-26T21:20:13.255 etcd3 leitura linearizável -> v-1793060412
+2026-10-26T21:20:13.528 etcd3 leitura serializável -> v-1793060412
+2026-10-26T21:20:13.552 etcd3 status: 127.0.0.1:2379, a740cd75718ef0d5, 3.5.17, 25 kB, false, false, 12, 1924, 1924, 
+=== 2 membros ativos: docker stop etcd3 (seguidor)
+2026-10-26T21:20:17.996 etcd2 escrita            -> OK
+2026-10-26T21:20:18.261 etcd2 leitura linearizável -> v-1793060417
+2026-10-26T21:20:18.510 etcd2 leitura serializável -> v-1793060417
+2026-10-26T21:20:18.534 etcd2 status: 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, true, false, 12, 1927, 1927, 
+2026-10-26T21:20:19.040 etcd1 escrita            -> OK
+2026-10-26T21:20:19.290 etcd1 leitura linearizável -> v-1793060418
+2026-10-26T21:20:19.537 etcd1 leitura serializável -> v-1793060418
+2026-10-26T21:20:19.560 etcd1 status: 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, false, false, 12, 1928, 1928, 
+=== 1 membro ativo: docker stop etcd1
+--- aguardando 5 s (election timeout + check quorum)
+2026-10-26T21:20:29.954 etcd2 escrita            -> Error: context deadline exceeded
+2026-10-26T21:20:33.221 etcd2 leitura linearizável -> Error: context deadline exceeded
+2026-10-26T21:20:33.506 etcd2 leitura serializável -> v-1793060418
+2026-10-26T21:20:33.533 etcd2 status: 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 12, 1928, 1928, etcdserver: no leader
+=== religando etcd1 e etcd3
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   25 kB |     false |      false |        13 |       1936 |               1936 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   25 kB |      true |      false |        13 |       1936 |               1936 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   25 kB |     false |      false |        13 |       1936 |               1936 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0

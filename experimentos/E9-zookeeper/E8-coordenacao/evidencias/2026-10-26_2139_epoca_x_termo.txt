@@ -1,0 +1,19 @@
+# data: 2026-10-26T21:39:59.048
+# comando: epoca_x_termo
+# ---
+--- ZooKeeper: época ZAB = 32 bits altos do zxid
+172.33.0.51 modo=follower zxid=0x19000013ee epoca=25 contador=5102
+172.33.0.52 modo=leader zxid=0x19000013ee epoca=25 contador=5102
+172.33.0.53 modo=follower zxid=0x19000013ee epoca=25 contador=5102
+zk1 currentEpoch=25 acceptedEpoch=25
+zk2 currentEpoch=25 acceptedEpoch=25
+zk3 currentEpoch=25 acceptedEpoch=25
+--- etcd: termo Raft (RAFT TERM)
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   25 kB |     false |      false |         2 |        639 |                639 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   25 kB |      true |      false |         2 |        639 |                639 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   25 kB |     false |      false |         2 |        639 |                639 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0

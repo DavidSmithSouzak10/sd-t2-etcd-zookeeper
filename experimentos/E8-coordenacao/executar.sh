@@ -67,13 +67,16 @@ troca() {
   fi
   desde=$(( $(date +%s) - 30 ))
   docker "$modo" e8-A >/dev/null
-  if esperar_saida e8-B 40; then
+  # elect não tem --ttl: a sessão usa o TTL padrão de 60 s (lock: --ttl=10); espera até 75 s
+  if esperar_saida e8-B 75; then
     t0="$(evento_epoch e8-A kill "$desde")"; t1="$(primeira_linha_epoch e8-B)"; d="$(ms_entre "$t0" "$t1")"
     echo "$r,$(date -d "@${t0%.*}" +%Y-%m-%dT%H:%M:%S),$d,0,$tipo,$modo,$(docker logs e8-B 2>&1 | head -1)" | tee -a "$csv"
   else
     echo "$r,$(date +%Y-%m-%dT%H:%M:%S),nan,1,$tipo,$modo," | tee -a "$csv"
   fi
   docker rm -f e8-A e8-B >/dev/null 2>&1
+  # o rm -f não revoga o lease de B: apaga as chaves da fila para a próxima repetição começar vazia
+  docker exec etcd1 etcdctl --endpoints="$EP" del --prefix "${argsA[1]}/" >/dev/null
   sleep 1
 }
 medir_trocas() {

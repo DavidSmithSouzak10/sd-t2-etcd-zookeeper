@@ -1,0 +1,42 @@
+# data: 2026-10-26T21:20:45.490
+# comando: medir_particao
+# ---
+[36m[info][0m rep 1: isolando o líder etcd2
+[32m[ ok ][0m 2026-10-26T21:20:48.164 etcd2 desconectado de t5-etcd_interna (segue na rede de clientes)
+# pronto: líder=etcd2 termo=13
+# etcd1 informa novo líder etcd1 no termo 14
+RES nan 1793060449.420465 13 14 etcd2 etcd1
+1,2026-10-26T21:20:48,1298.8,0,13,14,etcd2,etcd1
+[32m[ ok ][0m 2026-10-26T21:20:50.700 etcd2 religado a t5-etcd_interna com IP 172.30.0.32
+[36m[info][0m rep 2: isolando o líder etcd1
+[32m[ ok ][0m 2026-10-26T21:20:56.495 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+# pronto: líder=etcd1 termo=14
+# etcd2 informa novo líder etcd3 no termo 15
+RES nan 1793060457.071418 14 15 etcd1 etcd3
+2,2026-10-26T21:20:56,629.2,0,14,15,etcd1,etcd3
+[32m[ ok ][0m 2026-10-26T21:20:58.657 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+[36m[info][0m rep 3: isolando o líder etcd3
+[32m[ ok ][0m 2026-10-26T21:21:05.103 etcd3 desconectado de t5-etcd_interna (segue na rede de clientes)
+# pronto: líder=etcd3 termo=15
+# etcd1 informa novo líder etcd1 no termo 16
+RES nan 1793060465.917333 15 16 etcd3 etcd1
+3,2026-10-26T21:21:05,855.6,0,15,16,etcd3,etcd1
+[32m[ ok ][0m 2026-10-26T21:21:07.690 etcd3 religado a t5-etcd_interna com IP 172.30.0.33
+[36m[info][0m rep 4: isolando o líder etcd1
+[32m[ ok ][0m 2026-10-26T21:21:13.492 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+# pronto: líder=etcd1 termo=16
+# etcd2 informa novo líder etcd3 no termo 17
+RES nan 1793060474.378723 16 17 etcd1 etcd3
+4,2026-10-26T21:21:13,926.4,0,16,17,etcd1,etcd3
+[32m[ ok ][0m 2026-10-26T21:21:15.711 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+[36m[info][0m rep 5: isolando o líder etcd3
+[32m[ ok ][0m 2026-10-26T21:21:21.679 etcd3 desconectado de t5-etcd_interna (segue na rede de clientes)
+# pronto: líder=etcd3 termo=17
+# etcd1 informa novo líder etcd2 no termo 18
+RES nan 1793060482.634934 17 18 etcd3 etcd2
+5,2026-10-26T21:21:21,994.5,0,17,18,etcd3,etcd2
+[32m[ ok ][0m 2026-10-26T21:21:23.704 etcd3 religado a t5-etcd_interna com IP 172.30.0.33
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2120_e6_eleicao_particao | 5 | 940.90 | 242.70 | 629.20 | 1298.80 | 0 |
+# exit=0

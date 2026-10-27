@@ -1,0 +1,83 @@
+# data: 2026-10-26T21:21:27.189
+# comando: linha_do_tempo
+# ---
+líder (a isolar)=etcd2  lado majoritário observado em etcd1
+2026-10-26T21:21:27.482 [etcd2] put ANTIGO -> OK
+[32m[ ok ][0m 2026-10-26T21:21:28.468 etcd2 desconectado de t5-etcd_interna (segue na rede de clientes)
+--- rodada 1
+2026-10-26T21:21:28.495 [etcd2] put isolado-1 -> Error: etcdserver: request timed out
+2026-10-26T21:21:31.752 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:21:35.021 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:21:35.275 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:21:35.525 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2001, 2001, 
+2026-10-26T21:21:35.774 [etcd1] get linearizável -> ANTIGO
+--- rodada 2
+2026-10-26T21:21:37.047 [etcd2] put isolado-2 -> Error: context deadline exceeded
+2026-10-26T21:21:40.296 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:21:43.571 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:21:43.828 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:21:44.103 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2004, 2004, 
+2026-10-26T21:21:44.391 [etcd1] put NOVO (maioria) -> OK
+2026-10-26T21:21:44.648 [etcd1] get linearizável -> NOVO
+--- rodada 3
+2026-10-26T21:21:45.944 [etcd2] put isolado-3 -> Error: context deadline exceeded
+2026-10-26T21:21:49.187 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:21:52.432 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:21:52.686 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:21:52.939 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2009, 2009, 
+2026-10-26T21:21:53.191 [etcd1] get linearizável -> NOVO
+--- rodada 4
+2026-10-26T21:21:54.479 [etcd2] put isolado-4 -> Error: context deadline exceeded
+2026-10-26T21:21:57.728 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:22:00.978 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:22:01.228 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:22:01.475 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2012, 2012, 
+2026-10-26T21:22:01.718 [etcd1] get linearizável -> NOVO
+--- rodada 5
+2026-10-26T21:22:02.995 [etcd2] put isolado-5 -> Error: context deadline exceeded
+2026-10-26T21:22:06.247 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:22:09.499 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:22:09.759 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:22:10.022 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2015, 2015, 
+2026-10-26T21:22:10.289 [etcd1] get linearizável -> NOVO
+--- rodada 6
+2026-10-26T21:22:11.568 [etcd2] put isolado-6 -> Error: context deadline exceeded
+2026-10-26T21:22:14.833 [etcd2] get linearizável -> Error: context deadline exceeded
+2026-10-26T21:22:18.077 [etcd2] get serializável -> ANTIGO
+2026-10-26T21:22:18.329 [etcd2] status -> 127.0.0.1:2379, 729febf16625624c, 3.5.17, 25 kB, false, false, 18, 1997, 1997, etcdserver: no leader
+2026-10-26T21:22:18.573 [etcd1] status -> 127.0.0.1:2379, f7c63021767e3289, 3.5.17, 25 kB, true, false, 19, 2019, 2019, 
+2026-10-26T21:22:18.820 [etcd1] get linearizável -> NOVO
+--- log do Raft no líder isolado
+{"level":"info","ts":"2026-10-27T00:22:15.119818Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:15.119868Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to a740cd75718ef0d5 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:15.119891Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to f7c63021767e3289 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:16.418897Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c is starting a new election at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:16.418942Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became pre-candidate at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:16.418953Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:16.418965Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to a740cd75718ef0d5 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:16.418971Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to f7c63021767e3289 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:17.061477Z","caller":"traceutil/trace.go:171","msg":"trace[668315166] range","detail":"{range_begin:health; range_end:; }","duration":"2.000138819s","start":"2026-10-27T00:22:15.062244Z","end":"2026-10-27T00:22:17.061466Z","steps":["trace[668315166] 'agreement among raft nodes before linearized reading'  (duration: 2.000070596s)"],"step_count":1}
+{"level":"info","ts":"2026-10-27T00:22:17.718859Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c is starting a new election at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:17.718916Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became pre-candidate at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:17.718929Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:17.718944Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to a740cd75718ef0d5 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:17.718951Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to f7c63021767e3289 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:18.041856Z","caller":"traceutil/trace.go:171","msg":"trace[68394662] range","detail":"{range_begin:/e6/k; range_end:; }","duration":"2.998704493s","start":"2026-10-27T00:22:15.044058Z","end":"2026-10-27T00:22:18.041846Z","steps":["trace[68394662] 'agreement among raft nodes before linearized reading'  (duration: 2.998583346s)"],"step_count":1}
+{"level":"info","ts":"2026-10-27T00:22:19.018586Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c is starting a new election at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:19.018629Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became pre-candidate at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:19.018640Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c received MsgPreVoteResp from 729febf16625624c at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:19.018653Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to a740cd75718ef0d5 at term 18"}
+{"level":"info","ts":"2026-10-27T00:22:19.018658Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 18, index: 1998] sent MsgPreVote request to f7c63021767e3289 at term 18"}
+[32m[ ok ][0m 2026-10-26T21:22:20.852 etcd2 religado a t5-etcd_interna com IP 172.30.0.32
+--- depois de religar: valor em cada membro (serializável) e status
+2026-10-26T21:22:26.929 [etcd1] get serializável -> NOVO
+2026-10-26T21:22:27.183 [etcd2] get serializável -> NOVO
+2026-10-26T21:22:27.435 [etcd3] get serializável -> NOVO
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   25 kB |      true |      false |        19 |       2026 |               2026 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   25 kB |     false |      false |        19 |       2026 |               2026 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   25 kB |     false |      false |        19 |       2026 |               2026 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0

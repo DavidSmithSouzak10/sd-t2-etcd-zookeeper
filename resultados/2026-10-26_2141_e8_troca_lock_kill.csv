@@ -1,0 +1,6 @@
+rep,inicio_iso,duracao_ms,exit,tipo,modo,saida_B
+1,2026-10-26T21:41:20,10448.5,0,lock,kill,/e8/trava/624ca17abed20bf6
+2,2026-10-26T21:41:36,7112.7,0,lock,kill,/e8/trava/3289a17abed1f3cc
+3,2026-10-26T21:41:49,7399.4,0,lock,kill,/e8/trava/70d5a17abed22bce
+4,2026-10-26T21:42:04,6978.2,0,lock,kill,/e8/trava/3289a17abed1f3e4
+5,2026-10-26T21:42:17,7378.4,0,lock,kill,/e8/trava/624ca17abed20c22

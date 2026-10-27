@@ -1,0 +1,6 @@
+rep,inicio_iso,duracao_ms,exit,deteccao_ms,termo_antes,termo_depois,lider_antigo,lider_novo
+1,2026-10-26T21:19:32,11.3,0,10.3,7,8,etcd1,etcd3
+2,2026-10-26T21:19:40,8.9,0,8.1,8,9,etcd3,etcd2
+3,2026-10-26T21:19:47,7.6,0,6.5,9,10,etcd2,etcd1
+4,2026-10-26T21:19:55,10.0,0,8.9,10,11,etcd1,etcd3
+5,2026-10-26T21:20:03,7.2,0,5.6,11,12,etcd3,etcd2

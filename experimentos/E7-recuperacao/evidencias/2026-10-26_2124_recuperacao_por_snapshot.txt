@@ -1,0 +1,60 @@
+# data: 2026-10-26T21:24:06.137
+# comando: snapshot
+# ---
+=== recriando o cluster com SNAPSHOT_COUNT=1000
+ Container etcd3 Started 
+ Container etcd2 Started 
+ Container etcd1 Started 
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |   20 kB |     false |      false |         2 |         12 |                 12 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |   20 kB |      true |      false |         2 |         12 |                 12 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |   20 kB |     false |      false |         2 |         12 |                 12 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+=== parando o seguidor etcd1; 10000 escritas pelo líder etcd2
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|    ENDPOINT    |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 127.0.0.1:2379 | 729febf16625624c |  3.5.17 |  692 kB |      true |      false |         2 |      10026 |              10026 |        |
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+=== religando etcd1 (2026-10-26T21:24:43.163)
+2026-10-26T21:24:44.212 etcd1 alcançou o índice do líder (cerca de 1051 ms desde o docker start, medido no host)
+--- log do líder etcd2 (envio de snapshot)
+{"level":"info","ts":"2026-10-27T00:24:37.759518Z","caller":"etcdserver/server.go:2493","msg":"saved snapshot","snapshot-index":8008}
+{"level":"info","ts":"2026-10-27T00:24:40.308705Z","caller":"etcdserver/server.go:1473","msg":"triggering snapshot","local-member-id":"729febf16625624c","local-member-applied-index":9009,"local-member-snapshot-index":8008,"local-member-snapshot-count":1000}
+{"level":"info","ts":"2026-10-27T00:24:40.319433Z","caller":"etcdserver/server.go:2493","msg":"saved snapshot","snapshot-index":9009}
+{"level":"warn","ts":"2026-10-27T00:24:42.203527Z","caller":"rafthttp/probing_status.go:68","msg":"prober detected unhealthy status","round-tripper-name":"ROUND_TRIPPER_SNAPSHOT","remote-peer-id":"f7c63021767e3289","rtt":"0s","error":"dial tcp 172.30.0.31:2380: i/o timeout"}
+{"level":"info","ts":"2026-10-27T00:24:42.847466Z","caller":"etcdserver/server.go:1473","msg":"triggering snapshot","local-member-id":"729febf16625624c","local-member-applied-index":10010,"local-member-snapshot-index":9009,"local-member-snapshot-count":1000}
+{"level":"info","ts":"2026-10-27T00:24:42.860591Z","caller":"etcdserver/server.go:2493","msg":"saved snapshot","snapshot-index":10010}
+{"level":"info","ts":"2026-10-27T00:24:43.701278Z","caller":"etcdserver/server.go:2186","msg":"sending merged snapshot","from":"729febf16625624c","to":"f7c63021767e3289","bytes":701272,"size":"701 kB"}
+{"level":"info","ts":"2026-10-27T00:24:43.701419Z","caller":"rafthttp/snapshot_sender.go:84","msg":"sending database snapshot","snapshot-index":10026,"remote-peer-id":"f7c63021767e3289","bytes":701272,"size":"701 kB"}
+{"level":"info","ts":"2026-10-27T00:24:43.703686Z","caller":"etcdserver/snapshot_merge.go:66","msg":"sent database snapshot to writer","bytes":692224,"size":"692 kB"}
+{"level":"info","ts":"2026-10-27T00:24:43.709891Z","caller":"rafthttp/snapshot_sender.go:133","msg":"sent database snapshot","snapshot-index":10026,"remote-peer-id":"f7c63021767e3289","bytes":701272,"size":"701 kB"}
+--- log do seguidor etcd1 (recebimento de snapshot)
+{"level":"info","ts":"2026-10-27T00:24:43.684241Z","caller":"etcdserver/server.go:532","msg":"No snapshot found. Recovering WAL from scratch!"}
+{"level":"info","ts":"2026-10-27T00:24:43.701820Z","caller":"rafthttp/http.go:257","msg":"receiving database snapshot","local-member-id":"f7c63021767e3289","remote-snapshot-sender-id":"729febf16625624c","incoming-snapshot-index":10026,"incoming-snapshot-message-size-bytes":9048,"incoming-snapshot-message-size":"9.0 kB"}
+{"level":"info","ts":"2026-10-27T00:24:43.709571Z","caller":"snap/db.go:66","msg":"saved database snapshot to disk","path":"/etcd-data/member/snap/000000000000272a.snap.db","bytes":692224,"size":"692 kB"}
+{"level":"info","ts":"2026-10-27T00:24:43.709655Z","caller":"rafthttp/http.go:286","msg":"received and saved database snapshot","local-member-id":"f7c63021767e3289","remote-snapshot-sender-id":"729febf16625624c","incoming-snapshot-index":10026,"incoming-snapshot-size-bytes":692224,"incoming-snapshot-size":"692 kB","download-took":"7.923466ms"}
+{"level":"info","ts":"2026-10-27T00:24:43.709837Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"log [committed=13, applied=13, unstable.offset=14, len(unstable.Entries)=0] starts to restore snapshot [index: 10026, term: 2]"}
+{"level":"info","ts":"2026-10-27T00:24:43.709962Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [commit: 10026, lastindex: 10026, lastterm: 2] restored snapshot [index: 10026, term: 2]"}
+{"level":"info","ts":"2026-10-27T00:24:43.709994Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [commit: 10026] restored snapshot [index: 10026, term: 2]"}
+{"level":"info","ts":"2026-10-27T00:24:43.710148Z","caller":"etcdserver/server.go:1304","msg":"applying snapshot","current-snapshot-index":0,"current-applied-index":13,"incoming-leader-snapshot-index":10026,"incoming-leader-snapshot-term":2}
+{"level":"info","ts":"2026-10-27T00:24:43.713401Z","caller":"etcdserver/raft.go:287","msg":"applied incoming Raft snapshot","snapshot-index":10026}
+{"level":"info","ts":"2026-10-27T00:24:43.727120Z","caller":"etcdserver/server.go:1312","msg":"applied snapshot","current-snapshot-index":10026,"current-applied-index":10026,"incoming-leader-snapshot-index":10026,"incoming-leader-snapshot-term":2}
+--- estado final: hash do keyspace em cada membro (iguais = mesmo estado)
++------------------+-----------+
+|     ENDPOINT     |   HASH    |
++------------------+-----------+
+| 172.31.0.31:2379 | 879865897 |
+| 172.31.0.32:2379 | 879865897 |
+| 172.31.0.33:2379 | 879865897 |
++------------------+-----------+
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |  692 kB |     false |      false |         2 |      10027 |              10027 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |  692 kB |      true |      false |         2 |      10027 |              10027 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |  692 kB |     false |      false |         2 |      10027 |              10027 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0

@@ -1,0 +1,13 @@
+# data: 2026-10-26T21:48:03.353
+# comando: docker exec etcd-cliente python /app/e8_fencing.py --ttl 5 --pausa 9
+# ---
+t=  0.02s [A] pegou a trava: chave /e8/fencing/trava/624ca17abed20ce0, fencing token (revisão) = 113; lease TTL 5 s
+t=  0.02s [A] PAUSA de 9.0 s sem renovar o lease (o processo continua achando que tem a trava)
+t=  0.02s [B] pede a mesma trava e espera
+t=  5.43s [B] pegou a trava: chave /e8/fencing/trava/624ca17abed20ce4, fencing token = 114
+t=  5.43s [B] gravou o recurso
+t=  9.02s [A] acordou; vai gravar o recurso
+t=  9.02s [A] gravação COM fencing (só se a chave da trava com token 113 ainda existir): RECUSADA
+t=  9.02s [-] recurso agora: 'escrito por B (token 114)'
+t=  9.02s [A] gravação SEM fencing: aceita; recurso agora: 'escrito por A SEM fencing (token 113)'  <- o trabalho de B foi perdido
+# exit=0

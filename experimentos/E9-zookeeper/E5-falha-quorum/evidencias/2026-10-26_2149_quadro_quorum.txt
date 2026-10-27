@@ -1,0 +1,45 @@
+# data: 2026-10-26T21:49:48.299
+# comando: quadro
+# ---
+=== 3 servidores ativos (líder zk2)
+00:49:48.913 172.33.0.52 srvr             -> leader
+00:49:48.921 172.33.0.52 sessão           -> aberta
+00:49:48.929 172.33.0.52 escrita (set)    -> OK
+00:49:48.931 172.33.0.52 leitura local    -> v-1793062188
+00:49:48.935 172.33.0.52 sync + leitura   -> v-1793062188
+00:49:48.937 172.33.0.51 srvr             -> follower
+00:49:48.943 172.33.0.51 sessão           -> aberta
+00:49:48.948 172.33.0.51 escrita (set)    -> OK
+00:49:48.949 172.33.0.51 leitura local    -> v-1793062188
+00:49:48.951 172.33.0.51 sync + leitura   -> v-1793062188
+00:49:48.954 172.33.0.53 srvr             -> follower
+00:49:48.963 172.33.0.53 sessão           -> aberta
+00:49:48.973 172.33.0.53 escrita (set)    -> OK
+00:49:48.978 172.33.0.53 leitura local    -> v-1793062188
+00:49:48.983 172.33.0.53 sync + leitura   -> v-1793062188
+=== 2 servidores ativos: docker stop zk3 (seguidor)
+00:49:52.432 172.33.0.52 srvr             -> leader
+00:49:52.438 172.33.0.52 sessão           -> aberta
+00:49:52.445 172.33.0.52 escrita (set)    -> OK
+00:49:52.446 172.33.0.52 leitura local    -> v-1793062192
+00:49:52.450 172.33.0.52 sync + leitura   -> v-1793062192
+00:49:52.451 172.33.0.51 srvr             -> follower
+00:49:52.456 172.33.0.51 sessão           -> aberta
+00:49:52.461 172.33.0.51 escrita (set)    -> OK
+00:49:52.462 172.33.0.51 leitura local    -> v-1793062192
+00:49:52.465 172.33.0.51 sync + leitura   -> v-1793062192
+=== 1 servidor ativo: docker stop zk1
+--- aguardando 5 s
+00:49:58.985 172.33.0.52 srvr             -> sem serviço
+00:50:01.987 172.33.0.52 sessão           -> ERRO KazooTimeoutError (não abriu)
+172.33.0.51 modo=inacessivel erro=TimeoutError
+172.33.0.52 modo=sem-servico zxid=- epoca=- contador=-
+172.33.0.53 modo=inacessivel erro=TimeoutError
+=== religando zk1 e zk3
+172.33.0.51 modo=follower zxid=0x2400000004 epoca=36 contador=4
+172.33.0.52 modo=leader zxid=0x2400000004 epoca=36 contador=4
+172.33.0.53 modo=follower zxid=0x2400000004 epoca=36 contador=4
+zk1 currentEpoch=36 acceptedEpoch=36
+zk2 currentEpoch=36 acceptedEpoch=36
+zk3 currentEpoch=36 acceptedEpoch=36
+# exit=0

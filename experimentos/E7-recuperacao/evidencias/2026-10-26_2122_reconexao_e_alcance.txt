@@ -1,0 +1,75 @@
+# data: 2026-10-26T21:22:35.295
+# comando: medir_recuperacao
+# ---
+[32m[ ok ][0m 2026-10-26T21:22:36.312 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+[36m[info][0m rep 1: etcd1 isolado; 1000 escritas pela maioria (etcd2)
+[32m[ ok ][0m 2026-10-26T21:22:44.211 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+# pronto: etcd1 índice=2040 termo=19; outros índice=3045 termo=20
+# reconectou: líder visto, termo 20
+# alcançou: índice 3045 ≥ 3045
+RES 1793060564.224641 1793060564.224676 2040 3045 19 20
+1,2026-10-26T21:22:44,49.8,0,49.8,1005,19,20
+--- log do Raft em etcd1 (religado)
+{"level":"info","ts":"2026-10-27T00:22:39.406718Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 became pre-candidate at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:39.406730Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 received MsgPreVoteResp from f7c63021767e3289 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:39.406744Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to 729febf16625624c at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:39.406749Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to a740cd75718ef0d5 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:41.007014Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 is starting a new election at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:41.007056Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 became pre-candidate at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:41.007066Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 received MsgPreVoteResp from f7c63021767e3289 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:41.007079Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to 729febf16625624c at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:41.007084Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to a740cd75718ef0d5 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:42.607496Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 is starting a new election at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:42.607535Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 became pre-candidate at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:42.607545Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 received MsgPreVoteResp from f7c63021767e3289 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:42.607558Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to 729febf16625624c at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:42.607565Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 19, index: 2040] sent MsgPreVote request to a740cd75718ef0d5 at term 19"}
+{"level":"info","ts":"2026-10-27T00:22:44.206018Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [term: 19] received a MsgApp message with higher term from 729febf16625624c [term: 20]"}
+{"level":"info","ts":"2026-10-27T00:22:44.206079Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 became follower at term 20"}
+{"level":"info","ts":"2026-10-27T00:22:44.206090Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: f7c63021767e3289 elected leader 729febf16625624c at term 20"}
+{"level":"info","ts":"2026-10-27T00:22:44.206167Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 20, index: 2041, vote: 0] rejected MsgPreVote from 729febf16625624c [logterm: 19, index: 2040] at term 20"}
+{"level":"info","ts":"2026-10-27T00:22:44.206207Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"f7c63021767e3289 [logterm: 20, index: 2041, vote: 0] rejected MsgVote from 729febf16625624c [logterm: 19, index: 2040] at term 20"}
+{"level":"warn","ts":"2026-10-27T00:22:44.323323Z","caller":"rafthttp/probing_status.go:68","msg":"prober detected unhealthy status","round-tripper-name":"ROUND_TRIPPER_RAFT_MESSAGE","remote-peer-id":"a740cd75718ef0d5","rtt":"8.186422ms","error":"dial tcp 172.30.0.33:2380: i/o timeout"}
+[32m[ ok ][0m 2026-10-26T21:22:49.510 etcd2 desconectado de t5-etcd_interna (segue na rede de clientes)
+[36m[info][0m rep 2: etcd2 isolado; 1000 escritas pela maioria (etcd1)
+[32m[ ok ][0m 2026-10-26T21:22:57.264 etcd2 religado a t5-etcd_interna com IP 172.30.0.32
+# pronto: etcd2 índice=3052 termo=20; outros índice=4057 termo=21
+# reconectou: líder visto, termo 21
+# alcançou: índice 4061 ≥ 4061
+RES 1793060583.586668 1793060583.586734 3052 4057 20 21
+2,2026-10-26T21:22:57,6358.8,0,6358.8,1005,20,21
+[32m[ ok ][0m 2026-10-26T21:23:08.331 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+[36m[info][0m rep 3: etcd1 isolado; 1000 escritas pela maioria (etcd2)
+[32m[ ok ][0m 2026-10-26T21:23:16.083 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+# pronto: etcd1 índice=4068 termo=21; outros índice=5073 termo=22
+# reconectou: líder visto, termo 22
+# alcançou: índice 5077 ≥ 5077
+RES 1793060602.777698 1793060602.777735 4068 5073 21 22
+3,2026-10-26T21:23:16,6730.9,0,6730.9,1005,21,22
+[32m[ ok ][0m 2026-10-26T21:23:27.500 etcd2 desconectado de t5-etcd_interna (segue na rede de clientes)
+[36m[info][0m rep 4: etcd2 isolado; 1000 escritas pela maioria (etcd1)
+[32m[ ok ][0m 2026-10-26T21:23:35.342 etcd2 religado a t5-etcd_interna com IP 172.30.0.32
+# pronto: etcd2 índice=5084 termo=22; outros índice=6089 termo=23
+# reconectou: líder visto, termo 23
+# alcançou: índice 6093 ≥ 6093
+RES 1793060621.975255 1793060621.975307 5084 6089 22 23
+4,2026-10-26T21:23:35,6670.7,0,6670.7,1005,22,23
+[32m[ ok ][0m 2026-10-26T21:23:47.515 etcd1 desconectado de t5-etcd_interna (segue na rede de clientes)
+[36m[info][0m rep 5: etcd1 isolado; 1000 escritas pela maioria (etcd2)
+[32m[ ok ][0m 2026-10-26T21:23:55.578 etcd1 religado a t5-etcd_interna com IP 172.30.0.31
+# pronto: etcd1 índice=6100 termo=23; outros índice=7105 termo=24
+# reconectou: líder visto, termo 24
+# alcançou: índice 7109 ≥ 7109
+RES 1793060641.814101 1793060641.814152 6100 7105 23 24
+5,2026-10-26T21:23:55,6279.0,0,6279.0,1005,23,24
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2122_e7_recuperacao | 5 | 5217.84 | 2895.54 | 49.80 | 6730.90 | 0 |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|     ENDPOINT     |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 172.31.0.31:2379 | f7c63021767e3289 |  3.5.17 |  356 kB |     false |      false |        24 |       7115 |               7115 |        |
+| 172.31.0.32:2379 | 729febf16625624c |  3.5.17 |  356 kB |     false |      false |        24 |       7115 |               7115 |        |
+| 172.31.0.33:2379 | a740cd75718ef0d5 |  3.5.17 |  356 kB |      true |      false |        24 |       7115 |               7115 |        |
++------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+# exit=0

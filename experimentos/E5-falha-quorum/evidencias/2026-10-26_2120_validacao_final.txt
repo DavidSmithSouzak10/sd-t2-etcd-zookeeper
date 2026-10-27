@@ -1,0 +1,11 @@
+# data: 2026-10-26T21:20:38.218
+# comando: bash /c/Users/samuc/Documentos/CODIGOS/TRABALHO DE MERDA DISTRIBUIDA/sd-t2-etcd-zookeeper/scripts/validar.sh etcd
+# ---
+[36m[info][0m etcd: verificando etcd1 etcd2 etcd3
+[32m[ ok ][0m etcd1 saudável  líder=false termo=13 raft_index=1937
+[32m[ ok ][0m etcd2 saudável  líder=true termo=13 raft_index=1940
+[32m[ ok ][0m etcd3 saudável  líder=false termo=13 raft_index=1942
+[32m[ ok ][0m RAFT INDEX igual nos 3 membros (1942)
+[32m[ ok ][0m escrita de teste aceita
+[32m[ ok ][0m VALIDAÇÃO OK (etcd)
+# exit=0

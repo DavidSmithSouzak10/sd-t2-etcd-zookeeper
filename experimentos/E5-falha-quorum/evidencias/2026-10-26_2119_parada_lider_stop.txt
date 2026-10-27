@@ -1,0 +1,58 @@
+# data: 2026-10-26T21:19:30.072
+# comando: medir_queda stop e5_eleicao_stop
+# ---
+[36m[info][0m rep 1: docker stop etcd1 (2026-10-26T21:19:31.958)
+# pronto: líder=etcd1 termo=7
+# etcd2 informa novo líder etcd3 no termo 8
+RES 1793060372.237182 1793060372.238189 7 8 etcd1 etcd3
+1,2026-10-26T21:19:32,11.3,0,10.3,7,8,etcd1,etcd3
+--- log do Raft em etcd2 (último minuto)
+{"level":"info","ts":"2026-10-27T00:19:26.588162Z","caller":"rafthttp/stream.go:395","msg":"started stream reader with remote peer","stream-reader-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:26.588206Z","caller":"rafthttp/stream.go:412","msg":"established TCP streaming connection with remote peer","stream-reader-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"a740cd75718ef0d5"}
+{"level":"info","ts":"2026-10-27T00:19:26.588890Z","caller":"rafthttp/peer_status.go:53","msg":"peer became active","peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:26.588935Z","caller":"rafthttp/stream.go:412","msg":"established TCP streaming connection with remote peer","stream-reader-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:26.588964Z","caller":"rafthttp/stream.go:412","msg":"established TCP streaming connection with remote peer","stream-reader-type":"stream Message","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:26.646583Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [term: 6] received a MsgHeartbeat message with higher term from f7c63021767e3289 [term: 7]"}
+{"level":"info","ts":"2026-10-27T00:19:26.646630Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became follower at term 7"}
+{"level":"info","ts":"2026-10-27T00:19:26.646641Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 729febf16625624c elected leader f7c63021767e3289 at term 7"}
+{"level":"info","ts":"2026-10-27T00:19:26.656057Z","caller":"etcdserver/server.go:2140","msg":"published local member to cluster through raft","local-member-id":"729febf16625624c","local-member-attributes":"{Name:etcd2 ClientURLs:[http://172.31.0.32:2379]}","request-path":"/0/members/729febf16625624c/attributes","cluster-id":"5e0853986a79aafd","publish-timeout":"7s"}
+{"level":"info","ts":"2026-10-27T00:19:27.254525Z","caller":"rafthttp/stream.go:249","msg":"set message encoder","from":"729febf16625624c","to":"f7c63021767e3289","stream-type":"stream Message"}
+{"level":"info","ts":"2026-10-27T00:19:27.254555Z","caller":"rafthttp/stream.go:249","msg":"set message encoder","from":"729febf16625624c","to":"a740cd75718ef0d5","stream-type":"stream Message"}
+{"level":"info","ts":"2026-10-27T00:19:27.254566Z","caller":"rafthttp/stream.go:274","msg":"established TCP streaming connection with remote peer","stream-writer-type":"stream Message","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:27.254546Z","caller":"rafthttp/stream.go:249","msg":"set message encoder","from":"729febf16625624c","to":"a740cd75718ef0d5","stream-type":"stream MsgApp v2"}
+{"level":"info","ts":"2026-10-27T00:19:27.254577Z","caller":"rafthttp/stream.go:274","msg":"established TCP streaming connection with remote peer","stream-writer-type":"stream Message","local-member-id":"729febf16625624c","remote-peer-id":"a740cd75718ef0d5"}
+{"level":"info","ts":"2026-10-27T00:19:27.254585Z","caller":"rafthttp/stream.go:274","msg":"established TCP streaming connection with remote peer","stream-writer-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"a740cd75718ef0d5"}
+{"level":"info","ts":"2026-10-27T00:19:27.255275Z","caller":"rafthttp/stream.go:249","msg":"set message encoder","from":"729febf16625624c","to":"f7c63021767e3289","stream-type":"stream MsgApp v2"}
+{"level":"info","ts":"2026-10-27T00:19:27.255303Z","caller":"rafthttp/stream.go:274","msg":"established TCP streaming connection with remote peer","stream-writer-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289"}
+{"level":"info","ts":"2026-10-27T00:19:32.228120Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [term: 7] received a MsgVote message with higher term from a740cd75718ef0d5 [term: 8]"}
+{"level":"info","ts":"2026-10-27T00:19:32.228156Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became follower at term 8"}
+{"level":"info","ts":"2026-10-27T00:19:32.228166Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 7, index: 1870, vote: 0] cast MsgVote for a740cd75718ef0d5 [logterm: 7, index: 1870] at term 8"}
+{"level":"info","ts":"2026-10-27T00:19:32.228176Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 729febf16625624c lost leader f7c63021767e3289 at term 8"}
+{"level":"info","ts":"2026-10-27T00:19:32.229587Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 729febf16625624c elected leader a740cd75718ef0d5 at term 8"}
+{"level":"warn","ts":"2026-10-27T00:19:32.330150Z","caller":"rafthttp/stream.go:421","msg":"lost TCP streaming connection with remote peer","stream-reader-type":"stream Message","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289","error":"EOF"}
+{"level":"warn","ts":"2026-10-27T00:19:32.330145Z","caller":"rafthttp/stream.go:421","msg":"lost TCP streaming connection with remote peer","stream-reader-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289","error":"EOF"}
+{"level":"warn","ts":"2026-10-27T00:19:32.330689Z","caller":"rafthttp/peer_status.go:66","msg":"peer became inactive (message send to peer failed)","peer-id":"f7c63021767e3289","error":"failed to dial f7c63021767e3289 on stream Message (peer f7c63021767e3289 failed to find local node 729febf16625624c)"}
+[36m[info][0m rep 2: docker stop etcd3 (2026-10-26T21:19:39.930)
+# pronto: líder=etcd3 termo=8
+# etcd1 informa novo líder etcd2 no termo 9
+RES 1793060380.108451 1793060380.109317 8 9 etcd3 etcd2
+2,2026-10-26T21:19:40,8.9,0,8.1,8,9,etcd3,etcd2
+[36m[info][0m rep 3: docker stop etcd2 (2026-10-26T21:19:47.501)
+# pronto: líder=etcd2 termo=9
+# etcd1 informa novo líder etcd1 no termo 10
+RES 1793060387.687072 1793060387.688161 9 10 etcd2 etcd1
+3,2026-10-26T21:19:47,7.6,0,6.5,9,10,etcd2,etcd1
+[36m[info][0m rep 4: docker stop etcd1 (2026-10-26T21:19:55.611)
+# pronto: líder=etcd1 termo=10
+# etcd2 informa novo líder etcd3 no termo 11
+RES 1793060395.789597 1793060395.790730 10 11 etcd1 etcd3
+4,2026-10-26T21:19:55,10.0,0,8.9,10,11,etcd1,etcd3
+[36m[info][0m rep 5: docker stop etcd3 (2026-10-26T21:20:03.533)
+# pronto: líder=etcd3 termo=11
+# etcd1 informa novo líder etcd2 no termo 12
+RES 1793060403.709759 1793060403.711349 11 12 etcd3 etcd2
+5,2026-10-26T21:20:03,7.2,0,5.6,11,12,etcd3,etcd2
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2119_e5_eleicao_stop | 5 | 9.00 | 1.70 | 7.20 | 11.30 | 0 |
+# exit=0

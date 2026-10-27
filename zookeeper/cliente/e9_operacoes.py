@@ -58,7 +58,7 @@ def main():
 
         def escrever():
             if cli.exists_async(CAMINHO).get(timeout=a.prazo) is None:
-                cli.create_async(CAMINHO, valor).get(timeout=a.prazo)
+                cli.create_async(CAMINHO, valor, makepath=True).get(timeout=a.prazo)  # /e9 pode não existir
             else:
                 cli.set_async(CAMINHO, valor).get(timeout=a.prazo)
             return "OK"

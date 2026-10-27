@@ -1,0 +1,6 @@
+rep,inicio_iso,duracao_ms,exit,tipo,modo,saida_B
+1,2026-10-26T21:42:40,56778.0,0,elect,kill,/e8/eleicao/624ca17abed20c37
+2,2026-10-26T21:43:43,57423.0,0,elect,kill,/e8/eleicao/3289a17abed1f41f
+3,2026-10-26T21:44:47,56982.5,0,elect,kill,/e8/eleicao/624ca17abed20c77
+4,2026-10-26T21:45:50,57142.2,0,elect,kill,/e8/eleicao/3289a17abed1f45b
+5,2026-10-26T21:46:54,57563.0,0,elect,kill,/e8/eleicao/3289a17abed1f478

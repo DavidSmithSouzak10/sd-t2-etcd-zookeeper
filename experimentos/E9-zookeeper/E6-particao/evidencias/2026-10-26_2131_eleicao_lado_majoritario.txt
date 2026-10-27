@@ -1,0 +1,67 @@
+# data: 2026-10-26T21:31:37.631
+# comando: medir_particao
+# ---
+[36m[info][0m rep 1: isolando o líder zk3
+[32m[ ok ][0m 2026-10-26T21:31:40.273 zk3 desconectado de t5-zk_interna (segue na rede de clientes)
+# pronto: líder=zk3 época=12
+# 1793061098.235 zk1 -> follower (época 12)
+# 1793061098.237 zk2 -> follower (época 12)
+# 1793061103.053 zk1 -> sem-servico (época None)
+# 1793061103.054 zk2 -> sem-servico (época None)
+# 1793061103.387 zk1 -> follower (época 12)
+# 1793061103.389 zk2 -> leader (época 13)
+RES nan 1793061103.388769 12 13 zk3 zk2
+1,2026-10-26T21:31:40,3150.6,0,12,13,zk3,zk2
+[32m[ ok ][0m 2026-10-26T21:31:44.702 zk3 religado a t5-zk_interna com IP 172.32.0.53
+[36m[info][0m rep 2: isolando o líder zk2
+[32m[ ok ][0m 2026-10-26T21:31:50.011 zk2 desconectado de t5-zk_interna (segue na rede de clientes)
+# pronto: líder=zk2 época=13
+# 1793061107.918 zk1 -> follower (época 13)
+# 1793061107.920 zk3 -> follower (época 13)
+# 1793061113.394 zk1 -> sem-servico (época None)
+# 1793061113.395 zk3 -> sem-servico (época None)
+# 1793061113.626 zk1 -> follower (época 13)
+# 1793061113.627 zk3 -> leader (época 14)
+RES nan 1793061113.626845 13 14 zk2 zk3
+2,2026-10-26T21:31:49,3649.6,0,13,14,zk2,zk3
+[32m[ ok ][0m 2026-10-26T21:31:54.732 zk2 religado a t5-zk_interna com IP 172.32.0.52
+[36m[info][0m rep 3: isolando o líder zk3
+[32m[ ok ][0m 2026-10-26T21:32:00.074 zk3 desconectado de t5-zk_interna (segue na rede de clientes)
+# pronto: líder=zk3 época=14
+# 1793061117.950 zk1 -> follower (época 14)
+# 1793061117.951 zk2 -> follower (época 14)
+# 1793061123.626 zk1 -> sem-servico (época None)
+# 1793061123.627 zk2 -> sem-servico (época None)
+# 1793061123.856 zk1 -> follower (época 14)
+# 1793061123.857 zk2 -> leader (época 15)
+RES nan 1793061123.856600 14 15 zk3 zk2
+3,2026-10-26T21:32:00,3819.9,0,14,15,zk3,zk2
+[32m[ ok ][0m 2026-10-26T21:32:04.965 zk3 religado a t5-zk_interna com IP 172.32.0.53
+[36m[info][0m rep 4: isolando o líder zk2
+[32m[ ok ][0m 2026-10-26T21:32:10.250 zk2 desconectado de t5-zk_interna (segue na rede de clientes)
+# pronto: líder=zk2 época=15
+# 1793061128.163 zk1 -> follower (época 15)
+# 1793061128.164 zk3 -> follower (época 15)
+# 1793061133.861 zk1 -> sem-servico (época None)
+# 1793061133.862 zk3 -> sem-servico (época None)
+# 1793061134.081 zk1 -> follower (época 15)
+# 1793061134.084 zk3 -> leader (época 16)
+RES nan 1793061134.083674 15 16 zk2 zk3
+4,2026-10-26T21:32:10,3867.2,0,15,16,zk2,zk3
+[32m[ ok ][0m 2026-10-26T21:32:15.652 zk2 religado a t5-zk_interna com IP 172.32.0.52
+[36m[info][0m rep 5: isolando o líder zk3
+[32m[ ok ][0m 2026-10-26T21:32:20.887 zk3 desconectado de t5-zk_interna (segue na rede de clientes)
+# pronto: líder=zk3 época=16
+# 1793061138.812 zk1 -> follower (época 16)
+# 1793061138.812 zk2 -> follower (época 16)
+# 1793061144.085 zk1 -> sem-servico (época None)
+# 1793061144.086 zk2 -> sem-servico (época None)
+# 1793061144.349 zk1 -> follower (época 16)
+# 1793061144.349 zk2 -> leader (época 17)
+RES nan 1793061144.349378 16 17 zk3 zk2
+5,2026-10-26T21:32:20,3497.4,0,16,17,zk3,zk2
+[32m[ ok ][0m 2026-10-26T21:32:25.623 zk3 religado a t5-zk_interna com IP 172.32.0.53
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2131_e9e6_eleicao_particao | 5 | 3596.94 | 289.25 | 3150.60 | 3867.20 | 0 |
+# exit=0

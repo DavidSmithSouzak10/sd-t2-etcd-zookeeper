@@ -1,0 +1,38 @@
+# data: 2026-10-26T21:41:16.070
+# comando: medir_trocas
+# ---
+--- A detém (/e8/trava/3289a17abed1f3c2  ); B saída até agora: ''
+--- chaves da fila (ordem = create_revision; vence a menor)
+/e8/trava/3289a17abed1f3c2 create_revision 64 lease 3289a17abed1f3c2
+/e8/trava/624ca17abed20bf6 create_revision 65 lease 624ca17abed20bf6
+1,2026-10-26T21:41:20,10448.5,0,lock,kill,/e8/trava/624ca17abed20bf6
+2,2026-10-26T21:41:36,7112.7,0,lock,kill,/e8/trava/3289a17abed1f3cc
+3,2026-10-26T21:41:49,7399.4,0,lock,kill,/e8/trava/70d5a17abed22bce
+4,2026-10-26T21:42:04,6978.2,0,lock,kill,/e8/trava/3289a17abed1f3e4
+5,2026-10-26T21:42:17,7378.4,0,lock,kill,/e8/trava/624ca17abed20c22
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2141_e8_troca_lock_kill | 5 | 7863.44 | 1456.06 | 6978.20 | 10448.50 | 0 |
+--- A detém (/e8/trava/70d5a17abed22be7  ); B saída até agora: ''
+--- chaves da fila (ordem = create_revision; vence a menor)
+/e8/trava/3289a17abed1f3f7 create_revision 85 lease 3289a17abed1f3f7
+/e8/trava/70d5a17abed22be7 create_revision 84 lease 70d5a17abed22be7
+1,2026-10-26T21:42:32,5.0,0,lock,stop,/e8/trava/3289a17abed1f3f7
+--- A detém (/e8/eleicao/624ca17abed20c34 candidatoA ); B saída até agora: ''
+--- chaves da fila (ordem = create_revision; vence a menor)
+/e8/eleicao/624ca17abed20c34 create_revision 88 lease 624ca17abed20c34
+/e8/eleicao/624ca17abed20c37 create_revision 89 lease 624ca17abed20c37
+1,2026-10-26T21:42:40,56778.0,0,elect,kill,/e8/eleicao/624ca17abed20c37
+2,2026-10-26T21:43:43,57423.0,0,elect,kill,/e8/eleicao/3289a17abed1f41f
+3,2026-10-26T21:44:47,56982.5,0,elect,kill,/e8/eleicao/624ca17abed20c77
+4,2026-10-26T21:45:50,57142.2,0,elect,kill,/e8/eleicao/3289a17abed1f45b
+5,2026-10-26T21:46:54,57563.0,0,elect,kill,/e8/eleicao/3289a17abed1f478
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2142_e8_troca_elect_kill | 5 | 57177.74 | 319.28 | 56778.00 | 57563.00 | 0 |
+--- A detém (/e8/eleicao/624ca17abed20cd5 candidatoA ); B saída até agora: ''
+--- chaves da fila (ordem = create_revision; vence a menor)
+/e8/eleicao/624ca17abed20cd5 create_revision 108 lease 624ca17abed20cd5
+/e8/eleicao/624ca17abed20cd8 create_revision 109 lease 624ca17abed20cd8
+1,2026-10-26T21:47:59,3.5,0,elect,stop,/e8/eleicao/624ca17abed20cd8
+# exit=0

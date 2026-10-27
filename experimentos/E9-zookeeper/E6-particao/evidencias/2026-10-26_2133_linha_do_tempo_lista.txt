@@ -1,0 +1,99 @@
+# data: 2026-10-26T21:33:09.352
+# comando: linha_do_tempo lista
+# ---
+líder (a isolar)=zk3  cliente: 172.33.0.53:2181,172.33.0.51:2181,172.33.0.52:2181  cliente da maioria ligado a zk1
+00:33:10.005 [sessão do cliente no alvo] estado -> CONNECTED (172.33.0.53)
+00:33:10.505 início: alvo=172.33.0.53:2181,172.33.0.51:2181,172.33.0.52:2181 maioria=172.33.0.51:2181; valor inicial ANTIGO
+00:33:10.514 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+00:33:11.021 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+00:33:11.563 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+00:33:12.070 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+00:33:12.576 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+00:33:13.082 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=OK
+[32m[ ok ][0m 2026-10-26T21:33:13.484 zk3 desconectado de t5-zk_interna (segue na rede de clientes)
+00:33:15.587 alvo(172.33.0.53): get local=ANTIGO                 sync+get=ANTIGO                 escrita=ERRO KazooTimeoutError
+--- srvr (2026-10-26T21:33:16.545)
+172.33.0.51 modo=follower zxid=0x120000003a epoca=18 contador=58
+172.33.0.52 modo=follower zxid=0x120000003a epoca=18 contador=58
+172.33.0.53 modo=leader zxid=0x120000003a epoca=18 contador=58
+00:33:18.600 [sessão do cliente no alvo] estado -> SUSPENDED (172.33.0.53)
+00:33:18.603 [sessão do cliente no alvo] estado -> CONNECTED (172.33.0.51)
+00:33:18.609 alvo(172.33.0.51): get local=ERRO KazooTimeoutError sync+get=ERRO ConnectionLoss    escrita=OK
+00:33:19.158 >>> maioria gravou NOVO
+00:33:19.172 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:19.679 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+--- srvr (2026-10-26T21:33:19.852)
+172.33.0.51 modo=follower zxid=0x1300000004 epoca=19 contador=4
+172.33.0.52 modo=leader zxid=0x1300000004 epoca=19 contador=4
+172.33.0.53 modo=sem-servico zxid=- epoca=- contador=-
+00:33:20.188 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:20.695 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:21.203 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:21.710 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:22.218 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:22.759 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+--- srvr (2026-10-26T21:33:23.182)
+00:33:23.268 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+172.33.0.51 modo=follower zxid=0x130000000b epoca=19 contador=11
+172.33.0.52 modo=leader zxid=0x130000000b epoca=19 contador=11
+172.33.0.53 modo=sem-servico zxid=- epoca=- contador=-
+00:33:23.776 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:24.283 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:24.803 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:25.311 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:25.818 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:26.325 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+--- srvr (2026-10-26T21:33:26.505)
+172.33.0.51 modo=follower zxid=0x1300000011 epoca=19 contador=17
+172.33.0.52 modo=leader zxid=0x1300000011 epoca=19 contador=17
+172.33.0.53 modo=sem-servico zxid=- epoca=- contador=-
+00:33:26.831 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:27.338 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:27.845 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:28.352 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:28.900 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:29.407 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+--- srvr (2026-10-26T21:33:29.798)
+00:33:29.915 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+172.33.0.51 modo=follower zxid=0x1300000018 epoca=19 contador=24
+172.33.0.52 modo=leader zxid=0x1300000018 epoca=19 contador=24
+172.33.0.53 modo=sem-servico zxid=- epoca=- contador=-
+00:33:30.422 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:30.928 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:31.434 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:31.942 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:32.450 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:32.995 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:33.503 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:34.009 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:34.516 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:35.064 alvo(172.33.0.51): get local=NOVO                   sync+get=NOVO                   escrita=OK
+00:33:35.564 fim
+00:33:35.566 [sessão do cliente no alvo] estado -> LOST (172.33.0.51)
+--- log do líder isolado
+2026-10-27 00:33:18,600 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.ZooKeeperServer@924] - Shutting down
+2026-10-27 00:33:18,600 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.RequestThrottler@256] - Shutting down
+2026-10-27 00:33:18,600 [myid:] - INFO  [RequestThrottler:o.a.z.s.RequestThrottler@195] - RequestThrottler shutdown. Dropped 0 requests
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.SessionTrackerImpl@253] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.LeaderRequestProcessor@79] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.PrepRequestProcessor@1039] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.ProposalRequestProcessor@95] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.CommitProcessor@631] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.Leader$ToBeAppliedRequestProcessor@1176] - Shutting down
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.FinalRequestProcessor@668] - shutdown of request processor complete
+2026-10-27 00:33:18,601 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.SyncRequestProcessor@255] - Shutting down
+2026-10-27 00:33:18,605 [myid:] - WARN  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.QuorumPeer@1601] - PeerState set to LOOKING
+2026-10-27 00:33:18,605 [myid:] - INFO  [QuorumPeer[myid=3](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.QuorumPeer@1470] - LOOKING
+2026-10-27 00:33:18,607 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:18,808 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:19,209 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:20,010 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:21,611 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:24,812 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+2026-10-27 00:33:31,213 [myid:] - INFO  [WorkerReceiver[myid=3]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x13, n.peerEpoch:0x12, n.zxid:0x120000003b, message format version:0x2, n.config version:0x0
+[32m[ ok ][0m 2026-10-26T21:33:37.147 zk3 religado a t5-zk_interna com IP 172.32.0.53
+--- depois de religar
+172.33.0.51 modo=follower zxid=0x1300000034 epoca=19 contador=52
+172.33.0.52 modo=leader zxid=0x1300000034 epoca=19 contador=52
+172.33.0.53 modo=follower zxid=0x1300000034 epoca=19 contador=52
+# exit=0

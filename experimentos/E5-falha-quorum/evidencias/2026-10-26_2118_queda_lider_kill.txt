@@ -1,0 +1,42 @@
+# data: 2026-10-26T21:18:49.550
+# comando: medir_queda kill e5_eleicao_kill
+# ---
+[36m[info][0m rep 1: docker kill etcd1 (2026-10-26T21:18:51.445)
+# pronto: líder=etcd1 termo=2
+# etcd2 informa novo líder etcd3 no termo 3
+RES 1793060331.641857 1793060332.998303 2 3 etcd1 etcd3
+1,2026-10-26T21:18:51,1360.6,0,4.2,2,3,etcd1,etcd3
+--- log do Raft em etcd2 (último minuto)
+{"level":"warn","ts":"2026-10-27T00:18:51.640282Z","caller":"rafthttp/stream.go:421","msg":"lost TCP streaming connection with remote peer","stream-reader-type":"stream MsgApp v2","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289","error":"unexpected EOF"}
+{"level":"warn","ts":"2026-10-27T00:18:51.640297Z","caller":"rafthttp/stream.go:421","msg":"lost TCP streaming connection with remote peer","stream-reader-type":"stream Message","local-member-id":"729febf16625624c","remote-peer-id":"f7c63021767e3289","error":"unexpected EOF"}
+{"level":"warn","ts":"2026-10-27T00:18:51.641094Z","caller":"rafthttp/peer_status.go:66","msg":"peer became inactive (message send to peer failed)","peer-id":"f7c63021767e3289","error":"failed to read f7c63021767e3289 on stream MsgApp v2 (unexpected EOF)"}
+{"level":"info","ts":"2026-10-27T00:18:52.982871Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 2, index: 1822, vote: f7c63021767e3289] cast MsgPreVote for a740cd75718ef0d5 [logterm: 2, index: 1822] at term 2"}
+{"level":"info","ts":"2026-10-27T00:18:52.985090Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [term: 2] received a MsgVote message with higher term from a740cd75718ef0d5 [term: 3]"}
+{"level":"info","ts":"2026-10-27T00:18:52.985219Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c became follower at term 3"}
+{"level":"info","ts":"2026-10-27T00:18:52.985258Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"729febf16625624c [logterm: 2, index: 1822, vote: 0] cast MsgVote for a740cd75718ef0d5 [logterm: 2, index: 1822] at term 3"}
+{"level":"info","ts":"2026-10-27T00:18:52.985304Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 729febf16625624c lost leader f7c63021767e3289 at term 3"}
+{"level":"info","ts":"2026-10-27T00:18:52.986758Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 729febf16625624c elected leader a740cd75718ef0d5 at term 3"}
+[36m[info][0m rep 2: docker kill etcd3 (2026-10-26T21:18:59.802)
+# pronto: líder=etcd3 termo=3
+# etcd1 informa novo líder etcd2 no termo 3
+RES 1793060339.991144 1793060341.438094 3 3 etcd3 etcd2
+2,2026-10-26T21:18:59,1458.4,0,11.4,3,3,etcd3,etcd2
+[36m[info][0m rep 3: docker kill etcd2 (2026-10-26T21:19:07.625)
+# pronto: líder=etcd2 termo=4
+# etcd1 informa novo líder etcd3 no termo 5
+RES 1793060347.785846 1793060349.422170 4 5 etcd2 etcd3
+3,2026-10-26T21:19:07,1637.9,0,1.5,4,5,etcd2,etcd3
+[36m[info][0m rep 4: docker kill etcd3 (2026-10-26T21:19:15.460)
+# pronto: líder=etcd3 termo=5
+# etcd1 informa novo líder etcd2 no termo 6
+RES 1793060355.627953 1793060357.260010 5 6 etcd3 etcd2
+4,2026-10-26T21:19:15,1633.5,0,1.5,5,6,etcd3,etcd2
+[36m[info][0m rep 5: docker kill etcd2 (2026-10-26T21:19:23.683)
+# pronto: líder=etcd2 termo=6
+# etcd1 informa novo líder etcd1 no termo 7
+RES 1793060363.848608 1793060365.057763 6 7 etcd2 etcd1
+5,2026-10-26T21:19:23,1220.2,0,11.0,6,7,etcd2,etcd1
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2118_e5_eleicao_kill | 5 | 1462.12 | 179.66 | 1220.20 | 1637.90 | 0 |
+# exit=0

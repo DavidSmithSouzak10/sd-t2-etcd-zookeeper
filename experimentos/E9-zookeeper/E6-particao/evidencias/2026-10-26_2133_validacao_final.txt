@@ -1,0 +1,13 @@
+# data: 2026-10-26T21:33:50.276
+# comando: bash /c/Users/samuc/Documentos/CODIGOS/TRABALHO DE MERDA DISTRIBUIDA/sd-t2-etcd-zookeeper/scripts/validar.sh zk
+# ---
+[36m[info][0m zookeeper: verificando zk1 zk2 zk3
+[32m[ ok ][0m escrita de teste aceita
+172.33.0.51 modo=follower zxid=0x1300000038 epoca=19 contador=56
+172.33.0.52 modo=leader zxid=0x1300000038 epoca=19 contador=56
+172.33.0.53 modo=follower zxid=0x1300000038 epoca=19 contador=56
+[32m[ ok ][0m 1 líder
+[32m[ ok ][0m 2 seguidores
+[32m[ ok ][0m mesmo zxid nos 3
+[32m[ ok ][0m VALIDAÇÃO OK (zk)
+# exit=0

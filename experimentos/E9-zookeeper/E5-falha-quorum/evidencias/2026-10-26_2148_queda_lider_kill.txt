@@ -1,0 +1,74 @@
+# data: 2026-10-26T21:48:34.885
+# comando: medir_queda kill e9e5_eleicao_kill
+# ---
+[36m[info][0m rep 1: docker kill zk2 (2026-10-26T21:48:36.806)
+# pronto: líder=zk2 época=25
+# 1793062115.458 zk1 -> follower (época 25)
+# 1793062115.459 zk3 -> follower (época 25)
+# 1793062116.982 zk1 -> sem-servico (época None)
+# 1793062116.983 zk3 -> sem-servico (época None)
+# 1793062117.314 zk1 -> follower (época 25)
+# 1793062117.314 zk3 -> leader (época 26)
+RES 1793062116.980090 1793062117.314422 25 26 zk2 zk3
+1,2026-10-26T21:48:36,341.9,0,7.5,25,26,zk2,zk3
+--- log de zk1 (último minuto)
+2026-10-27 00:48:36,976 [myid:] - WARN  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.Follower@127] - Exception when following the leader
+2026-10-27 00:48:36,987 [myid:] - WARN  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.QuorumPeer@1601] - PeerState set to LOOKING
+2026-10-27 00:48:36,987 [myid:] - INFO  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.QuorumPeer@1470] - LOOKING
+2026-10-27 00:48:36,988 [myid:] - INFO  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.FastLeaderElection@947] - New election. My id = 1, proposed zxid=0x19000013f9
+2026-10-27 00:48:36,989 [myid:] - INFO  [WorkerReceiver[myid=1]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:1, n.state:LOOKING, n.leader:1, n.round:0x1a, n.peerEpoch:0x19, n.zxid:0x19000013f9, message format version:0x2, n.config version:0x0
+2026-10-27 00:48:36,989 [myid:] - INFO  [WorkerReceiver[myid=1]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:3, n.state:LOOKING, n.leader:3, n.round:0x1a, n.peerEpoch:0x19, n.zxid:0x19000013f9, message format version:0x2, n.config version:0x0
+2026-10-27 00:48:36,990 [myid:] - INFO  [WorkerReceiver[myid=1]:o.a.z.s.q.FastLeaderElection$Messenger$WorkerReceiver@391] - Notification: my state:LOOKING; n.sid:1, n.state:LOOKING, n.leader:3, n.round:0x1a, n.peerEpoch:0x19, n.zxid:0x19000013f9, message format version:0x2, n.config version:0x0
+2026-10-27 00:48:37,190 [myid:] - INFO  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.QuorumPeer@1553] - FOLLOWING
+2026-10-27 00:48:37,191 [myid:] - INFO  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.Follower@76] - FOLLOWING - LEADER ELECTION TOOK - 203 MS
+2026-10-27 00:48:37,304 [myid:] - INFO  [QuorumPeer[myid=1](plain=[0:0:0:0:0:0:0:0]:2181)(secure=disabled):o.a.z.s.q.Learner@814] - Set the current epoch to 26
+[36m[info][0m rep 2: docker kill zk3 (2026-10-26T21:48:43.393)
+# pronto: líder=zk3 época=26
+# 1793062122.082 zk1 -> follower (época 26)
+# 1793062122.083 zk2 -> follower (época 26)
+# 1793062123.576 zk1 -> sem-servico (época None)
+# 1793062123.578 zk2 -> sem-servico (época None)
+# 1793062124.100 zk1 -> follower (época 26)
+# 1793062124.101 zk2 -> leader (época 27)
+RES 1793062123.562414 1793062124.101472 26 27 zk3 zk2
+2,2026-10-26T21:48:43,543.2,0,4.2,26,27,zk3,zk2
+[36m[info][0m rep 3: docker kill zk2 (2026-10-26T21:48:50.180)
+# pronto: líder=zk2 época=27
+# 1793062128.829 zk1 -> follower (época 27)
+# 1793062128.830 zk3 -> follower (época 27)
+# 1793062130.350 zk1 -> sem-servico (época None)
+# 1793062130.352 zk3 -> sem-servico (época None)
+# 1793062130.682 zk1 -> follower (época 27)
+# 1793062130.683 zk3 -> leader (época 28)
+RES 1793062130.349702 1793062130.682811 27 28 zk2 zk3
+3,2026-10-26T21:48:50,343.7,0,10.6,27,28,zk2,zk3
+[36m[info][0m rep 4: docker kill zk3 (2026-10-26T21:48:57.484)
+# pronto: líder=zk3 época=28
+# 1793062136.157 zk1 -> follower (época 28)
+# 1793062136.158 zk2 -> follower (época 28)
+# 1793062137.670 zk1 -> sem-servico (época None)
+# 1793062137.672 zk2 -> sem-servico (época None)
+# 1793062137.991 zk2 -> leader (época 29)
+RES 1793062137.655706 1793062137.991328 28 29 zk3 zk2
+4,2026-10-26T21:48:57,339.2,0,3.5,28,29,zk3,zk2
+[36m[info][0m rep 5: docker kill zk2 (2026-10-26T21:49:04.179)
+# pronto: líder=zk2 época=29
+# 1793062142.832 zk1 -> follower (época 29)
+# 1793062142.834 zk3 -> follower (época 29)
+# 1793062144.354 zk1 -> sem-servico (época None)
+# 1793062144.355 zk3 -> sem-servico (época None)
+# 1793062144.685 zk1 -> follower (época 29)
+# 1793062144.686 zk3 -> leader (época 30)
+RES 1793062144.353261 1793062144.686174 29 30 zk2 zk3
+5,2026-10-26T21:49:04,343.3,0,10.4,29,30,zk2,zk3
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2148_e9e5_eleicao_kill | 5 | 382.26 | 89.99 | 339.20 | 543.20 | 0 |
+--- épocas depois da bateria
+172.33.0.51 modo=follower zxid=0x1e00000004 epoca=30 contador=4
+172.33.0.52 modo=follower zxid=0x1e00000004 epoca=30 contador=4
+172.33.0.53 modo=leader zxid=0x1e00000004 epoca=30 contador=4
+zk1 currentEpoch=30 acceptedEpoch=30
+zk2 currentEpoch=30 acceptedEpoch=30
+zk3 currentEpoch=30 acceptedEpoch=30
+# exit=0

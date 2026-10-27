@@ -11,6 +11,29 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-26 (segunda), sessão 9: execução de E5–E8 e E9-E5..E8 (Samuel + Claude Code, máquina do Samuel)
+
+**Feito:** os 8 `executar.sh` rodaram em sequência das 21:18 às 21:40 (Windows 11, Docker 28.0.1), depois do registro das previsões (`5196dea`, `0dc40dd`). O E8 e o E9-E5 foram reexecutados com o script corrigido (21:41–21:50).
+
+**Resultados principais** (n = 5, média ± desvio; CSVs em `resultados/2026-10-26_*`):
+- E5: eleição após `docker kill` do líder 1,46 ± 0,18 s; após `docker stop` cerca de 9 ms (o etcd transfere a liderança antes de sair). Sem maioria: escrita e leitura linearizável com `context deadline exceeded`, serializável responde.
+- E6: lado majoritário elege em 0,94 ± 0,24 s; o líder isolado fica sem líder (`etcdserver: no leader`), recusa escrita e linearizável; a serializável devolve o valor antigo.
+- E7: reconexão + alcance do RAFT INDEX em cerca de 6,5 s em 4 de 5 repetições (uma em 50 ms); depois de reconectar, o alcance é imediato. Snapshot: o líder envia "merged snapshot" (701 kB) e o seguidor o restaura; `endpoint hashkv` igual nos 3.
+- E8: revisão global crescente entre chaves; troca do `lock` 7,9 ± 1,5 s (TTL 10 s); troca do `elect` 57,2 ± 0,3 s (sessão de 60 s); com `docker stop`, cerca de 4 ms; fencing token recusa a gravação do detentor antigo.
+- E9-E5: eleição após `kill` 0,38 ± 0,09 s; após `stop` 0,70 ± 0,09 s; época +1 a cada líder; sem maioria o servidor fica sem serviço e a sessão não abre.
+- E9-E6: lado majoritário elege em 3,6 ± 0,3 s (mais lento que o etcd); líder isolado faz "Shutting down"; cliente com a lista dos 3 migra para outro servidor; cliente só com o líder perde a sessão.
+- E9-E7: sincronização por DIFF em 5 de 5, 2,5 ± 0,7 s; com 5000 escritas, ainda DIFF, 6,7 s.
+- E9-E8: troca da trava 7,9 s e da eleição 7,8 s (sessão de 10 s).
+
+**Problemas e soluções:**
+- E8: `etcdctl elect` não tem `--ttl` (o `lock` tem, padrão 10 s) e usa sessão de 60 s. A 1ª execução esperava só 40 s e não limpava a fila entre repetições; 4 de 5 repetições do `elect` falharam. Correção: espera de até 75 s e `del --prefix` da fila depois de cada repetição. A execução inválida foi descartada.
+- E9-E5: o quadro de quórum deu `NoNodeError` em todas as operações, porque `/e9` não existia num ensemble recém-criado (na máquina do David existia desde o E9-E3). Correção: `makepath=True` em `e9_operacoes.py`. Os tempos de eleição da 1ª execução eram válidos, mas o experimento foi reexecutado inteiro. É um defeito de reprodutibilidade que só uma máquina limpa revelou (R1).
+- E5: na repetição 2 do `kill` o CSV registra termo 3 → 3; o termo lido "depois" foi o de um membro ainda não atualizado. Citar na análise e na seção 9.
+
+**Próximo:** análise previsão × resultado nos README de E5–E8 e E9-E5..E8; quadro comparativo do E9; relatório.
+
+---
+
 ## 2026-10-26 (segunda), sessão 8: scripts de E5–E8 e E9-E5..E8 (David + Claude Code)
 **Feito:**
 - Diagramas renderizados: `diagramas/topologia.png` e `diagramas/sequencia-escrita.png` (`diagramas/renderizar.sh`); a seção 4 agora cita a Figura 1.

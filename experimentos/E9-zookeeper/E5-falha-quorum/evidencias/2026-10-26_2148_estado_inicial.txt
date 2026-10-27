@@ -1,0 +1,10 @@
+# data: 2026-10-26T21:48:33.207
+# comando: estado
+# ---
+172.33.0.51 modo=follower zxid=0x19000013f9 epoca=25 contador=5113
+172.33.0.52 modo=leader zxid=0x19000013f9 epoca=25 contador=5113
+172.33.0.53 modo=follower zxid=0x19000013f9 epoca=25 contador=5113
+zk1 currentEpoch=25 acceptedEpoch=25
+zk2 currentEpoch=25 acceptedEpoch=25
+zk3 currentEpoch=25 acceptedEpoch=25
+# exit=0

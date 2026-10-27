@@ -1,0 +1,8 @@
+# data: 2026-10-26T21:24:45.128
+# comando: restaurar
+# ---
+=== recriando o cluster com o padrão (SNAPSHOT_COUNT do etcd/.env)
+ Container etcd1 Started 
+ Container etcd2 Started 
+ Container etcd3 Started 
+# exit=0

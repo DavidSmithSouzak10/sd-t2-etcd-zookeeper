@@ -1,0 +1,20 @@
+# data: 2026-10-26T21:35:15.993
+# comando: extra
+# ---
+[32m[ ok ][0m 2026-10-26T21:35:17.170 zk3 desconectado de t5-zk_interna (segue na rede de clientes)
+[36m[info][0m rep 1: zk3 isolado; novo líder zk2; 5000 escritas pela maioria
+[32m[ ok ][0m 2026-10-26T21:35:41.862 zk3 religado a t5-zk_interna com IP 172.32.0.53
+# pronto: zk3 modo=sem-servico; outros zxid=0x190000138b
+# reconectou: modo follower, zxid 0x190000138b
+# alcançou: zxid 0x190000138b ≥ 0x190000138b
+RES 1793061348.470167 1793061348.470203 sem-servico 0x190000138b follower 0x190000138b
+--- log do novo líder zk2: Sending DIFF Synchronizing with Learner sid: 3 maxCommittedLog=0x190000138b minCommittedLog=0x1900001198 lastProcessedZxid=0x190000138b peerLastZxid=0x18000000cf Sending DIFF 
+2026-10-27 00:35:20,514 [myid:] - INFO  [LearnerHandler-/172.32.0.51:55836:o.a.z.s.q.LearnerHandler@806] - Synchronizing with Learner sid: 1 maxCommittedLog=0x18000000cf minCommittedLog=0x160000007a lastProcessedZxid=0x18000000cf peerLastZxid=0x18000000cf
+2026-10-27 00:35:20,514 [myid:] - INFO  [LearnerHandler-/172.32.0.51:55836:o.a.z.s.q.LearnerHandler@851] - Sending DIFF zxid=0x18000000cf for peer sid: 1
+2026-10-27 00:35:48,400 [myid:] - INFO  [LearnerHandler-/172.32.0.53:34514:o.a.z.s.q.LearnerHandler@806] - Synchronizing with Learner sid: 3 maxCommittedLog=0x190000138b minCommittedLog=0x1900001198 lastProcessedZxid=0x190000138b peerLastZxid=0x18000000cf
+2026-10-27 00:35:48,408 [myid:] - INFO  [LearnerHandler-/172.32.0.53:34514:o.a.z.s.q.LearnerHandler@978] - Sending DIFF zxid=0x190000138b  for peer sid: 3
+1,2026-10-26T21:35:41,6654.1,0,6654.1,5000,DIFF
+172.33.0.51 modo=follower zxid=0x19000013a3 epoca=25 contador=5027
+172.33.0.52 modo=leader zxid=0x19000013a3 epoca=25 contador=5027
+172.33.0.53 modo=follower zxid=0x19000013a3 epoca=25 contador=5027
+# exit=0

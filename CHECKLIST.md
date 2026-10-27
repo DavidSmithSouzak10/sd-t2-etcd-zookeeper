@@ -29,20 +29,20 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | E2 Caminho de uma operação | ✅ | ✅ | ✅ (20×) | ✅ | David |
 | E3 Replicação | ✅ | ✅ | ✅ (20×) | ✅ | David |
 | E4 Consistência | ✅ | ✅ | ✅ (20×) | ✅ | David |
-| E5 Falha e quórum | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
-| E6 Partição | ✅ | ⬜ | n/a | ⬜ | Samuel |
-| E7 Recuperação | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
-| E8 Coordenação e ordem | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
+| E5 Falha e quórum | ✅ | ✅ | ✅ | ⬜ | Samuel |
+| E6 Partição | ✅ | ✅ | ✅ (eleição 5×) | ⬜ | Samuel |
+| E7 Recuperação | ✅ | ✅ | ✅ | ⬜ | Samuel |
+| E8 Coordenação e ordem | ✅ | ✅ | ✅ | ⬜ | Samuel |
 
 ## E9 — ZooKeeper (R4)
 | Sub | Previsão | Executado | Medições ≥5× | Análise | Resp. |
 |---|---|---|---|---|---|
 | E3 | ✅ | ✅ | ✅ (20×) | ✅ | David |
 | E4 | ✅ | ✅ | ✅ (20×) | ✅ | David |
-| E5 | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
-| E6 | ✅ | ⬜ | n/a | ⬜ | Samuel |
-| E7 | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
-| E8 (trava/eleição kazoo) | ✅ | ⬜ | ⬜ | ⬜ | Samuel |
+| E5 | ✅ | ✅ | ✅ | ⬜ | Samuel |
+| E6 | ✅ | ✅ | ✅ (eleição 5×) | ⬜ | Samuel |
+| E7 | ✅ | ✅ | ✅ | ⬜ | Samuel |
+| E8 (trava/eleição kazoo) | ✅ | ✅ | ✅ | ⬜ | Samuel |
 | Quadro comparativo `comparacao.md` | ⬜ | | | | |
 
 ## Relatório (R2, R5, R6, R8)

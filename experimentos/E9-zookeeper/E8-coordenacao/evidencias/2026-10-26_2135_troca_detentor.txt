@@ -1,0 +1,38 @@
+# data: 2026-10-26T21:35:58.401
+# comando: medir
+# ---
+--- A
+1793061358.837136 A: sessão 0x3000044343c0000, timeout negociado 10.0 s
+1793061358.862406 ADQUIRIU A (trava)
+1793061358.864332   znode /e9/trava/c7f923ffb93e4142b7ba8e72ef6af818__lock__0000000000 ephemeralOwner=0x3000044343c0000 czxid=0x19000013ae
+1793061364.864561 MORREU A (os._exit sem fechar a sessão)
+--- B
+1793061360.844847 B: sessão 0x2000043c7620001, timeout negociado 10.0 s
+1793061372.606968 ADQUIRIU B (trava)
+1793061372.608592   znode /e9/trava/ab490bcd54ef479ab84502131efae178__lock__0000000001 ephemeralOwner=0x2000043c7620001 czxid=0x19000013b0
+1,2026-10-26T21:36:13,7742.4,0,trava,negociado 10.0 s
+2,2026-10-26T21:36:39,7998.7,0,trava,negociado 10.0 s
+3,2026-10-26T21:37:05,7996.4,0,trava,negociado 10.0 s
+4,2026-10-26T21:37:31,7995.5,0,trava,negociado 10.0 s
+5,2026-10-26T21:37:57,7999.5,0,trava,negociado 10.0 s
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2135_e9e8_troca_trava | 5 | 7946.50 | 114.11 | 7742.40 | 7999.50 | 0 |
+--- A
+1793061479.433824 A: sessão 0x1000043c7370008, timeout negociado 10.0 s
+1793061479.442537 ADQUIRIU A (eleicao)
+1793061479.444150   znode /e9/eleicao/023be88eb43b4b8a9fe74bfda2a6484f__lock__0000000000 ephemeralOwner=0x1000043c7370008 czxid=0x19000013d2
+1793061485.444291 MORREU A (os._exit sem fechar a sessão)
+--- B
+1793061481.491522 B: sessão 0x2000043c7620007, timeout negociado 10.0 s
+1793061492.599000 ADQUIRIU B (eleicao)
+1793061492.600593   znode /e9/eleicao/faa3c5c830504ee399ad3585fe3036af__lock__0000000001 ephemeralOwner=0x2000043c7620007 czxid=0x19000013d4
+1,2026-10-26T21:38:13,7154.7,0,eleicao,negociado 10.0 s
+2,2026-10-26T21:38:39,7998.6,0,eleicao,negociado 10.0 s
+3,2026-10-26T21:39:05,7996.9,0,eleicao,negociado 10.0 s
+4,2026-10-26T21:39:31,7997.8,0,eleicao,negociado 10.0 s
+5,2026-10-26T21:39:57,7996.4,0,eleicao,negociado 10.0 s
+| Medição | n | média (duracao_ms) | desvio padrão | mín | máx | falhas |
+|---|---|---|---|---|---|---|
+| 2026-10-26_2137_e9e8_troca_eleicao | 5 | 7828.88 | 376.88 | 7154.70 | 7998.60 | 0 |
+# exit=0
