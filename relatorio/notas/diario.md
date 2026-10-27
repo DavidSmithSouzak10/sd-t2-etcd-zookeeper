@@ -11,6 +11,20 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-26 (segunda), sessão 10: revisão do trabalho do Samuel (David + Claude Code, máquina do David)
+
+**Feito:** revisão dos commits da sessão 9 (`0dc40dd` a `838a098`): previsões, execução, CSVs, análises, rascunho do relatório e roteiro das demos.
+
+**Conclusões da revisão:**
+- Previsões: a versão revisada (21:11) foi registrada antes da 1ª execução (21:18). David acompanhou em call e assume a versão como previsão da dupla; a versão anterior fica no histórico (`5196dea`) e o uso de IA está declarado em `docs/uso-ia.md`.
+- Execução: todos os CSVs com `exit=0`; as duas correções de script do Samuel (E8 `elect` com sessão de 60 s; E9-E5 `makepath=True`) estão corretas.
+- Ressalvas conferidas no texto: t0 dos eventos de rede atrasado (E6 README e seção 9), termo 3 → 3 na repetição 2 do E5, E7 bimodal (50 ms × cerca de 6,5 s).
+- `scripts/revisar.py`: 92 de 98. Pendentes: 3 medições de contraste com 1 repetição (intencionais, o `stop` é só contraste), pendências nas seções 10, 11 e 12 (revisão da dupla e datas de acesso das referências).
+
+**Próximo (27/10):** leitura e aprovação das análises e do relatório pela dupla; datas de acesso das referências; nome completo do David na capa; montar o PDF/DOCX; gravar os vídeos de contingência; slides. Docker Desktop na máquina do David para ensaiar a demo.
+
+---
+
 ## 2026-10-26 (segunda), sessão 9: execução de E5–E8 e E9-E5..E8 (Samuel + Claude Code, máquina do Samuel)
 
 **Feito:** os 8 `executar.sh` rodaram em sequência das 21:18 às 21:40 (Windows 11, Docker Engine 29.9.2), depois do registro das previsões (`5196dea`, `0dc40dd`). O E8 e o E9-E5 foram reexecutados com o script corrigido (21:41–21:50).
