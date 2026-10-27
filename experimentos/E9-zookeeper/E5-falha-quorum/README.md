@@ -17,7 +17,7 @@ Parar o líder: tempo até novo líder ≥ 5× e **nova época no zxid** (`srvr.
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Clientes: [`zookeeper/cliente/e9_eleicao.py`](../../../zookeeper/cliente/e9_eleicao.py) e [`e9_operacoes.py`](../../../zookeeper/cliente/e9_operacoes.py). Início = evento `kill` do `docker events`; fim = primeiro sobrevivente em `Mode: leader`.
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:48–21:50. Uma primeira execução (21:29–21:31) foi descartada: o quadro de quórum deu `NoNodeError` porque o znode pai `/e9` não existia num ensemble novo; corrigido com `makepath=True` em `e9_operacoes.py` (ver diário, sessão 9).
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:48–21:50. Uma primeira execução (21:29–21:31) foi descartada: o quadro de quórum deu `NoNodeError` porque o znode pai `/e9` não existia num ensemble novo; corrigido com `makepath=True` em `e9_operacoes.py` (ver diário, sessão 9).
 
 | Arquivo | O que mostra |
 |---|---|

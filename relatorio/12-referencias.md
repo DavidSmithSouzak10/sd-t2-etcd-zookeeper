@@ -18,4 +18,12 @@ THE APACHE SOFTWARE FOUNDATION. **Apache ZooKeeper documentation**. Disponível 
 
 RAFT. **The Raft consensus algorithm**. Disponível em: https://raft.github.io. Acesso em: _pendente_.
 
-_pendente_ (Coulouris; van Steen & Tanenbaum; Brewer/CAP; Abadi/PACELC; Lamport 1978; Chandy & Lamport 1985 — conforme usados no texto)
+ABADI, D. Consistency tradeoffs in modern distributed database system design: CAP is only part of the story. **Computer**, v. 45, n. 2, p. 37-42, fev. 2012.
+
+CHANDY, K. M.; LAMPORT, L. Distributed snapshots: determining global states of distributed systems. **ACM Transactions on Computer Systems**, v. 3, n. 1, p. 63-75, fev. 1985.
+
+GILBERT, S.; LYNCH, N. Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services. **ACM SIGACT News**, v. 33, n. 2, p. 51-59, jun. 2002.
+
+LAMPORT, L. Time, clocks, and the ordering of events in a distributed system. **Communications of the ACM**, v. 21, n. 7, p. 558-565, jul. 1978.
+
+KUBERNETES AUTHORS. **Kubernetes API concepts**: resource versions. Disponível em: https://kubernetes.io/docs/reference/using-api/api-concepts/. Acesso em: _pendente_.

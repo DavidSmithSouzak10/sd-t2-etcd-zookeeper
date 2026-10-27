@@ -20,7 +20,7 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |
 | Repositório remoto (GitHub) privado | ✅ | D | https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper, push inicial em 24/10/2026 |
 | Samuel com acesso de escrita ao repositório | ✅ | D | convite aceito em 26/10/2026 |
-| Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ✅ | S | 26/10/2026, Windows 11 + Docker 28.0.1: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt` (VALIDAÇÃO OK todos) |
+| Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ✅ | S | 26/10/2026, Windows 11 + Docker Engine 29.9.2: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt` (VALIDAÇÃO OK todos) |
 
 ## Experimentos etcd (R3)
 | Exp. | Previsão registrada | Executado | Medições ≥5× | Análise | Resp. |
@@ -48,18 +48,18 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 ## Relatório (R2, R5, R6, R8)
 | Seção | Status | Resp. |
 |---|---|---|
-| 01 Identificação | ⬜ | |
-| 02 Resumo | ⬜ | |
-| 03 Fundamentação + diagrama próprio | ⬜ | |
-| 04 Ambiente e reprodutibilidade | 🟨 | D (hardware/versões/memória preenchidos) |
-| 05 Experimentos E1–E9 | ⬜ | |
-| 06 Q1–Q14 (com evidência) | ⬜ | |
-| 07 S1–S4 | ⬜ | |
-| 08 Quadro-síntese | ⬜ | |
-| 09 Limitações | ⬜ | |
-| 10 Papel de cada integrante | ⬜ | |
-| 11 Declaração de uso de IA | 🟨 | `docs/uso-ia.md` sendo mantido |
-| 12 Referências ABNT | ⬜ | |
+| 01 Identificação | ✅ | D |
+| 02 Resumo | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 03 Fundamentação + diagrama próprio | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 04 Ambiente e reprodutibilidade | ✅ | D; máquina 2 e memória do ZK acrescentadas em 26/10 |
+| 05 Experimentos E1–E9 | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 06 Q1–Q14 (com evidência) | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 07 S1–S4 | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 08 Quadro-síntese | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 09 Limitações | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 10 Papel de cada integrante | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 11 Declaração de uso de IA | 🟨 | consolidada em 26/10; falta revisão da dupla |
+| 12 Referências ABNT | 🟨 | faltam as datas de acesso das fontes online |
 
 ## Seminário (R9, R10)
 | Item | Status | Resp. |

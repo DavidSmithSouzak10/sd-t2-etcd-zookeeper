@@ -16,7 +16,7 @@ Desconectar o líder da rede interna (`scripts/particionar.sh isolar zkN`); esta
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Clientes: [`zookeeper/cliente/e9_eleicao.py`](../../../zookeeper/cliente/e9_eleicao.py) e [`e9_isolado.py`](../../../zookeeper/cliente/e9_isolado.py). Início = evento `disconnect`; fim = primeiro servidor do lado majoritário em `Mode: leader`.
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:31–21:33.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:31–21:33.
 
 | Arquivo | O que mostra |
 |---|---|

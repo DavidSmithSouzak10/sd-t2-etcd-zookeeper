@@ -18,7 +18,7 @@ Religar o nó e observar como ele se atualiza; medir o tempo até o cluster fica
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Cliente de medição: [`etcd/cliente/e7_alcance.py`](../../etcd/cliente/e7_alcance.py). Início = evento `connect` do `docker events`; fim = o membro religado informa um líder e tem RAFT INDEX ≥ o dos outros.
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:22–21:24.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:22–21:24.
 
 | Arquivo | O que mostra |
 |---|---|

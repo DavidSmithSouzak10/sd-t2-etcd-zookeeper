@@ -1,6 +1,3 @@
-# 2. Resumo (até 15 linhas)
+# 2. Resumo
 
-> Escrever por último: o que foi investigado, como (laboratório com 3 membros etcd e 3 servidores ZooKeeper em contêineres,
-> bateria E1–E8 + E9), e as principais conclusões com números (tempo de eleição, recuperação, comportamento sob partição).
-
-_pendente_
+Este trabalho investigou a replicação de estado e configuração com o etcd (consenso Raft) e, como ênfase, o Apache ZooKeeper (difusão atômica ZAB). Montamos dois laboratórios só com contêineres Docker: um cluster etcd 3.5.17 com 3 membros e um ensemble ZooKeeper 3.9.6 com 3 servidores, cada um com uma rede interna de consenso e uma rede de clientes, o que permite simular partições sem perder o acesso ao nó isolado. Executamos a bateria comum E1–E8 no etcd e repetimos E3–E8 no ZooKeeper (E9), registrando a previsão da dupla antes de cada experimento e medindo cada tempo pelo menos 5 vezes. Os resultados confirmam o modelo teórico: um único líder por termo, escrita confirmada pela maioria, leitura linearizável por padrão no etcd e local por padrão no ZooKeeper. A queda abrupta do líder levou a uma nova eleição em 1,46 ± 0,18 s no etcd e em 0,38 ± 0,09 s no ZooKeeper; sob partição, o lado minoritário dos dois sistemas parou de aceitar escritas, ou seja, ambos priorizam a consistência. Um membro atrasado recuperou-se pelo log ou, com log compactado, por snapshot, sempre com estado final idêntico. Também medimos efeitos não previstos: a parada ordenada do líder no etcd troca a liderança em cerca de 9 ms, e o `etcdctl elect` usa sessão de 60 s, contra 10 s do `lock`.

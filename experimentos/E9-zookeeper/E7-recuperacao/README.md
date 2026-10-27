@@ -16,7 +16,7 @@ Religar e observar a sincronização com o líder nos logs (DIFF, SNAP ou TRUNC)
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Cliente: [`zookeeper/cliente/e9_alcance.py`](../../../zookeeper/cliente/e9_alcance.py). Início = evento `connect`; fim = o servidor religado está em `follower` com o mesmo zxid dos outros. Tipo de sincronização lido no log do novo líder (`Sending DIFF|SNAP|TRUNC`).
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:33–21:35.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:33–21:35.
 
 | Arquivo | O que mostra |
 |---|---|

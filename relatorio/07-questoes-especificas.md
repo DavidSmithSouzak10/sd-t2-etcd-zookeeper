@@ -1,21 +1,22 @@
 # 7. Questões específicas do Tema 5 (S1–S4)
 
 ### S1 — O que o Raft acrescenta a Bully e Anel para a eleição ser segura (termos, voto único por termo, restrição de log)? Por que o timeout é aleatório?
-**Resposta:** _pendente_
+**Resposta:** Bully e Anel assumem detecção de falhas confiável e não têm como distinguir um líder antigo de um novo; numa partição, cada lado pode eleger o seu. O Raft acrescenta três mecanismos (ONGARO; OUSTERHOUT, 2014, §5.2 e §5.4):
+- **termos**: cada eleição abre um termo maior, e qualquer mensagem de termo menor é recusada, então um líder antigo que volta é rebaixado;
+- **voto único por termo** com **maioria**: como duas maiorias se cruzam, no máximo um candidato vence em cada termo;
+- **restrição de log**: só recebe voto quem tem log tão atualizado quanto o do eleitor, e por isso o vencedor já contém todas as entradas confirmadas.
 
-**Evidência:** _pendente_
+O timeout é **aleatório** para que os seguidores raramente expirem juntos: se vários se candidatassem ao mesmo tempo, dividiriam os votos e ninguém teria maioria. O sorteio faz um deles quase sempre largar na frente. Por isso o líder não depende do identificador, ao contrário do Bully. O etcd 3.5 acrescenta o *pre-vote*, que impede um nó isolado de inflar o termo.
+**Evidência:** E1 (líder diferente a cada subida); E5 (eleição em 1,46 ± 0,18 s, dentro do intervalo sorteado de 1–2 s; termo +1); E6 (o isolado ficou no termo 18 enquanto a maioria foi para 19, e não forçou eleição ao voltar); E2 (logs de *check quorum* e *pre-vote*).
 
 ### S2 — Por que 3 ou 5 membros e não 4? Custo de latência de aumentar membros? Para que servem os learners?
-**Resposta:** _pendente_
-
-**Evidência:** _pendente_
+**Resposta:** A tolerância depende da maioria: com N membros, a maioria é ⌊N/2⌋ + 1 e o cluster tolera N − maioria falhas. Com 3, tolera 1; com 4, a maioria passa a 3 e continua tolerando só 1; com 5, tolera 2. Um quarto membro não acrescenta tolerância, só acrescenta mais um voto a esperar e mais uma réplica a manter. **Latência:** cada escrita só é confirmada quando a maioria responde. Mais membros significam uma maioria maior (o commit espera o k-ésimo mais rápido), mais mensagens e mais banda saindo do líder, então a escrita fica mais lenta e a vazão cai. **Learners** são membros que recebem o log sem votar. Servem para adicionar um membro novo: ele se atualiza como learner, sem entrar na conta da maioria, e só é promovido a votante quando alcança o líder. Assim a entrada de um membro atrasado não reduz a disponibilidade.
+**Evidência:** E5 (com 2 de 3 tudo funciona; com 1 de 3, nada que exija maioria); E2 (escrita confirmada com 2 de 3); E1 (`member list` sem learners). Os learners não foram exercitados (ênfase C).
 
 ### S3 — Leitura linearizável × serializável; como o etcd implementa a primeira sem gravar no log? Onde o Kubernetes usa cada uma?
-**Resposta:** _pendente_
-
-**Evidência:** _pendente_
+**Resposta:** A **linearizável** devolve sempre o valor da última escrita confirmada antes do início da leitura; a **serializável** devolve a cópia local do membro, que pode estar atrasada. O etcd implementa a linearizável com **ReadIndex** (ONGARO; OUSTERHOUT, 2014, §8): o membro pede ao líder o índice confirmado atual; o líder confirma, com uma rodada de *heartbeat* para a maioria, que ainda é o líder; o membro espera ter aplicado até esse índice e responde. Nada é gravado no log. O custo é uma ida ao líder mais uma rodada de *heartbeat*. **Kubernetes:** o kube-apiserver faz leituras de quórum (linearizáveis) no etcd quando o cliente pede o estado mais recente (`resourceVersion` vazio), e pode responder do seu cache de *watch*, sem garantia de atualidade, quando o cliente aceita qualquer versão (`resourceVersion="0"`).
+**Evidência:** E4 (100 leituras linearizáveis não alteram o RAFT INDEX além da linha de base; linearizável 1,82 ms × serializável 0,65 ms; no isolado, linearizável falha e serializável devolve `ANTIGO`); E9-E3 e E9-E4 (no ZooKeeper, o equivalente é `sync` + leitura: 3,25 ms × 1,03 ms).
 
 ### S4 — Travas com lease e pausa longa do detentor; como um fencing token (revisão da chave) resolve.
-**Resposta:** _pendente_
-
-**Evidência:** _pendente_
+**Resposta:** A trava com lease se libera sozinha quando o detentor deixa de renovar. Se o detentor sofre uma pausa longa (coleta de lixo, máquina congelada, rede lenta) maior que o TTL, o lease vence e outro cliente pega a trava. Quando o primeiro acorda, ele ainda acredita ser o dono e pode gravar no recurso protegido, desfazendo o trabalho do novo dono (KLEPPMANN, 2016). O **fencing token** é um número que cresce a cada nova aquisição da trava; no etcd, a revisão de criação da chave da trava. O detentor envia o token junto com cada gravação, e o recurso (ou uma transação condicionada) recusa tokens menores que o maior já visto. Assim o detentor antigo, com token menor, é barrado.
+**Evidência:** E8 (`2026-10-26_2148_fencing_token.txt`: A pegou a trava com token 113 e TTL 5 s, pausou 9 s; B pegou com token 114; a gravação de A **com** fencing foi recusada e **sem** fencing sobrescreveu o trabalho de B). No ZooKeeper, o `czxid` do znode da trava cresce a cada aquisição e pode cumprir o mesmo papel (E9-E8).

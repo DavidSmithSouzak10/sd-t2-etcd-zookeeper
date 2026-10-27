@@ -17,7 +17,7 @@ Trava (kazoo `Lock`) e eleição (kazoo `Election`) com **znodes efêmeros e seq
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Cliente: [`zookeeper/cliente/e9_coordenacao.py`](../../../zookeeper/cliente/e9_coordenacao.py) (receitas `Lock` e `Election` do kazoo). A morre com `os._exit` sem fechar a sessão; tempo de troca = `ADQUIRIU B` − `MORREU A`, no mesmo relógio.
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:35–21:40.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:35–21:40.
 
 | Arquivo | O que mostra |
 |---|---|

@@ -19,7 +19,7 @@ Mostrar quem coordena e o mecanismo de versionamento/ordenação.
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Cada competidor de `lock`/`elect` roda num contêiner próprio (`e8-A`, `e8-B`); início = evento `kill` do detentor; fim = primeira linha de saída de B (`docker logs --timestamps`). Fencing: [`etcd/cliente/e8_fencing.py`](../../etcd/cliente/e8_fencing.py).
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:41–21:48. Uma primeira execução (21:24–21:29) foi descartada: o `elect` usa sessão de 60 s, o script esperava só 40 s e não limpava a fila entre repetições (ver diário, sessão 9).
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:41–21:48. Uma primeira execução (21:24–21:29) foi descartada: o `elect` usa sessão de 60 s, o script esperava só 40 s e não limpava a fila entre repetições (ver diário, sessão 9).
 
 | Arquivo | O que mostra |
 |---|---|

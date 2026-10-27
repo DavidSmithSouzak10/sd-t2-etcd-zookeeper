@@ -2,7 +2,7 @@
 
 | Integrante | Pesquisa | Experimentos | Escrita |
 |---|---|---|---|
-| David | _pendente_ | _pendente_ | _pendente_ |
-| Samuel | _pendente_ | _pendente_ | _pendente_ |
+| David | Raft, replicação e commit, MVCC, *watch*, leases, ReadIndex, leitura local × `sync` | ambiente (Compose, scripts de validação e medição), diagramas; previsões e execução de E0–E4 e E9-E3/E4; scripts de E5–E8 e E9-E5..E8 | seções 1 e 4; análises de E1–E4 e E9-E3/E4 |
+| Samuel | eleição, *pre-vote* e *check quorum*, snapshots, ZAB e zxid, CAP/PACELC, Bully e Anel, relógios lógicos, Chandy-Lamport | teste de reprodutibilidade do zero (R1); previsões de E5–E8 e E9-E5..E8; execução de E5–E8 e E9-E5..E8 na máquina 2 | análises de E5–E8 e E9-E5..E8; quadro comparativo do E9 |
 
-Fonte: `docs/equipe.md` e coluna "Resp." do `CHECKLIST.md`.
+As seções 2, 3, 5 a 9 e 11 foram revisadas pelos dois. Os dois apresentam o seminário e respondem por todas as questões (R10). Fonte: `docs/equipe.md`, `CHECKLIST.md` e histórico do repositório.

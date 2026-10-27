@@ -19,7 +19,7 @@ Isolar o líder do restante, mantendo-o acessível ao cliente; observar os dois 
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Partição: `scripts/particionar.sh isolar|religar`. Início da eleição = evento `disconnect` do `docker events`; fim = primeiro membro do lado majoritário que informa o novo líder.
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:20–21:22.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:20–21:22.
 
 | Arquivo | O que mostra |
 |---|---|

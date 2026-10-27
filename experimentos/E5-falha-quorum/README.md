@@ -19,7 +19,7 @@ Derrubar 1 nó (minoria) e depois 2 (maioria); observar o que continua funcionan
 Script reproduzível: [`executar.sh`](executar.sh) (da raiz). Cliente de medição: [`etcd/cliente/e5_eleicao.py`](../../etcd/cliente/e5_eleicao.py). Início = evento `kill` do `docker events`; fim = primeiro sobrevivente que informa o novo líder (consulta a cada 10 ms, de dentro da rede de clientes).
 
 ## Evidências
-Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker 28.0.1), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:18–21:20.
+Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2), depois do registro da previsão (`5196dea`, revisada em `0dc40dd`). Horário: 21:18–21:20.
 
 | Arquivo | O que mostra |
 |---|---|

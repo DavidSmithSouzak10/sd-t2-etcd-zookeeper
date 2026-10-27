@@ -13,7 +13,7 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ## 2026-10-26 (segunda), sessão 9: execução de E5–E8 e E9-E5..E8 (Samuel + Claude Code, máquina do Samuel)
 
-**Feito:** os 8 `executar.sh` rodaram em sequência das 21:18 às 21:40 (Windows 11, Docker 28.0.1), depois do registro das previsões (`5196dea`, `0dc40dd`). O E8 e o E9-E5 foram reexecutados com o script corrigido (21:41–21:50).
+**Feito:** os 8 `executar.sh` rodaram em sequência das 21:18 às 21:40 (Windows 11, Docker Engine 29.9.2), depois do registro das previsões (`5196dea`, `0dc40dd`). O E8 e o E9-E5 foram reexecutados com o script corrigido (21:41–21:50).
 
 **Resultados principais** (n = 5, média ± desvio; CSVs em `resultados/2026-10-26_*`):
 - E5: eleição após `docker kill` do líder 1,46 ± 0,18 s; após `docker stop` cerca de 9 ms (o etcd transfere a liderança antes de sair). Sem maioria: escrita e leitura linearizável com `context deadline exceeded`, serializável responde.
@@ -32,7 +32,9 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 **Análises:** rascunhadas nos README de E5–E8 e E9-E5..E8 e em `comparacao.md` (pendente: leitura da dupla).
 
-**Próximo:** relatório (seções 3, 5, 6, 7, 8, 9); roteiro de comandos das demos e gravação dos vídeos; slides.
+**Relatório:** rascunho das seções 2, 3, 5–11 e complementos de 4 e 12; `scripts/revisar.py` em 94 de 98 (pendentes: 3 medições de contraste com 1 repetição, datas de acesso das referências). Correção: o Docker Engine da máquina 2 é 29.9.2 (o 28.0.1 era a versão do cliente).
+
+**Próximo:** revisão do relatório pela dupla; montar o PDF/DOCX; roteiro das demos e vídeos; slides.
 
 ---
 
@@ -53,7 +55,7 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ## 2026-10-26 (segunda), sessão 7: teste de reprodutibilidade R1 (Samuel + Claude Code)
 
-**Feito:** Samuel aceitou o convite, clonou o repositório numa máquina que nunca tinha rodado o projeto (Windows 11, Docker 28.0.1 / Docker Desktop, sem as imagens baixadas) e seguiu o README: `docker compose up -d` nos dois clusters e `scripts/validar.sh todos`.
+**Feito:** Samuel aceitou o convite, clonou o repositório numa máquina que nunca tinha rodado o projeto (Windows 11, Docker Engine 29.9.2 / Docker Desktop, sem as imagens baixadas) e seguiu o README: `docker compose up -d` nos dois clusters e `scripts/validar.sh todos`.
 
 **Resultado:** `VALIDAÇÃO OK (todos)`. etcd com 1 líder (etcd1), termo 2 e RAFT INDEX 53 igual nos 3 membros. ZK com 1 leader (zk3), 2 followers e zxid 0x100000004 (época 1) nos 3. Evidência: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt`.
 
