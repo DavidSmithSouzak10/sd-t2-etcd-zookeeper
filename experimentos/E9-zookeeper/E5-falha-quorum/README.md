@@ -6,16 +6,10 @@
 Repetir o E5 da bateria comum no ensemble ZooKeeper. Comparar época ZAB × termo Raft e os tempos de eleição.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
->
-> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
-> 1. Parando o líder, a eleição (FLE) será mais rápida ou mais lenta que a do etcd?
-> 2. O que muda no zxid: a época (32 bits altos) sobe? O contador reinicia?
-> 3. Sem maioria: o servidor restante atende leituras? Escritas?
+> Registrada em 2026-10-26 21:11, antes de qualquer execução (ver `docs/uso-ia.md`).
 
-1. **Tempo de eleição:** esperamos que a eleição do ZooKeeper seja **mais rápida** que a do etcd.
-2. **zxid:** esperamos que a **época suba (+1) e o contador recomece do zero**.
-3. **Sem maioria:** esperamos que o servidor restante **recuse escritas, mas responda leituras**.
+- **Parar o líder:** esperamos uma eleição mais rápida que a do etcd, porque ao parar o contêiner as conexões TCP fecham e os seguidores percebem na hora, sem esperar timeout. A época do zxid sobe 1 e o contador recomeça.
+- **Sem maioria:** esperamos que o servidor restante pare de atender leituras e escritas, porque sem quórum ele sai do ensemble (o modo *read-only* está desligado). Diferente do etcd, onde a leitura serializável ainda responde.
 
 ## Procedimento
 Parar o líder: tempo até novo líder ≥ 5× e **nova época no zxid** (`srvr.py`, `currentEpoch`). Parar o 2º servidor: o que falha para leitura e escrita?

@@ -36,7 +36,9 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 - Os comandos do README colados no **PowerShell** falham (`&&` não existe no Windows PowerShell 5.1, e `source` não é comando). Funcionou chamando o bash do Git: `& "C:\Program Files\Git\bin\bash.exe" -c '...'`. O README já diz para usar Git Bash; vale citar no relatório (seção 4/9) como ponto de atenção para o professor no Windows.
 - O cliente ZK precisa de ~20 s para instalar o kazoo; rodar o `validar.sh zk` logo depois do `up -d` pode falhar. Usamos `sleep 20` antes.
 
-**Próximo:** Samuel responde `docs/questionario-previsoes-samuel.md` (E5–E8, E9-E5..E8) para liberar a execução desses experimentos.
+**Previsões E5–E8 e E9-E5..E8:** registradas (`5196dea`) e, ainda antes de qualquer execução, revisadas para coerência com a teoria e reduzidas ao formato do PDF (§4.2); o questionário foi removido (ver `docs/uso-ia.md`).
+
+**Próximo:** scripts `executar.sh` de E5–E8 e E9-E5..E8; execução.
 
 ---
 

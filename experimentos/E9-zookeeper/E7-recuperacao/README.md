@@ -6,14 +6,9 @@
 Repetir o E7 da bateria comum no ensemble ZooKeeper. Comparar com catch-up por log/snapshot do etcd.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
->
-> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
-> 1. Religado, o servidor sincroniza por DIFF, SNAP ou TRUNC? Do que isso depende?
-> 2. Quanto tempo até o zxid dele igualar o dos outros?
+> Registrada em 2026-10-26 21:11, antes de qualquer execução (ver `docs/uso-ia.md`).
 
-1. **Modo de sincronização:** esperamos **DIFF**, porque faltam poucas transações e o líder as tem em memória.
-2. **Tempo até o zxid igualar:** esperamos **vários segundos**.
+- **Religar:** esperamos sincronização por DIFF, porque faltam poucas transações e o líder as tem em memória, e o zxid igual nos 3 alguns segundos depois de religar. A sincronização em si é rápida, mas o servidor precisa sair do LOOKING e reencontrar o líder, e o intervalo entre suas tentativas de eleição cresce enquanto ele está isolado.
 
 ## Procedimento
 Religar e observar a sincronização com o líder nos logs (DIFF, SNAP ou TRUNC); tempo até o zxid igualar ≥ 5×.

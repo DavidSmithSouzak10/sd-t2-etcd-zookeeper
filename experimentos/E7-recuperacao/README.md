@@ -6,19 +6,10 @@
 Religar o nó e observar como ele se atualiza; medir o tempo até o cluster ficar saudável.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
->
-> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
-> 1. Religado, o antigo líder volta como líder ou seguidor? Por quê (termo)?
-> 2. Quanto tempo até o RAFT INDEX dele alcançar o dos outros?
-> 3. Com `--snapshot-count` baixo e muitas escritas enquanto ele estava fora, ele recupera pelo log ou por snapshot? Que mensagem esperam no log?
-> 4. O estado final (chaves e revisão) fica idêntico nos 3?
-> O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
+> Registrada em 2026-10-26 21:11, antes de qualquer execução (ver `docs/uso-ia.md`).
 
-1. **Papel ao voltar:** esperamos que o antigo líder volte como **seguidor**, porque já existe um líder com **termo maior** e ele adota esse termo.
-2. **Tempo até alcançar o RAFT INDEX:** esperamos **vários segundos**, porque ele precisa reprocessar tudo desde o começo.
-3. **Log × snapshot:** com `--snapshot-count` baixo e mais escritas do que isso enquanto ele estava fora, esperamos recuperação **por snapshot**: o líder já não tem as entradas antigas no log e envia a foto.
-4. **Estado final:** esperamos chaves e revisão **idênticas nos 3**.
+- **Religar:** esperamos que o membro volte como seguidor, adote o termo maior e alcance o RAFT INDEX dos outros em menos de 1 s. Porque o líder envia só as entradas que faltam, numa rede local.
+- **Snapshot:** com `--snapshot-count=1000` e milhares de escritas enquanto ele está parado, esperamos recuperação por snapshot, porque o líder já compactou as entradas antigas do log. O estado final (chaves e revisão) fica idêntico nos 3.
 
 ## Procedimento
 1. Reconectar o membro isolado e mostrá-lo voltando como seguidor, com termo atualizado, alcançando o mesmo RAFT INDEX (medir o tempo, ≥ 5 repetições).

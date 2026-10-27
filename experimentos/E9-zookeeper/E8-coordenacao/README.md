@@ -6,16 +6,10 @@
 Repetir o E8 da bateria comum no ensemble ZooKeeper. Comparar com `etcdctl lock/elect` (lease × sessão).
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
->
-> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
-> 1. Na trava com znodes efêmeros sequenciais, quem pega a trava depois? Por que só o próximo da fila é avisado?
-> 2. Se o cliente dono morrer, quanto tempo até a trava liberar? (session timeout × lease TTL do etcd)
-> 3. Época ZAB × termo Raft: qual a semelhança e a diferença?
+> Registrada em 2026-10-26 21:11, antes de qualquer execução (ver `docs/uso-ia.md`).
 
-1. **Quem é avisado:** esperamos que **só o próximo da fila** seja avisado (cada um observa apenas o anterior), o que evita uma "manada" de avisos.
-2. **Dono morre:** esperamos que a trava libere **na hora**, porque o znode some instantaneamente.
-3. **Época × termo:** esperamos que **sejam diferentes**: a época conta transações, o termo conta líderes.
+- **Trava e eleição:** esperamos que só o próximo da fila seja avisado (cada cliente observa o znode anterior) e que, parando o dono, a trava libere quando a sessão expira (cerca de 10 s no kazoo), como o lease do etcd.
+- **Época × termo:** esperamos que sejam a mesma ideia: um número de mandato que sobe a cada novo líder e faz os servidores recusarem mensagens do líder antigo.
 
 ## Procedimento
 Trava (kazoo `Lock`) e eleição (kazoo `Election`) com **znodes efêmeros e sequenciais**, com 2 clientes cada; matar o detentor e medir o tempo de troca (session timeout) ≥ 5×.

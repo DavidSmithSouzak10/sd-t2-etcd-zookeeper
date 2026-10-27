@@ -6,19 +6,10 @@
 Isolar o líder do restante, mantendo-o acessível ao cliente; observar os dois lados.
 
 ## Previsão da dupla (escrever ANTES de executar — não editar depois)
-> Data/hora do registro: 2026-10-26 20:58 — respostas de Samuel (em call com David) a um questionário de múltipla escolha; texto montado pelo Claude Code a partir das escolhas, sem correção (ver `docs/uso-ia.md`)
->
-> **Perguntas-guia** (do assistente: são só perguntas; a resposta e a justificativa são da dupla):
-> 1. Com o líder fora da rede interna, o lado majoritário (2 nós) elege outro líder? Em quanto tempo?
-> 2. O líder isolado continua se achando líder? Por quanto tempo?
-> 3. Um cliente ligado ao nó isolado recebe o quê em `put`, `get` linearizável e `get` serializável?
-> 4. O etcd escolhe C ou A na partição? Qual parte do resultado prova isso?
-> O que esperamos observar e por quê (citar Raft/ZAB, quórum etc.):
+> Registrada em 2026-10-26 21:11, antes de qualquer execução (ver `docs/uso-ia.md`).
 
-1. **Lado majoritário:** esperamos que **eleja um novo líder em poucos segundos**, porque os 2 nós param de ouvir o líder e têm maioria para votar.
-2. **Líder isolado:** esperamos que **continue se achando líder** até a rede voltar.
-3. **Put no nó isolado:** esperamos que o cliente receba **OK**: o nó grava e sincroniza depois.
-4. **C × A:** esperamos que o etcd prefira **consistência (C)**: recusa operações do lado minoritário para não haver duas versões dos dados.
+- **Os dois lados:** esperamos que o lado majoritário eleja um novo líder, com termo maior, em poucos segundos, e que o líder isolado deixe de ser líder (*check quorum*) e pare de aceitar escritas. O cliente ligado só a ele recebe erro ou timeout no `put` e no `get` linearizável; o `get` serializável pode devolver o valor antigo. Porque só o lado com maioria consegue confirmar operações.
+- **C × A:** esperamos que o etcd escolha consistência: o lado minoritário fica indisponível para não existirem duas versões dos dados.
 
 ## Procedimento
 1. Desconectar o **líder** da rede interna (`scripts/particionar.sh isolar etcdN`).
