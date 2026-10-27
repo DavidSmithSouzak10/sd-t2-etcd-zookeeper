@@ -20,7 +20,7 @@ Repetir o E8 da bateria comum no ensemble ZooKeeper. Comparar com `etcdctl lock/
 ## Procedimento
 Trava (kazoo `Lock`) e eleição (kazoo `Election`) com **znodes efêmeros e sequenciais**, com 2 clientes cada; matar o detentor e medir o tempo de troca (session timeout) ≥ 5×.
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 | Arquivo | O que mostra |

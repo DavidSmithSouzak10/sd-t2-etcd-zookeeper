@@ -25,7 +25,7 @@ Mostrar quem coordena e o mecanismo de versionamento/ordenação.
 2. Dois terminais competindo por `etcdctl lock trava` (exclusão mútua) e dois candidatos em `etcdctl elect eleicao <nome>` (eleição). Parar o contêiner do detentor e medir o tempo até o outro assumir (lease; kit mediu ~11 s com TTL 10 s).
 3. Comparar a eleição do Raft com Bully e Anel (Unidade 2).
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 Arquivos em `evidencias/` (gerados por `scripts/lib.sh::evidencia`, nunca editados à mão). Evidência mínima: troca de líder com termo maior + tempos de troca do lock/elect.

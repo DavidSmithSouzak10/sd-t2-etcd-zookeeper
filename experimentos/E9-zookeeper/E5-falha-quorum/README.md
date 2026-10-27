@@ -20,7 +20,7 @@ Repetir o E5 da bateria comum no ensemble ZooKeeper. Comparar época ZAB × term
 ## Procedimento
 Parar o líder: tempo até novo líder ≥ 5× e **nova época no zxid** (`srvr.py`, `currentEpoch`). Parar o 2º servidor: o que falha para leitura e escrita?
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 | Arquivo | O que mostra |

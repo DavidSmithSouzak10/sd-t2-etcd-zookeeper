@@ -20,7 +20,7 @@ Repetir o E6 da bateria comum no ensemble ZooKeeper. Conclusão C × A comparada
 ## Procedimento
 Desconectar o líder da rede interna (`scripts/particionar.sh isolar zkN`); estado LOOKING no isolado; o que um cliente conectado a ele vê (desconexão, sessão expirada).
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 | Arquivo | O que mostra |

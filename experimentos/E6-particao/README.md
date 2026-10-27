@@ -25,7 +25,7 @@ Isolar o líder do restante, mantendo-o acessível ao cliente; observar os dois 
 2. Observar o lado majoritário elegendo novo líder com termo maior e o antigo líder deixando de aceitar escritas. O que um cliente conectado só a ele recebe?
 3. Concluir sobre a escolha entre consistência e disponibilidade (C × A).
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 Arquivos em `evidencias/` (gerados por `scripts/lib.sh::evidencia`, nunca editados à mão). Evidência mínima: comportamento do lado minoritário e do majoritário + conclusão C × A.

@@ -18,7 +18,7 @@ Repetir o E7 da bateria comum no ensemble ZooKeeper. Comparar com catch-up por l
 ## Procedimento
 Religar e observar a sincronização com o líder nos logs (DIFF, SNAP ou TRUNC); tempo até o zxid igualar ≥ 5×.
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 | Arquivo | O que mostra |

@@ -25,7 +25,7 @@ Derrubar 1 nó (minoria) e depois 2 (maioria); observar o que continua funcionan
 2. Parar um segundo membro: sem maioria, `put` falha (*context deadline exceeded*), leitura linearizável falha e leitura serializável ainda responde.
 3. Montar o quadro "membros ativos × leitura linearizável × leitura serializável × escrita".
 
-Script reproduzível: `executar.sh` (_pendente_).
+Script reproduzível: `executar.sh` (escrito em 26/10, antes da previsão; ainda não executado).
 
 ## Evidências
 Arquivos em `evidencias/` (gerados por `scripts/lib.sh::evidencia`, nunca editados à mão). Evidência mínima: quadro membros × leitura lin. × leitura ser. × escrita + tempos de eleição.

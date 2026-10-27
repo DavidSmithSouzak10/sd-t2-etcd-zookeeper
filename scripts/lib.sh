@@ -75,3 +75,22 @@ zk_papeis() {
     {ip=$1; sub(/172.33.0.5/,"zk",ip); if ($2=="modo=leader") l=ip; else if ($2=="modo=follower") s=s" "ip}
     END {print l s}'
 }
+
+# Instante (epoch em s, 6 casas) do último evento do Docker para um contêiner, no relógio da VM do Docker,
+# o mesmo dos contêineres; serve de t0 preciso para medir eleição/recuperação de dentro do contêiner cliente.
+#   evento_epoch <conteiner> <kill|die|connect|disconnect> <desde_epoch_host>
+# kill/die: sinal enviado / processo terminou; connect/disconnect: rede interna religada/desligada.
+evento_epoch() {
+  local c="$1" ev="$2" desde="$3" ate id
+  ate=$(( $(date +%s) + 1 ))   # --until no futuro faz o docker events esperar até lá (1 s)
+  if [ "$ev" = connect ] || [ "$ev" = disconnect ]; then
+    id="$(docker inspect -f '{{.Id}}' "$c")"
+    docker events --since "$desde" --until "$ate" --filter type=network --filter event="$ev" \
+      --format '{{.TimeNano}} {{index .Actor.Attributes "container"}}' | awk -v id="$id" '$2==id{t=$1} END{if (t) printf "%.6f\n", t/1e9}'
+  else
+    docker events --since "$desde" --until "$ate" --filter container="$c" --filter event="$ev" \
+      --format '{{.TimeNano}}' | awk '{t=$1} END{if (t) printf "%.6f\n", t/1e9}'
+  fi
+}
+# diferença em ms entre dois epochs em s ("nan" se faltar algum): ms_entre <t0> <t1>
+ms_entre() { awk -v a="$1" -v b="$2" 'BEGIN{ if (a=="" || b=="" || a=="nan" || b=="nan") print "nan"; else printf "%.1f\n", (b-a)*1000 }'; }
