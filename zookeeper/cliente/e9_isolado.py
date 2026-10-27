@@ -2,6 +2,8 @@
 
 Uso (dentro do zk-cliente; o host isola o servidor ~2 s depois de iniciar):
   python /app/e9_isolado.py --alvo 172.33.0.51:2181 --maioria 172.33.0.53:2181 --escrever-em 4 --duracao 30
+--alvo aceita uma lista "ip1:2181,ip2:2181,..." (usada na ordem dada, sem embaralhar): assim dá para ver se o
+cliente troca de servidor sozinho; cada linha mostra o servidor ligado no momento.
 A cada 0,5 s: get local e sync+get no servidor alvo. Em t = --escrever-em s, grava NOVO pela maioria.
 Cada chamada ao alvo tem prazo de --prazo s: sem prazo, o kazoo enfileira o pedido enquanto a sessão está
 SUSPENDED e espera a reconexão indefinidamente (observado na 1ª execução do E9-E4).
@@ -37,9 +39,17 @@ def main():
     maioria.set(CAMINHO, b"ANTIGO")
     maioria.ensure_path(CAMINHO + "_escrita")
     # cliente só com o alvo; sem novas tentativas, para ver cada falha
-    alvo = KazooClient(hosts=a.alvo, timeout=10.0, connection_retry=KazooRetry(max_tries=-1, max_delay=1),
-                       command_retry=KazooRetry(max_tries=0))
-    alvo.add_listener(lambda estado: print(f"{agora()} [sessão do cliente no alvo] estado -> {estado}", flush=True))
+    alvo = KazooClient(hosts=a.alvo, timeout=10.0, randomize_hosts=False,
+                       connection_retry=KazooRetry(max_tries=-1, max_delay=1), command_retry=KazooRetry(max_tries=0))
+
+    def ligado():
+        try:
+            return alvo._connection._socket.getpeername()[0]
+        except Exception:
+            return "-"
+
+    alvo.add_listener(lambda estado: print(f"{agora()} [sessão do cliente no alvo] estado -> {estado} ({ligado()})",
+                                           flush=True))
     alvo.start(timeout=5.0)
     time.sleep(0.5)
     print(f"{agora()} início: alvo={a.alvo} maioria={a.maioria}; valor inicial ANTIGO", flush=True)
@@ -69,7 +79,7 @@ def main():
             escrita = "OK"
         except Exception as e:
             escrita = f"ERRO {type(e).__name__}"
-        print(f"{agora()} alvo: get local={local:<22} sync+get={comsync:<22} escrita={escrita}", flush=True)
+        print(f"{agora()} alvo({ligado()}): get local={local:<22} sync+get={comsync:<22} escrita={escrita}", flush=True)
         time.sleep(0.5)
     print(f"{agora()} fim", flush=True)
     maioria.stop()

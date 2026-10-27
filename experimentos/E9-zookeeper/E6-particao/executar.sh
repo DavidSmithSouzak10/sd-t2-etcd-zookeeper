@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # E9-E6: partição no ZooKeeper: o LÍDER é desconectado da rede interna (continua acessível aos clientes).
 #   1. tempo até o lado majoritário ter novo líder (t0 = desconexão no docker events), 5 repetições;
-#   2. linha do tempo: cliente ligado só ao líder isolado (sessão, leituras, escrita) × srvr dos 3.
+#   2. linha do tempo, duas vezes: cliente ligado SÓ ao líder isolado e cliente com a lista dos 3 (começando
+#      pelo líder), para ver se o kazoo troca de servidor sozinho; × srvr dos 3.
 # Uso (da raiz do repositório): experimentos/E9-zookeeper/E6-particao/executar.sh
 source "$(dirname "$0")/../../../scripts/lib.sh"
 DIR="$RAIZ/experimentos/E9-zookeeper/E6-particao"
@@ -42,12 +43,14 @@ medir_particao() {
 }
 evidencia "$DIR" eleicao_lado_majoritario -- medir_particao
 
-linha_do_tempo() {
-  local L S1 S2 pid i espera
+linha_do_tempo() {  # linha_do_tempo <so-lider|lista>
+  local L S1 S2 pid i espera hosts
   read -r L S1 S2 < <(zk_papeis)
-  echo "líder (a isolar)=$L  cliente da maioria ligado a $S1"
-  # cliente só no líder; a maioria grava NOVO em t = 8 s (dá tempo de eleger novo líder)
-  docker exec zk-cliente python /app/e9_isolado.py --alvo "${ZK_IP_CLIENTE[$L]}:2181" \
+  hosts="${ZK_IP_CLIENTE[$L]}:2181"   # só o líder, ou a lista dos 3 começando pelo líder
+  [ "$1" = lista ] && hosts="$hosts,${ZK_IP_CLIENTE[$S1]}:2181,${ZK_IP_CLIENTE[$S2]}:2181"
+  echo "líder (a isolar)=$L  cliente: $hosts  cliente da maioria ligado a $S1"
+  # a maioria grava NOVO em t = 8 s (dá tempo de eleger novo líder)
+  docker exec zk-cliente python /app/e9_isolado.py --alvo "$hosts" \
     --maioria "${ZK_IP_CLIENTE[$S1]}:2181" --escrever-em 8 --duracao 25 --prazo 2 &
   pid=$!
   sleep 3
@@ -63,6 +66,7 @@ linha_do_tempo() {
   esperar_saudavel
   echo "--- depois de religar"; docker exec zk-cliente python /app/srvr.py
 }
-evidencia "$DIR" linha_do_tempo -- linha_do_tempo
+evidencia "$DIR" linha_do_tempo_so_lider -- linha_do_tempo so-lider
+evidencia "$DIR" linha_do_tempo_lista -- linha_do_tempo lista
 
 evidencia "$DIR" validacao_final -- bash "$RAIZ/scripts/validar.sh" zk
