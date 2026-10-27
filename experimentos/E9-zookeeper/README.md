@@ -9,12 +9,12 @@ Cada subpasta segue o mesmo modelo dos E1–E8 (objetivo, **previsão antes**, p
 
 | Sub | Equivalente no ZooKeeper | Status |
 |---|---|---|
-| E3-replicacao | `create`/`set` em um servidor, `get` em outro; `get -w` (watch) em terceiro; latência ≥ 5× | ⬜ |
-| E4-consistencia | leitura local × `sync` + leitura; servidor isolado | ⬜ |
-| E5-falha-quorum | parar líder (eleição ≥ 5×, nova época no zxid); perder maioria | ⬜ |
-| E6-particao | líder fora da rede interna; estado LOOKING; o que o cliente vê | ⬜ |
-| E7-recuperacao | religar; sincronização (DIFF/SNAP/TRUNC nos logs) ≥ 5× | ⬜ |
-| E8-coordenacao | trava e eleição com znodes efêmeros e sequenciais (kazoo); época ZAB × termo Raft | ⬜ |
+| E3-replicacao | `create`/`set` em um servidor, `get` em outro; `get -w` (watch) em terceiro; latência ≥ 5× | ✅ |
+| E4-consistencia | leitura local × `sync` + leitura; servidor isolado | ✅ |
+| E5-falha-quorum | parar líder (eleição ≥ 5×, nova época no zxid); perder maioria | ✅ |
+| E6-particao | líder fora da rede interna; estado LOOKING; o que o cliente vê | ✅ |
+| E7-recuperacao | religar; sincronização (DIFF/SNAP/TRUNC nos logs) ≥ 5× | ✅ |
+| E8-coordenacao | trava e eleição com znodes efêmeros e sequenciais (kazoo); época ZAB × termo Raft | ✅ |
 
 ## Ferramentas
 - `docker exec zk-cliente python /app/srvr.py` — modo, zxid, época e contador de cada servidor.

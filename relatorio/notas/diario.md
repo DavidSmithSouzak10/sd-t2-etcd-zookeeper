@@ -30,7 +30,9 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 - E9-E5: o quadro de quórum deu `NoNodeError` em todas as operações, porque `/e9` não existia num ensemble recém-criado (na máquina do David existia desde o E9-E3). Correção: `makepath=True` em `e9_operacoes.py`. Os tempos de eleição da 1ª execução eram válidos, mas o experimento foi reexecutado inteiro. É um defeito de reprodutibilidade que só uma máquina limpa revelou (R1).
 - E5: na repetição 2 do `kill` o CSV registra termo 3 → 3; o termo lido "depois" foi o de um membro ainda não atualizado. Citar na análise e na seção 9.
 
-**Próximo:** análise previsão × resultado nos README de E5–E8 e E9-E5..E8; quadro comparativo do E9; relatório.
+**Análises:** rascunhadas nos README de E5–E8 e E9-E5..E8 e em `comparacao.md` (pendente: leitura da dupla).
+
+**Próximo:** relatório (seções 3, 5, 6, 7, 8, 9); roteiro de comandos das demos e gravação dos vídeos; slides.
 
 ---
 
