@@ -24,7 +24,7 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 - Relatório revisado e aprovado pela dupla em 28/10. Os 5 links das referências foram abertos em 28/10 (acesso em 28 out. 2026): o da documentação do ZooKeeper estava quebrado (404) e foi corrigido; a S3 foi atualizada conforme a documentação atual do Kubernetes (leitura "mais recente" pode vir do cache do apiserver desde a 1.31).
 
-**Pendente (ver `CHECKLIST.md`):** nome completo do David na capa; **acesso do professor ao repositório privado**; slides (prints no lugar dos vídeos e revisão); ensaio e treino da arguição; entrega no AVA.
+**Pendente (ver `CHECKLIST.md`):** nome completo do David na capa; **acesso do professor ao repositório privado**; revisão dos slides (já com os prints das demos); ensaio e treino da arguição; entrega no AVA.
 
 ---
 
