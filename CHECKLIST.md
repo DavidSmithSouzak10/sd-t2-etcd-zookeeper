@@ -50,18 +50,18 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Seção | Status | Resp. |
 |---|---|---|
 | 01 Identificação | ✅ | D |
-| 02 Resumo | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 03 Fundamentação + diagrama próprio | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
+| 02 Resumo | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 03 Fundamentação + diagrama próprio | ✅ | revisado e aprovado pela dupla em 28/10 |
 | 04 Ambiente e reprodutibilidade | ✅ | D; máquina 2 e memória do ZK acrescentadas em 26/10 |
-| 05 Experimentos E1–E9 | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 06 Q1–Q14 (com evidência) | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 07 S1–S4 | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 08 Quadro-síntese | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 09 Limitações | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 10 Papel de cada integrante | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
-| 11 Declaração de uso de IA | 🟨 | consolidada em 26/10; falta revisão da dupla |
-| 12 Referências ABNT | 🟨 | faltam as datas de acesso das fontes online |
-| Relatório montado em PDF (`relatorio/relatorio.pdf`) | 🟨 | 24 p. com capa e sumário, por `python scripts/gerar_pdf.py relatorio` (28/10); gerar de novo depois da revisão |
+| 05 Experimentos E1–E9 | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 06 Q1–Q14 (com evidência) | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 07 S1–S4 | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 08 Quadro-síntese | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 09 Limitações | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 10 Papel de cada integrante | ✅ | revisado e aprovado pela dupla em 28/10 |
+| 11 Declaração de uso de IA | ✅ | revisada pela dupla em 28/10 |
+| 12 Referências ABNT | ✅ | links abertos em 28/10 (acesso em 28 out. 2026); link do ZooKeeper corrigido |
+| Relatório montado em PDF (`relatorio/relatorio.pdf`) | ✅ | capa, sumário e 12 seções, por `python scripts/gerar_pdf.py relatorio` (28/10, versão revisada) |
 | Entrega do relatório no AVA (28/10) | ⬜ | D+S |
 
 ## Seminário (R9, R10)

@@ -25,7 +25,7 @@ Resposta curta (2–3 frases) + o experimento que prova. A resposta completa est
 |---|---|---|---|---|
 | S1 | O que o Raft acrescenta a Bully/Anel? Por que timeout aleatório? | Termos (recusa líder velho), voto único por termo com maioria, restrição de log. Timeout aleatório para não empatar votos. | E1, E5 | S |
 | S2 | Por que 3 ou 5 e não 4? Learners? | 4 tolera a mesma 1 falha que 3, mas espera mais um voto. Mais membros = commit mais lento. Learner: recebe o log sem votar até se atualizar. | E5, E2 | S |
-| S3 | Linearizável × serializável; ReadIndex; Kubernetes? | ReadIndex: pergunta ao líder o índice confirmado, confirma liderança com *heartbeat*, responde; não grava no log. K8s: `resourceVersion` vazio = leitura de quórum; `"0"` = cache. | E4 (100 leituras não mexem no índice) | D |
+| S3 | Linearizável × serializável; ReadIndex; Kubernetes? | ReadIndex: pergunta ao líder o índice confirmado, confirma liderança com *heartbeat*, responde; não grava no log. K8s: `resourceVersion` vazio = mais recente, consistente (leitura de quórum; desde a 1.31 pode vir do cache mantido em dia); `"0"` = qualquer versão, do cache. | E4 (100 leituras não mexem no índice) | D |
 | S4 | Pausa longa com lease; fencing token? | O lease vence, outro pega a trava, o antigo acorda e grava por cima. Fencing token (revisão da chave) cresce a cada aquisição; o recurso recusa o menor. | E8 (113 recusado × 114) | S |
 
 ## Perguntas prováveis sobre os resultados

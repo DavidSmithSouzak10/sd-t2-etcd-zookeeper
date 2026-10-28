@@ -8,13 +8,13 @@ JUNQUEIRA, F. P.; REED, B. C.; SERAFINI, M. Zab: high-performance broadcast for 
 
 BURROWS, M. The Chubby lock service for loosely-coupled distributed systems. In: SYMPOSIUM ON OPERATING SYSTEMS DESIGN AND IMPLEMENTATION (OSDI), 7., 2006, Seattle. **Proceedings** [...]. Berkeley: USENIX Association, 2006.
 
-KLEPPMANN, M. **How to do distributed locking**. 2016. Disponível em: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html. Acesso em: _pendente_.
+KLEPPMANN, M. **How to do distributed locking**. 2016. Disponível em: https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html. Acesso em: 28 out. 2026.
 
-ETCD AUTHORS. **etcd documentation v3.5**. Disponível em: https://etcd.io/docs/v3.5/. Acesso em: _pendente_.
+ETCD AUTHORS. **etcd documentation v3.5**. Disponível em: https://etcd.io/docs/v3.5/. Acesso em: 28 out. 2026.
 
-THE APACHE SOFTWARE FOUNDATION. **Apache ZooKeeper documentation**. Disponível em: https://zookeeper.apache.org/documentation.html. Acesso em: _pendente_.
+THE APACHE SOFTWARE FOUNDATION. **Apache ZooKeeper 3.9 documentation**. Disponível em: https://zookeeper.apache.org/doc/current/index.html. Acesso em: 28 out. 2026.
 
-RAFT. **The Raft consensus algorithm**. Disponível em: https://raft.github.io. Acesso em: _pendente_.
+RAFT. **The Raft consensus algorithm**. Disponível em: https://raft.github.io. Acesso em: 28 out. 2026.
 
 ABADI, D. Consistency tradeoffs in modern distributed database system design: CAP is only part of the story. **Computer**, v. 45, n. 2, p. 37-42, fev. 2012.
 
@@ -24,4 +24,4 @@ GILBERT, S.; LYNCH, N. Brewer's conjecture and the feasibility of consistent, av
 
 LAMPORT, L. Time, clocks, and the ordering of events in a distributed system. **Communications of the ACM**, v. 21, n. 7, p. 558-565, jul. 1978.
 
-KUBERNETES AUTHORS. **Kubernetes API concepts**: resource versions. Disponível em: https://kubernetes.io/docs/reference/using-api/api-concepts/. Acesso em: _pendente_.
+KUBERNETES AUTHORS. **Kubernetes API concepts**: resource versions. Disponível em: https://kubernetes.io/docs/reference/using-api/api-concepts/. Acesso em: 28 out. 2026.

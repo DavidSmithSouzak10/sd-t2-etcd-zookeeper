@@ -22,7 +22,9 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 - `scripts/gerar_pdf.py`: monta o relatório (capa, sumário e as 12 seções) em `relatorio/relatorio.pdf` (24 páginas) e converte a mini-aula. Retiradas do texto três notas internas (seções 6, 8 e 12).
 - `docs/criterios-avaliacao.md` atualizado: estava sem status desde 24/10.
 
-**Pendente (ver `CHECKLIST.md`):** revisão do relatório pela dupla e regerar o PDF; datas de acesso das referências; nome completo do David na capa; **acesso do professor ao repositório privado**; slides (inserir os vídeos); ensaio e treino da arguição; entrega no AVA.
+- Relatório revisado e aprovado pela dupla em 28/10. Os 5 links das referências foram abertos em 28/10 (acesso em 28 out. 2026): o da documentação do ZooKeeper estava quebrado (404) e foi corrigido; a S3 foi atualizada conforme a documentação atual do Kubernetes (leitura "mais recente" pode vir do cache do apiserver desde a 1.31).
+
+**Pendente (ver `CHECKLIST.md`):** nome completo do David na capa; **acesso do professor ao repositório privado**; slides (prints no lugar dos vídeos e revisão); ensaio e treino da arguição; entrega no AVA.
 
 ---
 
