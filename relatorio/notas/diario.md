@@ -11,6 +11,16 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-28 (quarta), sessão 12: revisão contra os critérios e passagem de contexto (David + Claude Code, máquina do David)
+
+**Feito:** revisão do repositório em `69d29ed` contra `docs/criterios-avaliacao.md` e `CHECKLIST.md`; `scripts/revisar.py` em 95 de 98. Criado `docs/contexto-novo-chat.md`, com orientações para continuar relatório e slides em outro chat.
+
+**Achados:** `experimentos/E9-zookeeper/README.md` (linha 22) ainda marca os scripts kazoo como pendentes; as 3 medições de rodada única (E8 `stop`, E9-E7 com 5000 escritas) deveriam ser chamadas de "contraste" no texto.
+
+**Pendente hoje:** entrega no AVA; acesso do professor ao repositório; revisão dos slides; ensaio cronometrado; treino da arguição; nome completo do David na capa.
+
+---
+
 ## 2026-10-27/28 (terça para quarta), sessão 11: gravação, slides e montagem do relatório (Samuel + Claude Code, máquina do Samuel)
 
 **Feito:**
