@@ -67,9 +67,9 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 ## Seminário (R9, R10)
 | Item | Status | Resp. |
 |---|---|---|
-| Slides (5 blocos, 10 min) | 🟨 | S: 13 slides com prints das demos, placar de previsões e quadro comparativo do E9; revisão do Claude do David incorporada (28/10); falta a revisão final da dupla |
+| Slides (5 blocos, 10 min) | ✅ | D+S: 13 slides (vídeo das demos, o que cada demo prova, quadro do E9, previsão × resultado, quadro-síntese) |
 | Vídeos das demos (E2, E3, E5, E6, E7, E9) | ✅ | S: gravados em 27/10 com `seminario/demo.sh` (vídeo fora do repositório, 94 MB) |
-| Ensaio cronometrado com os dois apresentando | ⬜ | D+S |
+| Seminário apresentado em aula, com os dois falando | ✅ | D+S: 28/10/2026 |
 | Mini-aula de estudo (`seminario/mini-aula.pdf`) | ✅ | S (Claude Code), 28/10 |
 | Roteiro de arguição Q1–Q14 / S1–S4 (`seminario/arguicao.md`) | 🟨 | rascunho em 26/10; falta o treino da dupla |
 

@@ -11,6 +11,14 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-28 (quarta), sessão 14: seminário apresentado
+
+**Feito:** seminário apresentado em aula em 28/10/2026 pela dupla, com o vídeo das demonstrações (E2, E3, E5, E6, E7 e E9) e os slides (o que cada demo prova, quadro comparativo do E9, previsão × resultado, quadro-síntese). Segundo o Samuel, o professor gostou do trabalho. Versão marcada no repositório com a tag `entrega-final`.
+
+**Pendente:** confirmar a entrega do relatório no AVA e o acesso do professor ao repositório.
+
+---
+
 ## 2026-10-28 (quarta), sessão 13: correções da revisão do David (Samuel + Claude Code, máquina do Samuel)
 
 **Feito:** incorporada a revisão do Claude Code do David.
