@@ -11,6 +11,21 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-27/28 (terça para quarta), sessão 11: gravação, slides e montagem do relatório (Samuel + Claude Code, máquina do Samuel)
+
+**Feito:**
+- Pasta-mãe renomeada para `SISTEMAS_DISTRIBUIDOS_M2`; clusters recriados do zero e validados no caminho novo.
+- `seminario/demo.sh` refeito para a gravação: cada execução grava valores únicos (com a hora), mostra o valor na cópia local de cada nó antes e depois, mede os tempos pelo mesmo método dos experimentos (`docker events` + observador na rede de clientes) e termina com um quadro RESUMO. O termo do RESUMO é lido direto do líder antigo e do novo (o observador às vezes lia um membro ainda não atualizado, o mesmo artefato do "3 → 3" do E5).
+- Vídeo das demos gravado pelo Samuel (fora do repositório: 94 MB). Roteiro de fala em `seminario/roteiro-demos.md`.
+- Slides em esboço (11 slides nos 5 blocos do PDF, com notas do apresentador), fora do repositório.
+- Mini-aula de estudo: `seminario/mini-aula.md` e `.pdf`.
+- `scripts/gerar_pdf.py`: monta o relatório (capa, sumário e as 12 seções) em `relatorio/relatorio.pdf` (24 páginas) e converte a mini-aula. Retiradas do texto três notas internas (seções 6, 8 e 12).
+- `docs/criterios-avaliacao.md` atualizado: estava sem status desde 24/10.
+
+**Pendente (ver `CHECKLIST.md`):** revisão do relatório pela dupla e regerar o PDF; datas de acesso das referências; nome completo do David na capa; **acesso do professor ao repositório privado**; slides (inserir os vídeos); ensaio e treino da arguição; entrega no AVA.
+
+---
+
 ## 2026-10-26 (segunda), sessão 10: revisão do trabalho do Samuel (David + Claude Code, máquina do David)
 
 **Feito:** revisão dos commits da sessão 9 (`0dc40dd` a `838a098`): previsões, execução, CSVs, análises, rascunho do relatório e roteiro das demos.

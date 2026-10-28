@@ -12,7 +12,7 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Repositório + CLAUDE.md + estrutura | ✅ | D | criado em 24/10/2026 |
 | `etcd/docker-compose.yml` (3 membros, mem_limit, 2 redes) | ✅ | D | `validar.sh etcd` OK em 24/10/2026; ~15–23 MB por membro em repouso |
 | `zookeeper/docker-compose.yml` (3 servidores + cliente kazoo) | ✅ | D | `validar.sh zk` OK em 24/10/2026; ~46–54 MB por servidor |
-| `scripts/validar.sh`, `medir.sh`, `estatistica.py`, `particionar.sh` | 🟨 | D | validar/medir/estatística testados; `particionar.sh isolar/religar` ainda não exercitado |
+| `scripts/validar.sh`, `medir.sh`, `estatistica.py`, `particionar.sh` | ✅ | D | `particionar.sh` exercitado em E4, E6, E7 e E9 |
 | Medição de latência sem overhead (`latencia.sh` + `etcd-cliente`/`zk-cliente`) | ✅ | D | testado em 25/10: `docs/ambiente/evidencias/2026-10-25_1035_teste_ferramenta_latencia.txt` |
 | Divisão de papéis (`docs/equipe.md`) | 🟨 | D+S | rascunho em 25/10; falta o acordo da dupla |
 | `docs/criterios-avaliacao.md` + `scripts/revisar.py` | ✅ | D | revisar.py: 9/67 itens automáticos em 24/10 |
@@ -20,6 +20,7 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | Imagens com versão fixa (ZK 3.9.6) | ✅ | D | |
 | Repositório remoto (GitHub) privado | ✅ | D | https://github.com/DavidSmithSouzak10/sd-t2-etcd-zookeeper, push inicial em 24/10/2026 |
 | Samuel com acesso de escrita ao repositório | ✅ | D | convite aceito em 26/10/2026 |
+| **Professor com acesso ao repositório (privado)** | ⬜ | D | convidar o professor ou tornar público antes da entrega: sem isso ele não consegue reproduzir (R1) |
 | Samuel subiu tudo do zero só com o README (teste de reprodutibilidade) | ✅ | S | 26/10/2026, Windows 11 + Docker Engine 29.9.2: `docs/ambiente/evidencias/2026-10-26_2029_validacao_samuel.txt` (VALIDAÇÃO OK todos) |
 
 ## Experimentos etcd (R3)
@@ -60,16 +61,19 @@ Responsável: D = David, S = Samuel, D+S = ambos.
 | 10 Papel de cada integrante | 🟨 | rascunho em 26/10 (Claude Code); falta revisão da dupla |
 | 11 Declaração de uso de IA | 🟨 | consolidada em 26/10; falta revisão da dupla |
 | 12 Referências ABNT | 🟨 | faltam as datas de acesso das fontes online |
+| Relatório montado em PDF (`relatorio/relatorio.pdf`) | 🟨 | 24 p. com capa e sumário, por `python scripts/gerar_pdf.py relatorio` (28/10); gerar de novo depois da revisão |
+| Entrega do relatório no AVA (28/10) | ⬜ | D+S |
 
 ## Seminário (R9, R10)
 | Item | Status | Resp. |
 |---|---|---|
-| Slides (5 blocos, 10 min) | ⬜ | |
-| Vídeos de contingência (E2, E3, E5/E6, E7, E9) | ⬜ | |
+| Slides (5 blocos, 10 min) | 🟨 | S: esboço em 28/10, 11 slides; falta inserir os vídeos e revisar |
+| Vídeos das demos (E2, E3, E5, E6, E7, E9) | ✅ | S: gravados em 27/10 com `seminario/demo.sh` (vídeo fora do repositório, 94 MB) |
 | Ensaio cronometrado com os dois apresentando | ⬜ | D+S |
+| Mini-aula de estudo (`seminario/mini-aula.pdf`) | ✅ | S (Claude Code), 28/10 |
 | Roteiro de arguição Q1–Q14 / S1–S4 (`seminario/arguicao.md`) | 🟨 | rascunho em 26/10; falta o treino da dupla |
 
 ## Dúvidas com o professor
 | Item | Status |
 |---|---|
-| Ver `docs/duvidas-professor.md` | ⬜ não enviadas |
+| Ver `docs/duvidas-professor.md` | ⬜ não enviadas (decisão da dupla em 26/10) |

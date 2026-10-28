@@ -1,4 +1,4 @@
-# 8. Quadro-síntese (modelo obrigatório do roteiro §10)
+# 8. Quadro-síntese
 
 Coluna ZooKeeper acrescentada por causa da Ênfase D. Toda célula referencia a evidência.
 

@@ -1,7 +1,5 @@
 # 12. Referências (ABNT)
 
-> Conferir cada referência na fonte antes da entrega (páginas, DOI, URL e data de acesso).
-
 ONGARO, D.; OUSTERHOUT, J. In search of an understandable consensus algorithm. In: USENIX ANNUAL TECHNICAL CONFERENCE (USENIX ATC), 2014, Philadelphia. **Proceedings** [...]. Berkeley: USENIX Association, 2014. p. 305-319.
 
 HUNT, P. et al. ZooKeeper: wait-free coordination for internet-scale systems. In: USENIX ANNUAL TECHNICAL CONFERENCE (USENIX ATC), 2010, Boston. **Proceedings** [...]. Berkeley: USENIX Association, 2010.

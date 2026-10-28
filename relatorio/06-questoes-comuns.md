@@ -1,7 +1,5 @@
 # 6. Questões comuns (Q1–Q14)
 
-> Formato fixo (conferido por `scripts/revisar.py`): cada questão tem **Resposta** e **Evidência** (arquivo ou experimento).
-
 ### Q1 — Que problema o sistema resolve? Quais transparências oferece?
 **Resposta:** O etcd guarda pouca informação crítica (configuração, descoberta de serviços, travas, eleição de líder) de forma consistente e disponível mesmo com a falha de uma minoria das réplicas. Para isso replica um log de comandos por consenso (Raft), formando uma máquina de estados replicada. Transparências: **replicação** (o cliente vê um único armazenamento, mas há 3 cópias idênticas), **falha** (a queda de 1 membro é mascarada: o cluster elege outro líder e continua), **localização** (qualquer membro atende; com a lista de endpoints, o cliente troca de membro sozinho), **acesso** (a mesma API em qualquer membro) e **concorrência** (as escritas são serializadas pelo líder; transações e travas resolvem disputas).
 **Evidência:** E3 (20 de 20 leituras corretas em outro membro); E5 (escritas continuam com 2 de 3).
