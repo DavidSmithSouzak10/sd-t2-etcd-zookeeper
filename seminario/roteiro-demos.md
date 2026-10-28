@@ -2,9 +2,11 @@
 
 Usado nos blocos 3 e 4 do seminário (PDF, seção 11): caminho de uma operação (E2), replicação (E3), falha e partição (E5/E6), recuperação (E7) e a ênfase no ZooKeeper (E9).
 
-Cada demo é um comando do `seminario/demo.sh`. Ele roda em segundos e mostra na tela cada comando antes de executá-lo.
+Cada demo é um comando do `seminario/demo.sh`. Ele roda em segundos, mostra na tela cada comando antes de executá-lo, destaca os valores com `>>>` e **termina com um quadro RESUMO**: líder antes → depois, tempo medido, valor antes e valor depois.
 
-Os nomes dos nós e os números (quem é o líder, o termo, a época) mudam a cada execução. Onde estiver `[X]`, leia o valor na tela.
+Cada execução grava valores únicos, com a hora no final (`producao-234253`, `antes-234305`…). Assim, o que aparece nas cópias só pode ter vindo da escrita que acabou de acontecer.
+
+Os nomes dos nós e os números mudam a cada execução. Onde estiver `[X]`, leia o valor no RESUMO.
 
 <br>
 
@@ -14,22 +16,22 @@ Os nomes dos nós e os números (quem é o líder, o termo, a época) mudam a ca
 
 ## Antes de gravar
 
-1. Abrir o Docker Desktop.
-2. Abrir no VS Code só a pasta `sd-t2-etcd-zookeeper`.
-3. Abrir um terminal **Git Bash** (setinha ao lado do `+` no painel do terminal). No PowerShell os `.sh` não rodam.
-4. Deixar o prompt limpo, aumentar a fonte (Ctrl + `+` umas 3 vezes) e subir os clusters:
+1. Docker Desktop aberto.
+2. No VS Code, feche o painel do Claude Code (a conversa não se perde).
+3. Abra um terminal **Git Bash** (setinha ao lado do `+`) e rode:
    ```bash
+   cd sd-t2-etcd-zookeeper
    export PS1='\n$ '
-   seminario/demo.sh preparar
    clear
    ```
-   O `preparar` precisa terminar em `VALIDAÇÃO OK (todos)`.
-5. No Docker Desktop, clicar na setinha de `t5-etcd` e de `t5-zk` para mostrar os 4 contêineres de cada um.
-6. Gravar com Win + Alt + R (o mesmo atalho começa e para). Um vídeo por demo, com `clear` antes de cada uma.
+4. Aumente a fonte do terminal (Ctrl + `+` umas 3 vezes).
+5. Se os clusters não estiverem ligados: `seminario/demo.sh preparar` (precisa terminar em `VALIDAÇÃO OK (todos)`).
+6. No Docker Desktop, abra a setinha de `t5-etcd` e de `t5-zk` para mostrar os 4 contêineres de cada um.
+7. Grave com Win + Alt + R (o mesmo atalho começa e para). Um vídeo por demo, com `clear` antes de cada uma.
 
 Se algo der errado no meio: `seminario/demo.sh limpar` e repetir aquela demo.
 
-**Como falar:** diga o "antes", rode o comando, **espere a saída terminar** e só então diga o "depois", apontando na tela o que está falando. Se errar a fala, não precisa rodar de novo: corte na edição.
+**Como falar:** diga o "antes", rode o comando, **espere o RESUMO aparecer** e só então diga o "depois", apontando as linhas do RESUMO. Se errar a fala, não precisa rodar de novo: corte na edição.
 
 <br>
 
@@ -67,11 +69,11 @@ seminario/demo.sh e2
 
 **Antes de rodar:**
 
-> "Agora nós vamos rodar o teste do **caminho de uma escrita**, que vai gravar um valor mandando o pedido para um nó **seguidor**, e não para o líder. O resultado esperado é que a escrita dê certo e que o **RAFT INDEX suba igual nos três nós**, porque no Raft só o líder escreve: o seguidor encaminha o pedido ao líder, o líder manda a entrada para os outros dois e confirma quando a maioria gravou."
+> "Agora nós vamos rodar o teste do **caminho de uma escrita**, que vai gravar um valor mandando o pedido para um nó **seguidor**, e não para o líder. O resultado esperado é que a escrita dê certo e que o valor apareça **nas três cópias**, com o **RAFT INDEX subindo igual nos três**, porque no Raft só o líder escreve: o seguidor encaminha o pedido ao líder, o líder manda a entrada para os outros dois e confirma quando a maioria gravou."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "Na primeira tabela, o líder é o `[X]` e o RAFT INDEX é igual nos três. Gravamos pelo `[Y]`, que é seguidor, e a resposta trouxe a revisão e o termo. Na segunda tabela, o índice subiu igual nos três, então todos receberam a escrita. E o termo não mudou, porque escrita não muda o mandato do líder."
+> "O líder é o `[X]`, e mandamos a escrita para o seguidor `[Y]`. O RAFT INDEX estava igual nos três antes e subiu igual nos três depois. Lendo a cópia de cada nó, sem consultar o líder: antes, os três tinham o valor anterior; depois, os três têm `producao-[hora]`, o valor que acabamos de gravar. E o termo não mudou, porque escrita não muda o mandato do líder."
 
 Se perguntarem por que o índice subiu mais de 1: o healthcheck do Docker também passa pelo log do Raft, a cada 5 segundos.
 
@@ -91,9 +93,9 @@ seminario/demo.sh e3
 
 > "Agora nós vamos rodar o teste de **replicação**, que vai abrir um *watch*, uma espécie de assinatura de mudanças, no etcd3, gravar um valor no etcd1 e ler esse valor no etcd2. O resultado esperado é que o etcd2 já devolva o valor novo e que o etcd3 seja avisado sozinho, porque toda escrita confirmada está replicada nos três nós, e a leitura padrão do etcd é **linearizável**: sempre vê a última escrita confirmada."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "O etcd2 devolveu o valor que acabamos de gravar no etcd1, e o *watch* no etcd3 recebeu o aviso com o novo valor. Nos nossos experimentos, esse aviso chegou em 6,4 milissegundos, em média."
+> "Escrevemos `azul-[hora]` no etcd1, o etcd2 leu exatamente esse valor, o *watch* no etcd3 recebeu o aviso `PUT` com o mesmo valor, e as três cópias têm esse valor. Nos nossos experimentos, o aviso do *watch* chegou em 6,4 milissegundos, em média."
 
 <br>
 
@@ -111,11 +113,9 @@ seminario/demo.sh e5
 
 > "Agora nós vamos rodar o teste de **falha**, que vai derrubar o líder de forma abrupta, com `docker kill`. O resultado esperado é que os outros dois elejam um **novo líder em um a dois segundos, com o termo aumentado em um**. Isso acontece porque o líder para de mandar *heartbeats*: quando o tempo de espera de um seguidor estoura, ele se candidata num termo novo e, com 2 dos 3 votos, que é a maioria, vence."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "Antes, o líder era o `[X]`, no termo `[T]`. Depois do kill, sobraram dois nós: o `[Y]` virou líder e o termo foi para `[T+1]`. Quando religamos o `[X]`, ele voltou como **seguidor**, porque já existe um líder com termo maior. Medindo cinco vezes, a eleição levou 1,46 segundo, em média."
-
-Se o termo subir 2: "Subiu dois porque houve empate na primeira votação e foi preciso uma segunda rodada."
+> "O líder era o `[X]`, no termo `[T]`. Depois do kill, o `[Y]` virou líder no termo `[T+1]`, e a eleição levou `[tempo]` milissegundos, do kill até um sobrevivente anunciar o novo líder. Antes da queda, as três cópias tinham `antes-[hora]`. Com só dois dos três nós vivos, a escrita `depois-[hora]` foi aceita, porque dois ainda são maioria. E quando religamos o `[X]`, ele voltou como **seguidor** e já tem `depois-[hora]`, que foi gravado enquanto ele estava fora. Nos experimentos, medindo cinco vezes, a eleição levou 1,46 segundo, em média."
 
 <br>
 
@@ -133,9 +133,9 @@ seminario/demo.sh e6
 
 > "Agora nós vamos rodar o teste de **partição**, que vai desconectar o líder da rede interna, mantendo ele acessível ao cliente. O resultado esperado é que o **lado com dois nós eleja outro líder e continue aceitando escritas**, enquanto o **líder isolado recusa escritas**, porque sozinho ele não tem maioria para confirmar nada. Com isso vemos se o etcd escolhe consistência ou disponibilidade."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "No lado isolado, a escrita deu erro de tempo esgotado, e a leitura da cópia local devolveu o valor **ANTIGO**. No lado da maioria, a escrita do valor **NOVO** deu certo. Na tabela, o nó isolado aparece com **'no leader'** e ainda no termo antigo, e os outros dois têm um novo líder num termo maior. Ou seja, diante de uma partição o etcd escolhe **consistência**: o lado minoritário fica indisponível, mas nunca existem duas versões do dado."
+> "O líder `[X]` ficou isolado no termo `[T]`, e o lado com dois nós elegeu o `[Y]` no termo `[T+1]` em `[tempo]` milissegundos. No isolado, a escrita `ISOLADO-[hora]` e a leitura deram erro de tempo esgotado, porque as duas precisam da maioria. Na maioria, a escrita `NOVO-[hora]` deu OK. E nas cópias: o isolado ainda tem `ANTIGO-[hora]`, e os outros dois têm `NOVO-[hora]`. Ou seja, diante de uma partição o etcd escolhe **consistência**: o lado minoritário fica indisponível, e o valor dele nunca é confirmado como atual."
 
 O E6 deixa o nó isolado: grave o E7 logo em seguida.
 
@@ -155,9 +155,9 @@ seminario/demo.sh e7
 
 > "Agora nós vamos rodar o teste de **recuperação**, que vai religar o nó que isolamos. O resultado esperado é que ele **volte como seguidor, adote o termo novo e fique com o mesmo RAFT INDEX** dos outros, porque ele recebe do líder um termo maior que o dele, e o líder manda só as entradas que ele perdeu."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "Os três estão no mesmo termo e com o mesmo RAFT INDEX, o nó religado é seguidor e lê o valor **NOVO**. A escrita **ISOLADO**, que tentamos fazer nele enquanto estava isolado, nunca existiu, porque nunca teve a maioria."
+> "O `[X]` voltou como seguidor e foi do termo `[T]` para o `[T+1]`. O RAFT INDEX ficou igual nos três, e ele alcançou os outros em `[tempo]` milissegundos depois de religado. Nas cópias, os três têm `NOVO-[hora]`. A escrita `ISOLADO-[hora]`, que tentamos fazer nele enquanto estava isolado, nunca existiu, porque nunca teve a maioria."
 
 <br>
 
@@ -175,9 +175,9 @@ seminario/demo.sh e9
 
 > "Agora nós vamos rodar o mesmo teste de falha no **ZooKeeper**, que é a nossa ênfase, derrubando o líder com `docker kill`. O resultado esperado é um novo líder com a **época aumentada em um e o contador zerado**, porque no ZooKeeper cada operação tem um zxid: a parte alta é a época, que é o equivalente do termo do Raft, e cada novo líder abre uma época nova."
 
-**Depois do resultado:**
+**Depois do resultado (no RESUMO):**
 
-> "Antes, a época era `[N]`. O novo líder é o `[zkX]`, na época `[N+1]`, com contador zero. Quando religamos o antigo, ele voltou como *follower* na época nova. Nos nossos testes, essa eleição levou 0,38 segundo, contra 1,46 do etcd, porque no ZooKeeper os seguidores percebem na hora que a conexão com o líder caiu, enquanto o etcd espera o tempo de espera estourar."
+> "O líder era o `[X]`, na época `[N]`. O `[Y]` virou líder na época `[N+1]`, e a eleição levou `[tempo]` milissegundos. Antes da queda, os três servidores tinham `antes-[hora]`. Com dois servidores, a escrita `depois-[hora]` foi aceita, e o servidor que voltou já tem esse valor. Nos experimentos, essa eleição levou 0,38 segundo, contra 1,46 do etcd, porque no ZooKeeper os seguidores percebem na hora que a conexão com o líder caiu, enquanto o etcd espera o tempo de espera estourar."
 
 <br>
 
