@@ -29,7 +29,7 @@ Executado em 26/10/2026 na máquina do Samuel (Windows 11, Docker Engine 29.9.2)
 |---|---|---|---|---|---|---|
 | religar → `follower` com o zxid dos outros (200 transações atrasadas) | 5 | 2520,3 | 678,6 | 1866,7 | 3287,0 | 0 |
 
-Sincronização: DIFF nas 5 repetições. Rodada extra com 5000 transações (1 repetição, não atende R7): 6654,1 ms, também DIFF. CSVs: `resultados/2026-10-26_2133_e9e7_recuperacao.csv`, `resultados/2026-10-26_2135_e9e7_recuperacao_5000.csv`.
+Sincronização: DIFF nas 5 repetições. Rodada de contraste com 5000 transações (1 repetição, não atende R7): 6654,1 ms, também DIFF. CSVs: `resultados/2026-10-26_2133_e9e7_recuperacao.csv`, `resultados/2026-10-26_2135_e9e7_recuperacao_5000.csv`.
 
 ## Análise: previsão × resultado × teoria
 

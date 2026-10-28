@@ -42,7 +42,7 @@ O caminho é o mesmo nos dois sistemas:
 2. O líder anota a escrita no seu registro, o **log**, e a envia aos seguidores.
 3. Cada seguidor anota e responde "anotei".
 4. Quando a **maioria** anotou (o líder e mais um), a escrita está **confirmada**.
-5. Os nós aplicam a escrita na sua cópia, e o cliente recebe OK.
+5. Cada nó aplica a escrita na sua cópia quando fica sabendo da confirmação; o nó que recebeu o pedido aplica e responde OK ao cliente.
 
 Sem maioria (2 nós fora do ar), nenhuma escrita é confirmada: o cliente recebe erro por tempo esgotado.
 
@@ -61,9 +61,9 @@ Em resumo: o etcd é seguro por padrão, e você pede para relaxar; o ZooKeeper 
 **Desconectado** (o líder continua vivo, mas fora da rede interna: uma **partição**). O lado com 2 nós para de ouvir o líder e elege outro, com mandato maior: **0,94 s** no etcd e **3,6 s** no ZooKeeper, que aqui é mais lento porque nada fecha e ele espera o limite de 4 s. E o líder isolado?
 
 - No etcd, ele percebe que não ouve a maioria e **desiste de ser líder** ("no leader"). Recusa escritas e leituras linearizáveis; só a leitura serializável responde, com o valor antigo.
-- No ZooKeeper, ele **para de atender** completamente; o cliente que conhece os outros servidores troca de servidor sozinho.
+- No ZooKeeper, ele ainda serve leitura local antiga por alguns segundos (cerca de 3,6 s no E9-E4), até perceber que perdeu o líder, e então **para de atender** completamente; o cliente que conhece os outros servidores troca de servidor sozinho.
 
-Os dois escolhem **consistência em vez de disponibilidade** (teorema CAP): o lado minoritário fica indisponível, mas nunca existem duas versões confirmadas do dado.
+Os dois escolhem **consistência em vez de disponibilidade** (teorema CAP): o lado minoritário não confirma nenhuma escrita (no máximo, serve uma leitura antiga), então nunca existem duas versões confirmadas do dado.
 
 **Quando o nó volta.** Ele recebe uma mensagem com mandato maior que o seu e vira **seguidor**. O líder manda só o que ele perdeu: no etcd, as entradas que faltam, ou uma "foto" inteira dos dados, o **snapshot**, se o histórico antigo já foi apagado; no ZooKeeper, a sincronização **DIFF**. O que ele tentou gravar enquanto estava isolado nunca foi confirmado e simplesmente não existe.
 
@@ -77,5 +77,5 @@ Os dois escolhem **consistência em vez de disponibilidade** (teorema CAP): o la
 | Leitura padrão | linearizável (garantida) | local (pode estar atrasada) |
 | Eleição após queda | 1,46 s | 0,38 s |
 | Eleição na partição | 0,94 s | 3,6 s |
-| Líder isolado | desiste e recusa escrita | para de atender |
+| Líder isolado | desiste e recusa escrita (a leitura serializável devolve o valor antigo) | serve leitura antiga por alguns segundos, depois para de atender |
 | Nó que volta | vira seguidor; recebe o log ou um snapshot | vira seguidor; recebe um DIFF |

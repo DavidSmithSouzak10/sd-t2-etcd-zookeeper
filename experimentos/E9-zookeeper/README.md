@@ -19,6 +19,6 @@ Cada subpasta segue o mesmo modelo dos E1–E8 (objetivo, **previsão antes**, p
 ## Ferramentas
 - `docker exec zk-cliente python /app/srvr.py` — modo, zxid, época e contador de cada servidor.
 - `docker exec zk1 zkCli.sh -server 172.33.0.51:2181 <comando>` — cliente oficial.
-- `zookeeper/cliente/*.py` — scripts kazoo (trava, eleição, watch) — _pendente_.
+- `zookeeper/cliente/*.py`: clientes kazoo dos experimentos (`e9_replicacao.py`, `e9_isolado.py`, `e9_eleicao.py`, `e9_operacoes.py`, `e9_alcance.py`, `e9_coordenacao.py`, `latencia.py`).
 
 Comparação final: `comparacao.md`.

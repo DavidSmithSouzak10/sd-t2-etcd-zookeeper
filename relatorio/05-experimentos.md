@@ -2,7 +2,7 @@
 
 Cada experimento seguiu o mesmo ciclo: validação do cluster (`scripts/validar.sh`), previsão da dupla registrada em commit **antes** da execução, execução por script (`experimentos/EX/executar.sh`), evidência bruta salva com data e hora e análise. As medições de tempo têm no mínimo 5 repetições (R7). Os detalhes completos, com a tabela previsão × resultado de cada um, estão no `README.md` de cada pasta em `experimentos/`.
 
-Placar das previsões: E1–E4 e E9-E3/E4 (David), 14 confirmadas, 5 erradas e 1 não observada; E5–E8 e E9-E5..E8 (Samuel), 12 confirmadas, 1 errada e 1 parcial.
+Placar das previsões: E1–E4 e E9-E3/E4 (David), 14 confirmadas, 5 erradas e 1 não observada; E5–E8 e E9-E5..E8 (Samuel), 12 confirmadas, 1 errada (E7: tempo até alcançar o RAFT INDEX) e 1 parcialmente errada (E8: o `elect` levou 57 s, e não cerca de 10 s).
 
 ## 5.1 E1 — Subida e topologia
 **Objetivo:** cluster com 3 membros no ar e papéis identificados. **Procedimento:** 5 subidas do zero (`down -v` + `up -d`), `member list`, `endpoint status` e `endpoint health`.
@@ -11,8 +11,10 @@ Placar das previsões: E1–E4 e E9-E3/E4 (David), 14 confirmadas, 5 erradas e 1
 
 ## 5.2 E2 — Caminho de uma operação
 **Objetivo:** mostrar quem recebe, decide, replica e responde. **Procedimento:** `put` num seguidor por endpoint único, `-w json`, métricas de bytes entre pares e RAFT INDEX nos 3.
-**Resultado:** o seguidor **encaminha** ao líder (103 KB ao líder, 60 B ao outro seguidor), e o líder replica aos dois; a escrita é confirmada com 2 de 3 membros. O put via seguidor custou 8,25 ± 2,83 ms contra 6,91 ± 2,36 ms direto no líder (20 repetições). Revisão e RAFT INDEX são contadores diferentes (revisão 58 × índice 248). Achado: com só o líder vivo (`docker pause` nos outros dois) o cliente recebeu timeout, mas a escrita acabou confirmada ao despausar, ou seja, para o cliente um timeout é um resultado indeterminado.
+**Resultado:** o seguidor **encaminha** ao líder (103 KB ao líder, 60 B ao outro seguidor), e o líder replica aos dois; a escrita é confirmada com 2 de 3 membros, e o seguidor que recebeu o pedido só responde ao cliente depois de saber do commit e aplicar a entrada (Figura 2). O put via seguidor custou 8,25 ± 2,83 ms contra 6,91 ± 2,36 ms direto no líder (20 repetições). Revisão e RAFT INDEX são contadores diferentes (revisão 58 × índice 248). Achado: com só o líder vivo (`docker pause` nos outros dois) o cliente recebeu timeout, mas a escrita acabou confirmada ao despausar, ou seja, para o cliente um timeout é um resultado indeterminado.
 **Evidência:** `experimentos/E2-caminho/evidencias/`; Figura 2 (`diagramas/sequencia-escrita.png`).
+
+![Figura 2: caminho de uma escrita enviada a um seguidor (elaborada pelos autores)](../diagramas/sequencia-escrita.png)
 
 ## 5.3 E3 — Replicação
 **Objetivo:** escrever num membro, ler em outro e medir a propagação. **Procedimento:** 20 repetições de `put` no etcd1, `get` no etcd3 e *watch* no etcd2; latências; `check perf --load=s`.

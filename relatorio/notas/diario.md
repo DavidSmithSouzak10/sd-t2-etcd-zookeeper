@@ -11,6 +11,19 @@ Este diário é a fonte das seções 4 (ambiente), 5 (experimentos) e 9 (limita�
 
 ---
 
+## 2026-10-28 (quarta), sessão 13: correções da revisão do David (Samuel + Claude Code, máquina do Samuel)
+
+**Feito:** incorporada a revisão do Claude Code do David.
+- Partição: o ZooKeeper isolado ainda serve leitura local antiga por alguns segundos antes de parar; o texto (Q11, quadro-síntese, mini-aula e slides) agora diz isso, e a conclusão passou a ser "no lado minoritário nenhum dos dois confirma escrita".
+- Diagrama de sequência: no etcd, o seguidor que recebeu o `put` aplica a entrada ao saber do commit e só então responde ao cliente; o líder não devolve o resultado. Corrigidos `diagramas/sequencia-escrita.mmd` e o PNG; a Figura 2 entrou no relatório (seção 5.2).
+- S3: os números de leitura do ZooKeeper agora dizem de qual experimento vêm (E9-E4: 1,03 × 3,25 ms; E9-E3: 1,53 × 3,89 ms). Os dois pares conferem com os CSVs.
+- Placar do Samuel explicitado: 1 errada (E7) e 1 parcial (E8, o `elect`). Medições de 1 repetição chamadas de "contraste". README do E9 sem a pendência antiga dos scripts kazoo.
+- Slides: placar de previsões (26 de 34), quadro comparativo do E9 com média ± desvio, desvios nas barras de eleição, média de recuperação no E6+E7, "líder (sorteado)", fluxo da escrita legível.
+
+**Não alterado:** na demo do E3, o watch fica no etcd3 e a leitura no etcd2 (no experimento E3 é o contrário); não muda o resultado.
+
+---
+
 ## 2026-10-28 (quarta), sessão 12: revisão contra os critérios e passagem de contexto (David + Claude Code, máquina do David)
 
 **Feito:** revisão do repositório em `69d29ed` contra `docs/criterios-avaliacao.md` e `CHECKLIST.md`; `scripts/revisar.py` em 95 de 98. Gerado um documento local (não versionado) com orientações para continuar relatório e slides em outro chat.

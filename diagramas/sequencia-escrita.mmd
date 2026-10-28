@@ -15,7 +15,7 @@ sequenceDiagram
   S-->>L: ok (gravou i)
   Note over L: maioria = 2 de 3 (líder + 1)<br/>→ entrada i comprometida (commit)
   F-->>L: ok (pode chegar depois)
-  L->>L: aplica ao MVCC → revisão r+1
-  L-->>S: resultado (revision, raft_term)
+  L->>S: heartbeat/AppendEntries (commitIndex = i)
+  S->>S: aplica a entrada i ao MVCC → revisão r+1
   S-->>C: PutResponse{header.revision, raft_term}
-  Note over L,F: próximo heartbeat/AppendEntries informa o commitIndex<br/>e os seguidores aplicam a entrada
+  Note over L,F: o líder e o outro seguidor também aplicam<br/>a entrada i quando sabem do commit
